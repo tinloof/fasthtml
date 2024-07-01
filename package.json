@@ -1,0 +1,14 @@
+{
+  "name": "fasthtml",
+  "version": "0.1.0",
+  "description": "FastHTML landing page",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'No build script defined'",
+    "build:css": "npx tailwindcss -i ./css/main.css -o ./dist/styles.css --watch"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
+  }
+}
