@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "pnpm run build:css && pnpm run build:copy",
-    "build:copy": "cpy src/**/* dist/ --parents ",
+    "build:copy": "cpy src/**/* dist/ --parents",
     "build:css": "npx tailwindcss -i ./src/css/main.css -o ./dist/css/styles.css",
     "build:css:watch": "npx tailwindcss -i ./src/css/main.css -o ./dist/css/styles.css --watch"
   },
