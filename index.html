@@ -153,6 +153,125 @@
           </div>
         </div>
       </section>
+      <!-- TESTIMONIALS SECTION -->
+      <section
+        class="bg-pink rounded-t-3xl lg:rounded-t-[2.5rem] -mt-8 lg:-mt-10"
+      >
+        <div
+          class="pt-8 px-4 pb-24 flex flex-col w-full mx-auto lg:flex-row items-start gap-8 lg:gap-16 lg:pt-16 lg:px-16 max-w-[90rem] lg:pb-32"
+        >
+          <div
+            class="max-w-[50rem] w-full flex flex-col items-start text-start gap-6"
+          >
+            <p class="mono-body text-opacity-60">LOVE IS IN THE AIR</p>
+            <h2 class="text-black heading-2">What our community says</h2>
+            <p class="l-body max-w-[21rem]">
+              Experiences from FastHTML users around the globe.
+            </p>
+          </div>
+          <!-- Carousel -->
+          <div
+            class="max-h-fit flex flex-col items-start lg:-mr-16 w-full max-w-[1440px] overflow-hidden"
+          >
+            <div
+              class="carousel-container flex flex-col lg:flex-row gap-4 lg:gap-6 rounded-l-[2.5rem] xl:rounded-[2.5rem] w-full lg:overflow-hidden xl:overflow-hidden whitespace-nowrap"
+            >
+              <!-- Card -->
+              <div
+                class="flex-col flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-pink p-4 lg:p-8 w-full max-w-[36rem] lg:w-[27rem]"
+              >
+                <!-- Comment -->
+                <p class="m-body text-black">
+                  FastHTML is as intuitive as FastAPI, lends itself to clean
+                  architecture, and its HTML+HTMX structure makes it a good
+                  competitor to Django for building webapps. Most importantly,
+                  it’s fun to use.
+                </p>
+                <!-- User -->
+                <div class="flex justify-start gap-2">
+                  <!-- Picture -->
+                  <div class="rounded-full w-14 h-14">
+                    <img
+                      src="assets/testimonials/daniel-roy.png"
+                      alt="Picture of Daniel Roy"
+                      width="112"
+                      height="112"
+                    />
+                  </div>
+                  <!-- Credentials -->
+                  <div class="w-full">
+                    <!-- Name -->
+                    <p class="m-body text-black">Daniel Roy Greenfield</p>
+                    <!-- Info -->
+                    <div class="flex gap-2 xs-mono-body w-full">
+                      <p>Co-author</p>
+                      <img
+                        src="assets/icons/dot.svg"
+                        alt="Dot separator"
+                        width="4"
+                        height="4"
+                      />
+                      <p>Two Scoops of Django</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Card -->
+              <div
+                class="flex-col flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-pink p-4 lg:p-8 w-full max-w-[36rem] lg:w-[27rem]"
+              >
+                <!-- Comment -->
+                <p class="m-body text-black">
+                  Python has always been a wonderful tool for creating web
+                  applications; with FastHTML, it's even better!
+                </p>
+                <!-- User -->
+                <div class="flex justify-start gap-2">
+                  <!-- Picture -->
+                  <div class="rounded-full w-14 h-14">
+                    <img
+                      src="assets/testimonials/giles-thomas.png"
+                      alt="Picture of Daniel Roy"
+                      width="112"
+                      height="112"
+                    />
+                  </div>
+                  <!-- Credentials -->
+                  <div class="w-full">
+                    <!-- Name -->
+                    <p class="m-body text-black">Giles Thomas</p>
+                    <!-- Info -->
+                    <div class="flex gap-2 xs-mono-body w-full">
+                      <p>Founder</p>
+                      <img
+                        src="assets/icons/dot.svg"
+                        alt="Dot separator"
+                        width="4"
+                        height="4"
+                      />
+                      <p>PhytonAnywhere</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="hidden lg:flex xl:flex justify-start w-full max-w-[41rem] py-6 pl-6 pr-[5.5rem]"
+            >
+              <div class="w-[4.5rem] flex justify-between ml-auto">
+                <button id="slideLeft">
+                  <img src="assets/icons/arrow-left.svg" />
+                </button>
+                <button id="slideRight">
+                  <img src="assets/icons/arrow-right.svg" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script src="js/carouselScroll.js"></script>
+      </section>
     </main>
   </body>
 </html>
