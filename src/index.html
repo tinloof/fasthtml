@@ -8,7 +8,7 @@
   </head>
   <body>
     <!-- FAQ Section -->
-    <div class="bg-blue rounded-t-3xl lg:rounded-t-[2.5rem]">
+    <section class="bg-blue rounded-t-3xl lg:rounded-t-[2.5rem]">
       <div
         class="pt-8 px-4 pb-24 flex flex-col w-full mx-auto lg:flex-row items-start gap-8 lg:gap-16 lg:pt-16 lg:px-16 max-w-[90rem] lg:pb-32"
       >
@@ -25,11 +25,16 @@
         <!-- This solution uses only CSS, but it requires unique collapsible ids and rules -->
         <div class="flex flex-col gap-4 w-full max-w-[32rem]">
           <div
-            class="grid grid-cols-2 gap-y-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+            class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
           >
-            <p class="text-black s-body flex-grow">What is FastHTML?</p>
-            <input id="collapsible" type="checkbox" class="hidden" />
-            <label for="collapsible" class="flex justify-end items-center">
+            
+            <input
+              id="collapsible-1"
+              type="checkbox"
+              class="collapsible-checkbox"
+            />
+            <label for="collapsible-1" class="flex justify-between items-center">
+              <p class="text-black s-body flex-grow">What is FastHTML?</p>
               <img
                 src="./assets/icons/plus-icon.svg"
                 alt="Expand"
@@ -41,14 +46,117 @@
                 class="minus-icon w-6 h-6"
               />
             </label>
-            <p class="answer s-body text-black/80 col-span-2">
+            <p class="answer s-body text-black/80 col-span-full">
               FastHTML is a library for writing fast and scalable
               Starlette-powered web applications, without having to learn much
               (if any!) Starlette.
             </p>
           </div>
-        </div>
+          <div
+            class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+          >
+            
+            <input
+              id="collapsible-2"
+              type="checkbox"
+              class="collapsible-checkbox"
+            />
+            <label for="collapsible-2" class="flex justify-between items-center">
+              <p class="text-black s-body flex-grow">How can I get started?</p>
+              <img
+                src="./assets/icons/plus-icon.svg"
+                alt="Expand"
+                class="plus-icon w-6 h-6"
+              />
+              <img
+                src="./assets/icons/minus-icon.svg"
+                alt="Collapse"
+                class="minus-icon w-6 h-6"
+              />
+            </label>
+            <p class="answer s-body text-black/80 col-span-full">
+              Answer here
+            </p>
+          </div>
+          <div
+            class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+          >
+            
+            <input
+              id="collapsible-3"
+              type="checkbox"
+              class="collapsible-checkbox"
+            />
+            <label for="collapsible-3" class="flex justify-between items-center">
+              <p class="text-black s-body flex-grow">Are there existing applications using FastHTML?</p>
+              <img
+                src="./assets/icons/plus-icon.svg"
+                alt="Expand"
+                class="plus-icon w-6 h-6"
+              />
+              <img
+                src="./assets/icons/minus-icon.svg"
+                alt="Collapse"
+                class="minus-icon w-6 h-6"
+              />
+            </label>
+            <p class="answer s-body text-black/80 col-span-full">
+              Answer here
+            </p>
+          </div>
+          <div
+            class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+          >
+            
+            <input
+              id="collapsible-4"
+              type="checkbox"
+              class="collapsible-checkbox"
+            />
+            <label for="collapsible-4" class="flex justify-between items-center">
+              <p class="text-black s-body flex-grow">What kind of applications can I build with FastHTML?</p>
+              <img
+                src="./assets/icons/plus-icon.svg"
+                alt="Expand"
+                class="plus-icon w-6 h-6"
+              />
+              <img
+                src="./assets/icons/minus-icon.svg"
+                alt="Collapse"
+                class="minus-icon w-6 h-6"
+              />
+            </label>
+            <p class="answer s-body text-black/80 col-span-full">
+              Answer here
+            </p>
+          </div>
+          <div
+            class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+          >
+            
+            <input
+              id="collapsible-5"
+              type="checkbox"
+              class="collapsible-checkbox"
+            />
+            <label for="collapsible-5" class="flex justify-between items-center">
+              <p class="text-black s-body flex-grow">Is FastHTML open-source? How can I contribute to its development?</p>
+              <img
+                src="./assets/icons/plus-icon.svg"
+                alt="Expand"
+                class="plus-icon w-6 h-6"
+              />
+              <img
+                src="./assets/icons/minus-icon.svg"
+                alt="Collapse"
+                class="minus-icon w-6 h-6"
+              />
+            </label>
+            <p class="answer s-body text-black/80 col-span-full">
+              Answer here
+            </p>
+          </div>
       </div>
-    </div>
+    </section>
   </body>
 </html>

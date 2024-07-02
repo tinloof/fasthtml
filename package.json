@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "pnpm run build:css && pnpm run build:copy",
-    "build:copy": "cpx \"src/**/*\" \"dist/\" --ignore \"src/css/styles.css\"",
-    "build:css": "npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css",
+    "build:copy": "cpx \"src/**/*\" \"dist/\" --ignore \"src/css/main.css\"",
+    "build:css": "npx tailwindcss -i ./src/css/main.css -o ./src/css/styles.css",
     "build:css:watch": "pnpm run build:css --watch"
   },
   "keywords": [],
