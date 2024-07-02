@@ -22,10 +22,10 @@
           </p>
         </div>
         <!-- Collapsibles here -->
-        <!-- This solution uses only CSS, but it requires unique collapsible ids and rules -->
-        <div class="flex flex-col gap-4 w-full max-w-[32rem]">
+        <!-- This solution uses only CSS, but it requires unique collapsible ids -->
+        <div class="flex flex-col gap-4 w-full max-w-[32rem] transition ease-out delay-[300ms]">
           <div
-            class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+            class=" flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
           >
             
             <input
@@ -46,7 +46,7 @@
                 class="minus-icon w-6 h-6"
               />
             </label>
-            <p class="answer s-body text-black/80 col-span-full">
+            <p class="s-body text-black/80 col-span-full answer">
               FastHTML is a library for writing fast and scalable
               Starlette-powered web applications, without having to learn much
               (if any!) Starlette.

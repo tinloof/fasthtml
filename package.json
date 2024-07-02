@@ -4,14 +4,10 @@
   "description": "FastHTML landing page",
   "main": "index.js",
   "scripts": {
-    "build": "pnpm run build:css && pnpm run build:copy",
-    "build:copy": "cpx \"src/**/*\" \"dist/\" --ignore \"src/css/main.css\"",
-    "build:css": "npx tailwindcss -i ./src/css/main.css -o ./src/css/styles.css",
-    "build:css:watch": "pnpm run build:css --watch"
+    "build:css": "npx tailwindcss -i ./css/main.css -o ./css/styles.css --watch"
   },
   "keywords": [],
   "devDependencies": {
-    "cpx2": "^7.0.1",
     "tailwindcss": "^3.4.4"
   }
 }
