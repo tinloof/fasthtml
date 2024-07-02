@@ -1,15 +1,3 @@
-:root {
-  --yellow: hsla(42, 100%, 60%, 1);
-  --soft-yellow: hsla(40, 100%, 90%, 1);
-  --black: hsla(0, 0%, 0%, 1);
-  --green: hsla(150, 70%, 55%, 1);
-  --soft-green: hsla(151, 69%, 90%, 1);
-  --pink: hsla(310, 61%, 75%, 1);
-  --soft-pink: hsla(309, 100%, 90%, 1);
-  --blue: hsla(240, 80%, 70%, 1);
-  --white: hsla(0, 0%, 100%, 1);
-  --corner-radius-sm: 1rem;
-}
 
 @font-face {
   font-family: "Geist";
@@ -29,6 +17,7 @@
 .font-details-off {
   font-feature-settings: "clig" off, "liga" off;
 }
+
 .heading-2 {
   font-size: 2.5rem;
   font-style: normal;
@@ -68,6 +57,7 @@
   line-height: 2rem; /* 133.333% */
   letter-spacing: -0.015rem;
 }
+
 
 .answer {
   overflow: hidden;
