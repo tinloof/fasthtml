@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --yellow: hsla(42, 100%, 60%, 1);
   --soft-yellow: hsla(40, 100%, 90%, 1);
@@ -29,6 +33,7 @@
 .font-details-off {
   font-feature-settings: "clig" off, "liga" off;
 }
+
 .heading-2 {
   font-size: 2.5rem;
   font-style: normal;
