@@ -3,12 +3,156 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>fastHTML</title>
+    <title>FastHTML</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/main.css" />
     <script src="js/tailwind.config.js"></script>
+    <link href="css/main.css" rel="stylesheet" />
   </head>
-  <body>
-    <div></div>
+  <body class="font-geist text-black/80 font-details-off">
+    <main>
+      <!-- SAMPLES SECTION -->
+      <!-- @TODO: add links to repos once available -->
+      <section
+        class="pt-8 px-4 pb-24 flex flex-col items-center gap-8 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32 rounded-t-3xl lg:rounded-t-[2.5rem]"
+      >
+        <div
+          class="max-w-[50rem] w-full mx-auto flex flex-col items-center text-center gap-6"
+        >
+          <p class="mono-body text-opacity-60">SAMPLES</p>
+          <h2 class="text-black heading-2">See FastHTML in action</h2>
+          <p class="l-body max-w-[32rem]">
+            FastHTML can be used for everything from collaborative games to
+            multi-modal UI. We've selected small self-contained examples for you
+            to learn from.
+          </p>
+        </div>
+
+        <div
+          class="grid max-w-[60rem] lg:grid-cols-4 lg:max-w-[84rem] lg:gap-x-12 grid-cols-2 gap-x-[1rem] gap-y-8 w-full mx-auto"
+        >
+          <div class="px-[0.55rem]">
+            <a href="/" class="flex flex-col items-center">
+              <img
+                src="./assets/icons/game-of-life-icon.svg"
+                alt="Game of life icon"
+                width="300"
+                height="300"
+              />
+              <div class="flex gap-2 items-center mt-4 lg:mt-6">
+                <p class="l-body">Game of life</p>
+                <img
+                  src="./assets/icons/arrow-up-right.svg"
+                  alt="Arrow right icon"
+                />
+              </div>
+            </a>
+          </div>
+          <div class="px-[0.55rem]">
+            <a href="" class="flex flex-col items-center"
+              ><img
+                src="./assets/icons/todo-icon.svg"
+                alt="To-do icon"
+                width="300"
+                height="300" />
+              <div class="flex gap-2 items-center mt-4 lg:mt-6">
+                <p class="l-body">To-do</p>
+                <img
+                  src="./assets/icons/arrow-up-right.svg"
+                  alt="Arrow right icon"
+                /></div
+            ></a>
+          </div>
+
+          <div class="px-[0.55rem]">
+            <a href="/" class="flex flex-col items-center"
+              ><img
+                src="./assets/icons/chat-bot-icon.svg"
+                alt="Chat bot icon"
+                width="300"
+                height="300"
+              />
+              <div class="flex gap-2 items-center mt-4 lg:mt-6">
+                <p class="l-body">Chat bot</p>
+                <img
+                  src="./assets/icons/arrow-up-right.svg"
+                  alt="Arrow right icon"
+                />
+              </div>
+            </a>
+          </div>
+
+          <div class="px-[0.55rem]">
+            <a href="/" class="flex flex-col items-center">
+              <img
+                src="./assets/icons/pictionary-ai-icon.svg"
+                alt="Pictionary AI icon"
+                width="300"
+                height="300"
+              />
+              <div class="flex gap-2 items-center mt-4 lg:mt-6">
+                <p class="l-body">Pictionary AI</p>
+                <img
+                  src="./assets/icons/arrow-up-right.svg"
+                  alt="Arrow right icon"
+                />
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a
+          class="bg-black text-white py-2 px-4 s-body rounded-[62.5rem] w-fit"
+          href="/"
+        >
+          Discover all
+        </a>
+      </section>
+      <section
+        class="pt-8 px-4 pb-24 bg-yellow lg:pt-16 lg:pb-32 lg:px-16 rounded-t-3xl lg:rounded-t-[2.5rem]"
+      >
+        <div
+          class="max-w-[50rem] w-full mx-auto flex flex-col items-center text-center gap-6 mb-8 lg:mb-16"
+        >
+          <p class="mono-body text-opacity-60">GET STARTED IN MINUTES</p>
+          <h2 class="text-black heading-2">
+            The fastest way to create a real web application
+          </h2>
+          <p class="l-body max-w-[32rem]">
+            FastHTML comes in battery-included - create good-looking interactive
+            modern web applications and deploy them in minutes
+          </p>
+        </div>
+        <div
+          class="flex flex-col w-full lg:flex-row gap-4 items-center lg:gap-8 max-w-[82rem] mx-auto"
+        >
+          <div
+            class="w-full p-6 bg-soft-yellow rounded-2xl lg:p-12 lg:h-[22rem] lg:w-[26rem]"
+          >
+            <h3 class="text-black heading-3">Low learning curve</h3>
+            <p class="l-body mt-6 lg:mt-8">
+              Incorporate any Python library and any JavaScript library you
+              like.
+            </p>
+          </div>
+
+          <div
+            class="w-full p-6 bg-soft-yellow rounded-2xl lg:p-12 lg:h-[22rem] lg:w-[26rem]"
+          >
+            <h3 class="text-black heading-3">Speed and scalability</h3>
+            <p class="l-body mt-6 lg:mt-8">
+              HTTP/HTML, bringing the foundations of the web to you.
+            </p>
+          </div>
+          <div
+            class="w-full p-6 bg-soft-yellow rounded-2xl lg:p-12 lg:h-[22rem] lg:w-[26rem]"
+          >
+            <h3 class="text-black heading-3">Styling</h3>
+            <p class="l-body mt-6 lg:mt-8">
+              Pure CSS or you can use framework like Tailwind.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

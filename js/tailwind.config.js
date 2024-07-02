@@ -1,13 +1,18 @@
+/** @type {import('tailwindcss').Config} */
 tailwind.config = {
   theme: {
     extend: {
+      fontFamily: {
+        geist: ["Geist", "sans-serif"],
+        "geist-mono": ["Geist Mono", "monospace"],
+      },
       colors: {
         brown: "#6B2E2E",
         "soft-brown": "#fcc",
         green: "3CDD8C",
         "soft-green": "D4F7E6",
         yellow: "#FFC435",
-        "soft=yellow": "#fec",
+        "soft-yellow": "#fec",
         grey: "#F3F3F3",
         "soft-grey": "#fff",
         pink: "#E699D9",
