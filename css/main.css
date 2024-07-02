@@ -1,20 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --yellow: hsla(42, 100%, 60%, 1);
-  --soft-yellow: hsla(40, 100%, 90%, 1);
-  --black: hsla(0, 0%, 0%, 1);
-  --green: hsla(150, 70%, 55%, 1);
-  --soft-green: hsla(151, 69%, 90%, 1);
-  --pink: hsla(310, 61%, 75%, 1);
-  --soft-pink: hsla(309, 100%, 90%, 1);
-  --blue: hsla(240, 80%, 70%, 1);
-  --white: hsla(0, 0%, 100%, 1);
-  --corner-radius-sm: 1rem;
-}
-
 @font-face {
   font-family: "Geist";
   src: url("../assets/fonts/geist/GeistVF.woff2") format("truetype"),
