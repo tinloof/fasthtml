@@ -6,11 +6,11 @@
     <title>FastHTML</title>
     <link href="./css/styles.css" rel="stylesheet" />
   </head>
-  <body>
+  <body class="bg-grey">
     <!-- SAMPLES SECTION -->
     <!-- @TODO: add links to repos once available -->
-    <div
-      class="pt-8 px-4 pb-24 flex flex-col items-center gap-8 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32 bg-grey rounded-t-3xl lg:rounded-t-[2.5rem]"
+    <section
+      class="pt-8 px-4 pb-24 flex flex-col items-center gap-8 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32 rounded-t-3xl lg:rounded-t-[2.5rem]"
     >
       <div
         class="max-w-[50rem] w-full mx-auto flex flex-col items-center text-center gap-6 mb-8 lg:mb-16"
@@ -32,6 +32,8 @@
             <img
               src="./assets/icons/game-of-life-icon.svg"
               alt="Game of life icon"
+              width="300"
+              height="300"
             />
             <div class="flex gap-2 items-center mt-4 lg:mt-6">
               <p class="l-body">Game of life</p>
@@ -44,7 +46,11 @@
         </div>
         <div class="px-[0.55rem]">
           <a href="" class="flex flex-col items-center"
-            ><img src="./assets/icons/todo-icon.svg" alt="To-do icon" />
+            ><img
+              src="./assets/icons/todo-icon.svg"
+              alt="To-do icon"
+              width="300"
+              height="300" />
             <div class="flex gap-2 items-center mt-4 lg:mt-6">
               <p class="l-body">To-do</p>
               <img
@@ -56,7 +62,12 @@
 
         <div class="px-[0.55rem]">
           <a href="/" class="flex flex-col items-center"
-            ><img src="./assets/icons/chat-bot-icon.svg" alt="Chat bot icon" />
+            ><img
+              src="./assets/icons/chat-bot-icon.svg"
+              alt="Chat bot icon"
+              width="300"
+              height="300"
+            />
             <div class="flex gap-2 items-center mt-4 lg:mt-6">
               <p class="l-body">Chat bot</p>
               <img
@@ -72,6 +83,8 @@
             <img
               src="./assets/icons/pictionary-ai-icon.svg"
               alt="Pictionary AI icon"
+              width="300"
+              height="300"
             />
             <div class="flex gap-2 items-center mt-4 lg:mt-6">
               <p class="l-body">Pictionary AI</p>
@@ -84,12 +97,12 @@
         </div>
       </div>
 
-      <button
+      <a
         class="bg-black text-white py-2 px-4 s-body rounded-[62.5rem] w-fit"
         href="/"
       >
         Discover all
-      </button>
-    </div>
+      </a>
+    </section>
   </body>
 </html>
