@@ -6,14 +6,230 @@
     <title>FastHTML</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/tailwind.config.js"></script>
+
     <link href="css/main.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script src="js/pythonHighlighter.js"></script>
+    <link href="css/highlighter-theme.css" rel="stylesheet" />
   </head>
   <body class="font-geist text-black/80 font-details-off">
     <main>
+      <!-- CODE PREVIEW SECTION -->
+      <section
+        class="bg-purple pt-8 px-4 pb-24 flex flex-col xl:items-center items-start gap-6 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32 rounded-t-3xl lg:rounded-t-[2.5rem] overflow-x-hidden"
+      >
+        <!-- CARD CODE DEMO -->
+        <div
+          class="code-container toggle-element flex flex-col lg:flex-row lg:justify-between overflow-x-hidden w-full lg:max-w-[1440px]"
+          id="card"
+        >
+          <div
+            class="flex flex-col gap-6 lg:max-w-[45rem] w-full overflow-x-hidden"
+          >
+            <div
+              class="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"
+            >
+              <!-- File name -->
+              <div class="w-full flex justify-between">
+                <p class="xs-mono-body flex items-center">/card.fasthtml</p>
+                <!-- Copy icon -->
+                <button class="copy-button">
+                  <div
+                    class="bg-black/20 rounded-[0.5rem] flex items-center p-2 h-8"
+                  >
+                    <img
+                      class="button-content w-4 h-4"
+                      src="assets/icons/copy-icon.svg"
+                      alt="Copy"
+                    />
+                    <span class="copied-text hidden s-body text-white/80"
+                      >Copied!</span
+                    >
+                  </div>
+                </button>
+              </div>
+            </div>
+            <pre
+              class="code-snippet"
+            ><code  class="python whitespace-pre w-full mono-body" >    @rt("/")
+    async def put(todo: Todo): return todos.upsert(todo), clr_details()
+    
+    @rt("/todos/{id}")
+    async def get(id:int):
+        todo = todos.get(id)
+        btn = Button('delete', hx_delete=f'/todos/{todo.id}',
+                      target_id=tid(todo.id), hx_swap="outerHTML")
+        return Div(Div(todo.title), btn)
+    
+    if __name__ == '__main__': 
+        uvicorn.run("main:app", host='0.0.0.0', port=int(os.getenv("PORT", default=5001)))
+            </code></pre>
+          </div>
+          <!-- ------->
+          <!-- Card -->
+          <!-- ------->
+
+          <div
+            class="flex-col my-[2.66rem] flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-purple p-4 lg:p-8 w-full max-w-[40rem] lg:max-w-[27rem] lg:mx-[7rem] lg:my-[2.13rem]"
+          >
+            <!-- Comment -->
+            <p class="m-body text-black">
+              FastHTML is as intuitive as FastAPI, lends itself to clean
+              architecture, and its HTML+HTMX structure makes it a good
+              competitor to Django for building webapps. Most importantly, it’s
+              fun to use.
+            </p>
+            <!-- User -->
+            <div class="flex justify-start gap-2">
+              <!-- Picture -->
+              <div
+                class="rounded-full w-[2.625rem] lg:w-[3.5rem] lg:h-[3.5rem] h-[2.625rem]"
+              >
+                <img
+                  src="assets/testimonials/daniel-roy-greenfield.png"
+                  alt="Picture of Giles Thomas"
+                  width="112"
+                  height="112"
+                />
+              </div>
+              <!-- Credentials -->
+              <div class="w-full min-w-fit">
+                <!-- Name -->
+                <p class="m-body text-black">Daniel Roy Greenfield</p>
+                <!-- Info -->
+                <div class="flex gap-2 xs-mono-body w-full">
+                  <p>Co-author</p>
+                  <img
+                    src="assets/icons/dot.svg"
+                    alt="Dot separator"
+                    width="4"
+                    height="4"
+                  />
+                  <p>Two Scoops of Django</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- BUTTON CODE DEMO -->
+        <div
+          class="toggle-element flex flex-col lg:flex-row lg:justify-between overflow-x-hidden w-full hidden"
+          id="button"
+        >
+          <div
+            class="flex flex-col gap-6 lg:max-w-[38rem] w-full overflow-x-hidden"
+          >
+            <div
+              class="bg-black/20 text-white/80 max-w-[32.75rem] w-full p-4 rounded-2xl"
+            >
+              <!-- File name -->
+              <div class="flex justify-between">
+                <p class="xs-mono-body flex items-center">/card.fasthtml</p>
+                <!-- Copy icon -->
+                <div class="bg-black/20 rounded-s flex items-center p-2">
+                  <img class="w-4 h-4" src="assets/icons/copy-icon.svg" />
+                </div>
+              </div>
+            </div>
+            <pre><code class="python w-full mono-body whitespace-pre" >    @rt("/")
+    async def get():
+      add = Form(Group(mk_input(), Button("Add")),
+          hx_post="/", target_id='todo-list', hx_swap="beforeend")
+      card = Card(Ul(*todos(), id='todo-list'),
+          header=add, footer=Div(id=id_curr)),
+      title = 'Todo list'
+      return Title(title), Main(H1(title), card, cls='container')
+            </code></pre>
+          </div>
+          <!-- ------->
+          <!-- Card -->
+          <!-- ------->
+
+          <div
+            class="flex-col my-[2.66rem] flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-black p-4 lg:p-8 w-full max-w-[40rem] lg:max-w-[27rem] lg:mx-[7rem] lg:my-[2.13rem]"
+          >
+            <!-- Comment -->
+            <p class="m-body text-black">
+              FastHTML is as intuitive as FastAPI, lends itself to clean
+              architecture, and its HTML+HTMX structure makes it a good
+              competitor to Django for building webapps. Most importantly, it’s
+              fun to use.
+            </p>
+            <!-- User -->
+            <div class="flex justify-start gap-2">
+              <!-- Picture -->
+              <div
+                class="rounded-full w-[2.625rem] lg:w-[3.5rem] lg:h-[3.5rem] h-[2.625rem]"
+              >
+                <img
+                  src="assets/testimonials/daniel-roy-greenfield.png"
+                  alt="Picture of Giles Thomas"
+                  width="112"
+                  height="112"
+                />
+              </div>
+              <!-- Credentials -->
+              <div class="w-full min-w-fit">
+                <!-- Name -->
+                <p class="m-body text-black">Daniel Roy Greenfield</p>
+                <!-- Info -->
+                <div class="flex gap-2 xs-mono-body w-full">
+                  <p>Co-author</p>
+                  <img
+                    src="assets/icons/dot.svg"
+                    alt="Dot separator"
+                    width="4"
+                    height="4"
+                  />
+                  <p>Two Scoops of Django</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!---------------------->
+        <!-- EXAMPLE SELECTOR -->
+        <!---------------------->
+        <div
+          class="flex gap-2 rounded-[62.5rem] bg-white/20 p-2 w-fit max-w-full overflow-x-auto lg:mx-auto items-center ml-0 hide-scrollbar lg:max-w-[43.375rem]"
+        >
+          <div
+            class="button-container bg-soft-purple text-purple h-[2.75rem] rounded-[62.5rem] py-2 px-8 flex items-center"
+          >
+            <button class="toggle-button" data-target="card">
+              <p class="m-body w-max">Card</p>
+            </button>
+          </div>
+          <div
+            class="button-container text-white/80 rounded-[62.5rem] h-[2.75rem] py-2 px-8 flex items-center"
+          >
+            <button class="toggle-button" data-target="card">
+              <p class="m-body w-max">Button</p>
+            </button>
+          </div>
+          <div
+            class="button-container text-white/80 rounded-[62.5rem] h-[2.75rem] py-2 px-8 flex items-center"
+          >
+            <button class="toggle-button" data-target="card">
+              <p class="m-body w-max">Accordion</p>
+            </button>
+          </div>
+          <div
+            class="button-container text-white/80 rounded-[62.5rem] h-[2.75rem] py-2 px-8 flex items-center"
+          >
+            <button class="toggle-button" data-target="card">
+              <p class="m-body w-max">Stacked cards</p>
+            </button>
+          </div>
+        </div>
+      </section>
       <!-- SAMPLES SECTION -->
       <!-- @TODO: add links to repos once available -->
       <section
-        class="pt-8 px-4 pb-24 flex flex-col items-center gap-8 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32 rounded-t-3xl lg:rounded-t-[2.5rem]"
+        class="bg-grey pt-8 px-4 pb-24 -mt-8 lg: -mt-16 flex flex-col lg:flex-row items-center gap-8 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32 rounded-t-3xl lg:rounded-t-[2.5rem]"
       >
         <div
           class="max-w-[50rem] w-full mx-auto flex flex-col items-center text-center gap-6"
@@ -108,7 +324,7 @@
         </a>
       </section>
       <section
-        class="pt-8 px-4 pb-24 bg-yellow lg:pt-16 lg:pb-32 lg:px-16 rounded-t-3xl lg:rounded-t-[2.5rem]"
+        class="pt-8 px-4 -mt-8 lg:-mt-16 pb-24 bg-yellow lg:pt-16 lg:pb-32 lg:px-16 rounded-t-3xl lg:rounded-t-[2.5rem]"
       >
         <div
           class="max-w-[50rem] w-full mx-auto flex flex-col items-center text-center gap-6 mb-8 lg:mb-16"
@@ -155,4 +371,7 @@
       </section>
     </main>
   </body>
+
+  <script src="js/togglePreview.js"></script>
+  <script src="js/copyCode.js"></script>
 </html>

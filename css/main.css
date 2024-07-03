@@ -33,12 +33,29 @@
   line-height: 180%; /* 1.8rem */
 }
 
+.xs-mono-body {
+  font-family: "Geist Mono";
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 180%; /* 1.575rem */
+}
+
 .s-body {
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5rem; /* 150% */
   letter-spacing: -0.005rem;
+}
+
+.m-body {
+  font-family: Geist;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.75rem; /* 140% */
+  letter-spacing: -0.0125rem;
 }
 
 .l-body {
@@ -55,6 +72,15 @@
   font-weight: 500;
   line-height: 2rem; /* 133.333% */
   letter-spacing: -0.015rem;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 @media screen and (min-width: 1024px) {
