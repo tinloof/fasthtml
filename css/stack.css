@@ -1,0 +1,30 @@
+:root {
+  --cards: 3;
+  --cardTopPadding: 5rem;
+}
+
+#stacked-cards {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(var(--cards), minmax(0, 50vh));
+  gap: var(--cardMargin);
+  padding-bottom: calc(calc(var(--cards) - 1) * var(--cardTopPadding));
+}
+
+#stacked-cards > div:nth-child(1) {
+  --index: 0;
+}
+#stacked-cards > div:nth-child(2) {
+  --index: 1;
+}
+#stacked-cards > div:nth-child(3) {
+  --index: 2;
+}
+
+#stacked-cards > div {
+  position: sticky;
+  top: 0;
+  padding-top: calc(var(--index) * var(--cardTopPadding));
+}
