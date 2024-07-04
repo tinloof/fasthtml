@@ -57,19 +57,6 @@
   letter-spacing: -0.015rem;
 }
 
-.answer {
-  overflow: hidden;
-  max-height: 0px;
-  margin-top: -1rem;
-}
-
-.collapsible-checkbox:checked + label + .answer {
-  max-height: fit-content;
-  /*  Compensate for the gap in the flex container */
-  margin-top: 0rem;
-  transition: all 0.3s ease-out;
-}
-
 .minus-icon {
   display: none;
 }
