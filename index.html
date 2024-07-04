@@ -55,19 +55,25 @@
             </div>
             <pre
               class="code-snippet"
-            ><code  class="python whitespace-pre-wrap w-full mono-body" >    @rt("/")
-    async def put(todo: Todo): return todos.upsert(todo), clr_details()
-    
-    @rt("/todos/{id}")
-    async def get(id:int):
-        todo = todos.get(id)
-        btn = Button('delete', hx_delete=f'/todos/{todo.id}',
-                      target_id=tid(todo.id), hx_swap="outerHTML")
-        return Div(Div(todo.title), btn)
-    
-    if __name__ == '__main__': 
-        uvicorn.run("main:app", host='0.0.0.0', 
-                    port=int(os.getenv("PORT", default=5001)))
+            ><code  class="python  w-full mono-body" >  @rt("/")
+  async def put(todo: Todo): 
+  return todos.upsert(todo), 
+  clr_details()
+
+  @rt("/todos/{id}")
+  async def get(id:int):
+      todo = todos.get(id)
+      btn = Button('delete', 
+        hx_delete=f'/todos/{todo.id}',
+        target_id=tid(todo.id), 
+        hx_swap="outerHTML")
+      return Div(Div(todo.title), btn)
+
+  if __name__ == '__main__': 
+      uvicorn.run("main:app", 
+        host='0.0.0.0', 
+        port=int(os.getenv("PORT", 
+            default=5001)))
             </code></pre>
           </div>
           <!-- ------->
@@ -151,20 +157,26 @@
             </div>
             <pre
               class="code-snippet"
-            ><code  class="python whitespace-pre w-full mono-body" >    @rt("/")
-    async def put(todo: Todo): return todos.upsert(todo), clr_details()
-    
-    @rt("/todos/{id}")
-    async def get(id:int):
-        todo = todos.get(id)
-        btn = Button('delete', hx_delete=f'/todos/{todo.id}',
-                      target_id=tid(todo.id), hx_swap="outerHTML")
-        return Div(Div(todo.title), btn)
-    
-    if __name__ == '__main__': 
-        uvicorn.run("main:app", host='0.0.0.0', 
-                      port=int(os.getenv("PORT", default=5001)))
-            </code></pre>
+            ><code  class="python  w-full mono-body" >  @rt("/")
+  async def put(todo: Todo): 
+  return todos.upsert(todo), 
+  clr_details()
+
+  @rt("/todos/{id}")
+  async def get(id:int):
+      todo = todos.get(id)
+      btn = Button('delete', 
+        hx_delete=f'/todos/{todo.id}',
+        target_id=tid(todo.id), 
+        hx_swap="outerHTML")
+      return Div(Div(todo.title), btn)
+
+  if __name__ == '__main__': 
+      uvicorn.run("main:app", 
+        host='0.0.0.0', 
+        port=int(os.getenv("PORT", 
+            default=5001)))
+          </code></pre>
           </div>
           <!-- ------->
           <!-- Button -->
@@ -234,19 +246,25 @@
             </div>
             <pre
               class="code-snippet"
-            ><code  class="python whitespace-pre w-full mono-body" >    @rt("/")
-    async def put(todo: Todo): return todos.upsert(todo), clr_details()
-    
-    @rt("/todos/{id}")
-    async def get(id:int):
-        todo = todos.get(id)
-        btn = Button('delete', hx_delete=f'/todos/{todo.id}',
-                      target_id=tid(todo.id), hx_swap="outerHTML")
-        return Div(Div(todo.title), btn)
-    
-    if __name__ == '__main__': 
-        uvicorn.run("main:app", host='0.0.0.0', 
-                      port=int(os.getenv("PORT", default=5001)))
+            ><code  class="python  w-full mono-body" >  @rt("/")
+  async def put(todo: Todo): 
+  return todos.upsert(todo), 
+  clr_details()
+
+  @rt("/todos/{id}")
+  async def get(id:int):
+      todo = todos.get(id)
+      btn = Button('delete', 
+        hx_delete=f'/todos/{todo.id}',
+        target_id=tid(todo.id), 
+        hx_swap="outerHTML")
+      return Div(Div(todo.title), btn)
+
+  if __name__ == '__main__': 
+      uvicorn.run("main:app", 
+        host='0.0.0.0', 
+        port=int(os.getenv("PORT", 
+            default=5001)))
             </code></pre>
           </div>
           <!--------------->
