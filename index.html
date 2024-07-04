@@ -16,14 +16,14 @@
   </head>
   <body class="font-geist text-black/80 font-details-off">
     <main>
-      <!-- CODE PREVIEW SECTION -->
+      <!-- COMPONENT PREVIEW SECTION -->
       <section
         class="bg-purple pt-8 px-4 pb-24 flex flex-col xl:items-center items-start gap-6 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32 rounded-t-3xl lg:rounded-t-[2.5rem] overflow-x-hidden"
       >
         <!-- CARD CODE DEMO -->
         <div
           class="code-container toggle-element flex flex-col lg:flex-row lg:justify-between overflow-x-hidden w-full lg:max-w-[1440px]"
-          id="card"
+          id="card-code-demo"
         >
           <div
             class="flex flex-col gap-6 lg:max-w-[45rem] w-full overflow-x-hidden"
@@ -37,23 +37,25 @@
                 <!-- Copy icon -->
                 <button class="copy-button">
                   <div
-                    class="bg-black/20 rounded-[0.5rem] flex items-center p-2 h-8"
+                    class="relative bg-black/20 rounded-[0.5rem] flex items-center p-2 h-8 w-fit"
                   >
                     <img
                       class="button-content w-4 h-4"
                       src="assets/icons/copy-icon.svg"
                       alt="Copy"
                     />
-                    <span class="copied-text hidden s-body text-white/80"
-                      >Copied!</span
+                    <span
+                      class="absolute flex bg-inherit rounded-l-[0.5rem] items-center py-2 h-full right-0 copied-text overflow-hidden w-0 peer-clicked:w-fit s-body text-white/80 transition-transform transition-all duration-600 ease-out"
                     >
+                      Copied!
+                    </span>
                   </div>
                 </button>
               </div>
             </div>
             <pre
               class="code-snippet"
-            ><code  class="python whitespace-pre w-full mono-body" >    @rt("/")
+            ><code  class="python whitespace-pre-wrap w-full mono-body" >    @rt("/")
     async def put(todo: Todo): return todos.upsert(todo), clr_details()
     
     @rt("/todos/{id}")
@@ -64,7 +66,8 @@
         return Div(Div(todo.title), btn)
     
     if __name__ == '__main__': 
-        uvicorn.run("main:app", host='0.0.0.0', port=int(os.getenv("PORT", default=5001)))
+        uvicorn.run("main:app", host='0.0.0.0', 
+                    port=int(os.getenv("PORT", default=5001)))
             </code></pre>
           </div>
           <!-- ------->
@@ -72,7 +75,7 @@
           <!-- ------->
 
           <div
-            class="flex-col my-[2.66rem] flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-purple p-4 lg:p-8 w-full max-w-[40rem] lg:max-w-[27rem] lg:mx-[7rem] lg:my-[2.13rem]"
+            class="flex-col my-[2.66rem] p-4 flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-purple lg:p-8 w-full max-w-[40rem] lg:max-w-[27rem] lg:mx-[7rem] lg:my-[2.13rem]"
           >
             <!-- Comment -->
             <p class="m-body text-black">
@@ -115,76 +118,177 @@
         </div>
         <!-- BUTTON CODE DEMO -->
         <div
-          class="toggle-element flex flex-col lg:flex-row lg:justify-between overflow-x-hidden w-full hidden"
-          id="button"
+          class="hidden code-container toggle-element flex flex-col lg:flex-row lg:justify-between overflow-x-hidden w-full lg:max-w-[1440px]"
+          id="button-code-demo"
         >
           <div
-            class="flex flex-col gap-6 lg:max-w-[38rem] w-full overflow-x-hidden"
+            class="flex flex-col gap-6 lg:max-w-[45rem] w-full overflow-x-hidden"
           >
             <div
-              class="bg-black/20 text-white/80 max-w-[32.75rem] w-full p-4 rounded-2xl"
+              class="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"
             >
               <!-- File name -->
-              <div class="flex justify-between">
-                <p class="xs-mono-body flex items-center">/card.fasthtml</p>
+              <div class="w-full flex justify-between">
+                <p class="xs-mono-body flex items-center">/button.fasthtml</p>
                 <!-- Copy icon -->
-                <div class="bg-black/20 rounded-s flex items-center p-2">
-                  <img class="w-4 h-4" src="assets/icons/copy-icon.svg" />
-                </div>
+                <button class="copy-button">
+                  <div
+                    class="relative bg-black/20 rounded-[0.5rem] flex items-center p-2 h-8 w-fit"
+                  >
+                    <img
+                      class="button-content w-4 h-4"
+                      src="assets/icons/copy-icon.svg"
+                      alt="Copy"
+                    />
+                    <span
+                      class="absolute flex bg-inherit rounded-l-[0.5rem] items-center py-2 h-full right-0 copied-text overflow-hidden w-0 peer-clicked:w-fit s-body text-white/80 transition-transform transition-all duration-600 ease-out"
+                    >
+                      Copied!
+                    </span>
+                  </div>
+                </button>
               </div>
             </div>
-            <pre><code class="python w-full mono-body whitespace-pre" >    @rt("/")
-    async def get():
-      add = Form(Group(mk_input(), Button("Add")),
-          hx_post="/", target_id='todo-list', hx_swap="beforeend")
-      card = Card(Ul(*todos(), id='todo-list'),
-          header=add, footer=Div(id=id_curr)),
-      title = 'Todo list'
-      return Title(title), Main(H1(title), card, cls='container')
+            <pre
+              class="code-snippet"
+            ><code  class="python whitespace-pre w-full mono-body" >    @rt("/")
+    async def put(todo: Todo): return todos.upsert(todo), clr_details()
+    
+    @rt("/todos/{id}")
+    async def get(id:int):
+        todo = todos.get(id)
+        btn = Button('delete', hx_delete=f'/todos/{todo.id}',
+                      target_id=tid(todo.id), hx_swap="outerHTML")
+        return Div(Div(todo.title), btn)
+    
+    if __name__ == '__main__': 
+        uvicorn.run("main:app", host='0.0.0.0', 
+                      port=int(os.getenv("PORT", default=5001)))
             </code></pre>
           </div>
           <!-- ------->
-          <!-- Card -->
+          <!-- Button -->
           <!-- ------->
-
           <div
-            class="flex-col my-[2.66rem] flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-black p-4 lg:p-8 w-full max-w-[40rem] lg:max-w-[27rem] lg:mx-[7rem] lg:my-[2.13rem]"
+            class="my-[2.66rem] flex items-center whitespace-normal justify-between lg:h-[22.8125rem] rounded-[1.5rem] items-start lg:p-8 w-full max-w-[40rem] lg:max-w-[27rem] lg:mx-[7rem] lg:my-[2.13rem]"
           >
-            <!-- Comment -->
-            <p class="m-body text-black">
-              FastHTML is as intuitive as FastAPI, lends itself to clean
-              architecture, and its HTML+HTMX structure makes it a good
-              competitor to Django for building webapps. Most importantly, it’s
-              fun to use.
-            </p>
-            <!-- User -->
-            <div class="flex justify-start gap-2">
-              <!-- Picture -->
-              <div
-                class="rounded-full w-[2.625rem] lg:w-[3.5rem] lg:h-[3.5rem] h-[2.625rem]"
-              >
+            <a
+              class="cursor-pointer bg-white p-2 flex gap-4 rounded-[62.5rem] min-w-[21.875rem]"
+            >
+              <img
+                src="assets/images/button-youtube.png"
+                alt="Youtube video thumbnail"
+                class="w-[7.5rem] rounded-[3.4375rem]"
+                width="120"
+                height="60"
+              />
+              <div class="flex flex-col items-start">
+                <p class="m-body text-black">See in action</p>
+                <p class="s-body text-black/60">4min 50sec</p>
+              </div>
+              <div class="flex items-center">
                 <img
-                  src="assets/testimonials/daniel-roy-greenfield.png"
-                  alt="Picture of Giles Thomas"
-                  width="112"
-                  height="112"
+                  src="assets/icons/youtube-icon.svg"
+                  alt="Youtube logo"
+                  width="40.86"
+                  height="28.6"
                 />
               </div>
-              <!-- Credentials -->
-              <div class="w-full min-w-fit">
-                <!-- Name -->
-                <p class="m-body text-black">Daniel Roy Greenfield</p>
-                <!-- Info -->
-                <div class="flex gap-2 xs-mono-body w-full">
-                  <p>Co-author</p>
+            </a>
+          </div>
+        </div>
+        <!-- ACCORDION CODE DEMO -->
+        <div
+          class="hidden code-container toggle-element flex flex-col lg:flex-row lg:justify-between overflow-x-hidden w-full lg:max-w-[1440px]"
+          id="accordion-code-demo"
+        >
+          <div
+            class="flex flex-col gap-6 lg:max-w-[45rem] w-full overflow-x-hidden"
+          >
+            <div
+              class="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"
+            >
+              <!-- File name -->
+              <div class="w-full flex justify-between">
+                <p class="xs-mono-body flex items-center">
+                  /accordion.fasthtml
+                </p>
+                <!-- Copy icon -->
+                <button class="copy-button">
+                  <div
+                    class="relative bg-black/20 rounded-[0.5rem] flex items-center p-2 h-8 w-fit"
+                  >
+                    <img
+                      class="button-content w-4 h-4"
+                      src="assets/icons/copy-icon.svg"
+                      alt="Copy"
+                    />
+                    <span
+                      class="absolute flex bg-inherit rounded-l-[0.5rem] items-center py-2 h-full right-0 copied-text overflow-hidden w-0 peer-clicked:w-fit s-body text-white/80 transition-transform transition-all duration-600 ease-out"
+                    >
+                      Copied!
+                    </span>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <pre
+              class="code-snippet"
+            ><code  class="python whitespace-pre w-full mono-body" >    @rt("/")
+    async def put(todo: Todo): return todos.upsert(todo), clr_details()
+    
+    @rt("/todos/{id}")
+    async def get(id:int):
+        todo = todos.get(id)
+        btn = Button('delete', hx_delete=f'/todos/{todo.id}',
+                      target_id=tid(todo.id), hx_swap="outerHTML")
+        return Div(Div(todo.title), btn)
+    
+    if __name__ == '__main__': 
+        uvicorn.run("main:app", host='0.0.0.0', 
+                      port=int(os.getenv("PORT", default=5001)))
+            </code></pre>
+          </div>
+          <!--------------->
+          <!-- Accordion -->
+          <!--------------->
+          <div
+            class="my-[2.66rem] whitespace-normal justify-between lg:h-[22.8125rem] rounded-[1.5rem] items-start lg:p-8 w-full max-w-[40rem] lg:max-w-[30.5rem] lg:mx-[7rem] lg:my-[2.13rem]"
+          >
+            <div
+              class="flex flex-col lg:mt-[10.62rem] gap-4 w-full max-w-[32rem] transition ease-out delay-[300ms]"
+            >
+              <div
+                class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+              >
+                <input
+                  id="collapsible-1"
+                  type="checkbox"
+                  class="collapsible-checkbox peer/collapsible-1 hidden"
+                />
+                <label
+                  for="collapsible-1"
+                  class="flex justify-between items-center cursor-pointer"
+                >
+                  <p class="text-black s-body flex-grow">What is FastHTML?</p>
                   <img
-                    src="assets/icons/dot.svg"
-                    alt="Dot separator"
-                    width="4"
-                    height="4"
+                    src="./assets/icons/plus-icon.svg"
+                    alt="Expand"
+                    class="plus-icon w-6 h-6"
                   />
-                  <p>Two Scoops of Django</p>
-                </div>
+                  <img
+                    src="./assets/icons/minus-icon.svg"
+                    alt="Collapse"
+                    class="minus-icon w-6 h-6"
+                  />
+                </label>
+                <p
+                  class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-1:max-h-fit peer-checked/collapsible-1:mt-0 peer-checked/collapsible-1:transition-all peer-checked/collapsible-1:duration-300 peer-checked/collapsible-1:ease-out s-body text-black/80 col-span-full"
+                >
+                  FastHTML is a library for writing fast and scalable
+                  Starlette-powered web applications, without having to learn
+                  much (if any!) Starlette.
+                </p>
               </div>
             </div>
           </div>
@@ -194,36 +298,56 @@
         <!-- EXAMPLE SELECTOR -->
         <!---------------------->
         <div
-          class="flex gap-2 rounded-[62.5rem] bg-white/20 p-2 w-fit max-w-full overflow-x-auto lg:mx-auto items-center ml-0 hide-scrollbar lg:max-w-[43.375rem]"
+          class="relative flex flex-none rounded-[62.5rem] bg-white/20 p-2 max-w-full overflow-x-auto lg:mx-auto items-center ml-0 hide-scrollbar lg:max-w-[43.375rem]"
         >
           <div
-            class="button-container bg-soft-purple text-purple h-[2.75rem] rounded-[62.5rem] py-2 px-8 flex items-center"
+            class="active z-10 transition-all flex-none duration-300 button-container relative w-[150px] h-[2.75rem] rounded-[62.5rem] flex items-center text-purple"
           >
-            <button class="toggle-button" data-target="card">
-              <p class="m-body w-max">Card</p>
+            <button
+              id="card-preview-button"
+              class="toggle-button w-full"
+              data-target="card-code-demo"
+            >
+              <div class="m-body w-max mx-auto">Card</div>
             </button>
           </div>
           <div
-            class="button-container text-white/80 rounded-[62.5rem] h-[2.75rem] py-2 px-8 flex items-center"
+            class="z-10 button-container flex-none relative w-[150px] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center"
           >
-            <button class="toggle-button" data-target="card">
-              <p class="m-body w-max">Button</p>
+            <button
+              id="button-preview-button"
+              class="toggle-button w-full"
+              data-target="button-code-demo"
+            >
+              <div class="m-body w-max mx-auto">Button</div>
             </button>
           </div>
           <div
-            class="button-container text-white/80 rounded-[62.5rem] h-[2.75rem] py-2 px-8 flex items-center"
+            class="z-10 button-container flex-none relative w-[150px] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center"
           >
-            <button class="toggle-button" data-target="card">
-              <p class="m-body w-max">Accordion</p>
+            <button
+              id="accordion-preview-button"
+              class="toggle-button w-full"
+              data-target="accordion-code-demo"
+            >
+              <div class="m-body w-max mx-auto">Accordion</div>
             </button>
           </div>
           <div
-            class="button-container text-white/80 rounded-[62.5rem] h-[2.75rem] py-2 px-8 flex items-center"
+            class="z-10 button-container flex-none relative w-[150px] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center"
           >
-            <button class="toggle-button" data-target="card">
-              <p class="m-body w-max">Stacked cards</p>
+            <button
+              id="stacked-cards-preview-button"
+              class="toggle-button w-full"
+              data-target="card-code-demo"
+            >
+              <div class="m-body w-max mx-auto">Stacked cards</div>
             </button>
           </div>
+          <div
+            id="highlighter"
+            class="z-0 left-2 highlighter w-[150px] absolute bg-soft-purple h-[2.75rem] rounded-[62.5rem] transition-transform duration-300"
+          ></div>
         </div>
       </section>
       <!-- SAMPLES SECTION -->

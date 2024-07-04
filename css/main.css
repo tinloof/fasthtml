@@ -83,6 +83,18 @@
   scrollbar-width: none; /* Firefox */
 }
 
+.minus-icon {
+  display: none;
+}
+
+.collapsible-checkbox:checked + label .plus-icon {
+  display: none;
+}
+
+.collapsible-checkbox:checked + label .minus-icon {
+  display: inline;
+}
+
 @media screen and (min-width: 1024px) {
   .heading-2 {
     font-size: 3.75rem;
