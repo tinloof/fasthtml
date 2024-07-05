@@ -22,11 +22,11 @@
       >
         <!-- CARD CODE DEMO -->
         <div
-          class="code-container toggle-element flex flex-col lg:flex-row lg:justify-between overflow-x-hidden w-full lg:max-w-[1440px]"
+          class="code-container relative hide-scrollbar toggle-element flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
           id="card-code-demo"
         >
           <div
-            class="flex flex-col gap-6 lg:max-w-[45rem] w-full overflow-x-hidden"
+            class="flex flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
           >
             <div
               class="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"
@@ -53,28 +53,32 @@
                 </button>
               </div>
             </div>
+
             <pre
-              class="code-snippet"
-            ><code  class="python  w-full mono-body" >  @rt("/")
-  async def put(todo: Todo): 
-  return todos.upsert(todo), 
-  clr_details()
-
-  @rt("/todos/{id}")
-  async def get(id:int):
-      todo = todos.get(id)
-      btn = Button('delete', 
-        hx_delete=f'/todos/{todo.id}',
-        target_id=tid(todo.id), 
-        hx_swap="outerHTML")
-      return Div(Div(todo.title), btn)
-
-  if __name__ == '__main__': 
-      uvicorn.run("main:app", 
-        host='0.0.0.0', 
-        port=int(os.getenv("PORT", 
-            default=5001)))
-            </code></pre>
+              class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
+            ><code  class="python w-full mono-body" >  @rt("/")
+    async def put(todo: Todo): 
+    return todos.upsert(todo), 
+    clr_details()
+  
+    @rt("/todos/{id}")
+    async def get(id:int):
+        todo = todos.get(id)
+        btn = Button('delete', 
+          hx_delete=f'/todos/{todo.id}',
+          target_id=tid(todo.id), 
+          hx_swap="outerHTML")
+        return Div(Div(todo.title), btn)
+  
+    if __name__ == '__main__': 
+        uvicorn.run("main:app", 
+          host='0.0.0.0', 
+          port=int(os.getenv("PORT",
+        default=5001)))
+              </code></pre>
+            <div
+              class="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"
+            ></div>
           </div>
           <!-- ------->
           <!-- Card -->
@@ -124,11 +128,11 @@
         </div>
         <!-- BUTTON CODE DEMO -->
         <div
-          class="hidden code-container toggle-element flex flex-col lg:flex-row lg:justify-between overflow-x-hidden w-full lg:max-w-[1440px]"
+          class="code-container hidden relative hide-scrollbar toggle-element flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
           id="button-code-demo"
         >
           <div
-            class="flex flex-col gap-6 lg:max-w-[45rem] w-full overflow-x-hidden"
+            class="flex flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
           >
             <div
               class="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"
@@ -155,29 +159,30 @@
                 </button>
               </div>
             </div>
+
             <pre
-              class="code-snippet"
-            ><code  class="python  w-full mono-body" >  @rt("/")
-  async def put(todo: Todo): 
-  return todos.upsert(todo), 
-  clr_details()
-
-  @rt("/todos/{id}")
-  async def get(id:int):
-      todo = todos.get(id)
-      btn = Button('delete', 
-        hx_delete=f'/todos/{todo.id}',
-        target_id=tid(todo.id), 
-        hx_swap="outerHTML")
-      return Div(Div(todo.title), btn)
-
-  if __name__ == '__main__': 
-      uvicorn.run("main:app", 
-        host='0.0.0.0', 
-        port=int(os.getenv("PORT", 
-            default=5001)))
-          </code></pre>
+              class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
+            ><code  class="python w-full mono-body" >  @rt("/")
+    async def get():
+        add = Form(Group(mk_input(), 
+            Button("Add")),
+            hx_post="/", 
+            target_id='todo-list', 
+            hx_swap="beforeend")
+        card = Card(Ul(*todos(), id='todo-list'),
+                    header=add, 
+                    footer=Div(id=id_curr)),
+        title = 'Todo list'
+        return Title(title), 
+            Main(H1(title), 
+            card, 
+            cls='container')
+              </code></pre>
+            <div
+              class="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"
+            ></div>
           </div>
+
           <!-- ------->
           <!-- Button -->
           <!-- ------->
@@ -211,11 +216,11 @@
         </div>
         <!-- ACCORDION CODE DEMO -->
         <div
-          class="hidden code-container toggle-element flex flex-col lg:flex-row lg:justify-between overflow-x-hidden w-full lg:max-w-[1440px]"
+          class="code-container hidden relative hide-scrollbar toggle-element flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
           id="accordion-code-demo"
         >
           <div
-            class="flex flex-col gap-6 lg:max-w-[45rem] w-full overflow-x-hidden"
+            class="flex flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
           >
             <div
               class="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"
@@ -244,28 +249,28 @@
                 </button>
               </div>
             </div>
+
             <pre
-              class="code-snippet"
-            ><code  class="python  w-full mono-body" >  @rt("/")
-  async def put(todo: Todo): 
-  return todos.upsert(todo), 
-  clr_details()
-
-  @rt("/todos/{id}")
-  async def get(id:int):
-      todo = todos.get(id)
-      btn = Button('delete', 
-        hx_delete=f'/todos/{todo.id}',
-        target_id=tid(todo.id), 
-        hx_swap="outerHTML")
-      return Div(Div(todo.title), btn)
-
-  if __name__ == '__main__': 
-      uvicorn.run("main:app", 
-        host='0.0.0.0', 
-        port=int(os.getenv("PORT", 
-            default=5001)))
-            </code></pre>
+              class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
+            ><code  class="python w-full mono-body" >  @rt("/")
+    async def post(todo:Todo): 
+        return todos.insert(todo), 
+            mk_input(hx_swap_oob='true')
+    
+    @rt("/edit/{id}")
+    async def get(id:int):
+        res = Form(Group(Input(id="title"), 
+            Button("Save")),
+            Hidden(id="id"), 
+            Checkbox(id="done", label='Done'),
+            hx_put="/", 
+            target_id=tid(id), 
+            id="edit")
+        return fill_form(res, todos.get(id))
+              </code></pre>
+            <div
+              class="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"
+            ></div>
           </div>
           <!--------------->
           <!-- Accordion -->
@@ -515,5 +520,6 @@
   </body>
 
   <script src="js/togglePreview.js"></script>
+  <script src="js/codeOverflow.js"></script>
   <script src="js/copyCode.js"></script>
 </html>
