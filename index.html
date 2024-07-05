@@ -9,20 +9,19 @@
 
     <link href="css/main.css" rel="stylesheet" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-    <script src="js/pythonHighlighter.js"></script>
     <link href="css/highlighter-theme.css" rel="stylesheet" />
   </head>
   <body class="font-geist text-black/80 font-details-off">
     <main>
       <!-- COMPONENT PREVIEW SECTION -->
       <section
-        class="bg-purple pt-8 px-4 pb-24 flex flex-col xl:items-center items-start gap-6 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32 rounded-t-3xl lg:rounded-t-[2.5rem] overflow-x-hidden"
+        class="min-h-screen bg-purple pt-8 px-4 pb-24 flex flex-col xl:items-center items-start gap-6 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32 rounded-t-3xl lg:rounded-t-[2.5rem] overflow-x-hidden"
       >
         <!-- CARD CODE DEMO -->
         <div
-          class="code-container relative hide-scrollbar toggle-element flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
+          aria-labelledby="tab-card"
+          role="tabpanel"
+          class="code-container tab-panel relative hide-scrollbar toggle-element flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
           id="card-code-demo"
         >
           <div
@@ -128,7 +127,9 @@
         </div>
         <!-- BUTTON CODE DEMO -->
         <div
-          class="code-container hidden relative hide-scrollbar toggle-element flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
+          aria-labelledby="tab-button"
+          role="tabpanel"
+          class="code-container tab-panel hidden relative hide-scrollbar toggle-element flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
           id="button-code-demo"
         >
           <div
@@ -216,8 +217,10 @@
         </div>
         <!-- ACCORDION CODE DEMO -->
         <div
-          class="code-container hidden relative hide-scrollbar toggle-element flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
+          class="code-container tab-panel hidden relative hide-scrollbar toggle-element flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
           id="accordion-code-demo"
+          aria-labelledby="tab-accordion"
+          role="tabpanel"
         >
           <div
             class="flex flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
@@ -320,44 +323,57 @@
         <!---------------------->
         <!-- EXAMPLE SELECTOR -->
         <!---------------------->
-        <div
-          class="relative flex flex-none rounded-[62.5rem] bg-white/20 p-2 max-w-full overflow-x-auto lg:mx-auto items-center ml-0 hide-scrollbar lg:max-w-[43.375rem]"
+        <ul
+          role="tablist"
+          class="relative flex text-white/80 flex-none rounded-[62.5rem] bg-black/20 p-2 max-w-full overflow-x-auto lg:mx-auto items-center ml-0 hide-scrollbar lg:max-w-[43.375rem]"
         >
-          <div
-            class="active z-10 transition-all flex-none duration-300 button-container relative w-[150px] h-[2.75rem] rounded-[62.5rem] flex items-center text-purple"
+          <li
+            role="tab"
+            class="current active z-10 transition-all flex-none duration-300 button-container relative w-[150px] h-[2.75rem] rounded-[62.5rem] flex items-center text-white"
           >
-            <button
-              id="card-preview-button"
+            <a
+              aria-selected="true"
+              id="tab-card"
+              href="#card-code-demo"
               class="toggle-button w-full"
               data-target="card-code-demo"
             >
               <div class="m-body w-max mx-auto">Card</div>
-            </button>
-          </div>
-          <div
+            </a>
+          </li>
+          <li
+            role="tab"
             class="z-10 button-container flex-none relative w-[150px] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center"
           >
-            <button
-              id="button-preview-button"
+            <a
+              aria-selected="false"
+              href="#button-code-demo"
+              id="tab-button"
+              tabindex="-1"
               class="toggle-button w-full"
               data-target="button-code-demo"
             >
               <div class="m-body w-max mx-auto">Button</div>
-            </button>
-          </div>
-          <div
+            </a>
+          </li>
+          <li
+            role="tab"
             class="z-10 button-container flex-none relative w-[150px] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center"
           >
-            <button
-              id="accordion-preview-button"
+            <a
+              aria-selected="false"
+              href="#accordion-code-demo"
+              tabindex="-1"
+              id="tab-accordion"
               class="toggle-button w-full"
               data-target="accordion-code-demo"
             >
               <div class="m-body w-max mx-auto">Accordion</div>
-            </button>
-          </div>
-          <div
-            class="z-10 button-container flex-none relative w-[150px] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center"
+            </a>
+          </li>
+          <li
+            role="tab"
+            class="last z-10 button-container flex-none relative w-[150px] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center"
           >
             <button
               id="stacked-cards-preview-button"
@@ -366,12 +382,12 @@
             >
               <div class="m-body w-max mx-auto">Stacked cards</div>
             </button>
-          </div>
+          </li>
           <div
             id="highlighter"
-            class="z-0 left-2 highlighter w-[150px] absolute bg-soft-purple h-[2.75rem] rounded-[62.5rem] transition-transform duration-300"
+            class="z-0 left-2 highlighter w-[150px] absolute bg-white/20 h-[2.75rem] rounded-[62.5rem] transition-transform duration-300"
           ></div>
-        </div>
+        </ul>
       </section>
       <!-- SAMPLES SECTION -->
       <!-- @TODO: add links to repos once available -->
@@ -517,9 +533,12 @@
         </div>
       </section>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script src="js/pythonHighlighter.js"></script>
+    <script src="js/handleTabs.js"></script>
+    <script src="js/togglePreview.js"></script>
+    <script src="js/codeOverflow.js"></script>
+    <script src="js/copyCode.js"></script>
   </body>
-
-  <script src="js/togglePreview.js"></script>
-  <script src="js/codeOverflow.js"></script>
-  <script src="js/copyCode.js"></script>
 </html>

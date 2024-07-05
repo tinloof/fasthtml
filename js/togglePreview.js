@@ -13,17 +13,15 @@ tabButtons.forEach((button) => {
       btn.parentElement.classList.remove("active");
       btn.parentElement.classList.add("text-white/80");
       btn.parentElement.classList.add("hover:text-white");
-      btn.parentElement.classList.remove("text-purple");
+      btn.parentElement.classList.remove("text-white");
     });
 
     // Add 'active' class to the clicked button
     const activeCodeContainer = document.getElementById(button.dataset.target);
     activeCodeContainer.style.display = "flex";
     button.parentElement.classList.add("active");
-    button.parentElement.classList.add("text-purple");
-
+    button.parentElement.classList.add("text-white");
     button.parentElement.classList.remove("text-white/80");
-    button.parentElement.classList.remove("hover:text-white");
 
     // Move highlighter to the clicked button
     const buttonRect = button.parentElement.getBoundingClientRect();
