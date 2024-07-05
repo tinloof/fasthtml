@@ -8,7 +8,7 @@
     <script src="js/tailwind.config.js"></script>
 
     <link href="css/main.css" rel="stylesheet" />
-
+    <link href="css/preview-stack.css" rel="stylesheet" />
     <link href="css/highlighter-theme.css" rel="stylesheet" />
   </head>
   <body class="font-geist text-black/80 font-details-off">
@@ -25,7 +25,7 @@
           id="card-code-demo"
         >
           <div
-            class="flex flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
+            class="flex relative flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
           >
             <div
               class="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"
@@ -56,24 +56,20 @@
             <pre
               class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
             ><code  class="python w-full mono-body" >  @rt("/")
-    async def put(todo: Todo): 
-    return todos.upsert(todo), 
-    clr_details()
-  
-    @rt("/todos/{id}")
-    async def get(id:int):
-        todo = todos.get(id)
-        btn = Button('delete', 
-          hx_delete=f'/todos/{todo.id}',
-          target_id=tid(todo.id), 
-          hx_swap="outerHTML")
-        return Div(Div(todo.title), btn)
-  
-    if __name__ == '__main__': 
-        uvicorn.run("main:app", 
-          host='0.0.0.0', 
-          port=int(os.getenv("PORT",
-        default=5001)))
+    async def get():
+        add = Form(Group(mk_input(), 
+            Button("Add")),
+            hx_post="/", 
+            target_id='todo-list', 
+            hx_swap="beforeend")
+        card = Card(Ul(*todos(), id='todo-list'),
+                    header=add, 
+                    footer=Div(id=id_curr)),
+        title = 'Todo list'
+        return Title(title), 
+            Main(H1(title), 
+            card, 
+            cls='container')
               </code></pre>
             <div
               class="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"
@@ -133,7 +129,7 @@
           id="button-code-demo"
         >
           <div
-            class="flex flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
+            class="flex relative flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
           >
             <div
               class="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"
@@ -223,7 +219,7 @@
           role="tabpanel"
         >
           <div
-            class="flex flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
+            class="flex relative flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
           >
             <div
               class="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"
@@ -319,6 +315,256 @@
             </div>
           </div>
         </div>
+        <!-- STACKED CARDS CODE DEMO -->
+        <div
+          class="code-container hidden tab-panel relative hide-scrollbar toggle-element flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
+          id="stacked-cards-code-demo"
+          aria-labelledby="tab-stacked-cards"
+          role="tabpanel"
+        >
+          <div
+            class="flex relative flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
+          >
+            <div
+              class="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"
+            >
+              <!-- File name -->
+              <div class="w-full flex justify-between">
+                <p class="xs-mono-body flex items-center">
+                  /stacked_cards.fasthtml
+                </p>
+                <!-- Copy icon -->
+                <button class="copy-button">
+                  <div
+                    class="relative bg-black/20 rounded-[0.5rem] flex items-center p-2 h-8 w-fit"
+                  >
+                    <img
+                      class="button-content w-4 h-4"
+                      src="assets/icons/copy-icon.svg"
+                      alt="Copy"
+                    />
+                    <span
+                      class="absolute flex bg-inherit rounded-l-[0.5rem] items-center py-2 h-full right-0 copied-text overflow-hidden w-0 peer-clicked:w-fit s-body text-white/80 transition-transform transition-all duration-600 ease-out"
+                    >
+                      Copied!
+                    </span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <pre
+              class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
+            ><code  class="python w-full mono-body" >  @rt("/{fname:path}.{ext:static}")
+    async def get(fname:str, ext:str): 
+        return FileResponse(f'{fname}.{ext}')
+    
+    def mk_input(**kw): 
+        return Input(id="new-title", 
+            name="title", 
+            placeholder="New Todo", 
+            **kw)
+    def clr_details(): 
+        return Div(hx_swap_oob='innerHTML', 
+            id=id_curr)
+    
+    @rt("/")
+    async def get():
+        add = Form(Group(mk_input(), 
+            Button("Add")),
+            hx_post="/", 
+            target_id='todo-list', 
+            hx_swap="beforeend")
+        card = Card(Ul(*todos(), 
+            id='todo-list'),
+            header=add,
+            footer=Div(id=id_curr)),
+        title = 'Todo list'
+        return Title(title), 
+            Main(H1(title), 
+            card, 
+            cls='container')
+              </code></pre>
+            <div
+              class="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"
+            ></div>
+          </div>
+          <!--------------->
+          <!-- Stacked Cards -->
+          <!--------------->
+          <div
+            id="stacked-cards-component-demo"
+            class="relative flex-none hide-scrollbar mt-4 lg:mt-0 pt-4 lg:pt-2 overflow-auto whitespace-normal justify-between h-[35rem] lg:h-[25rem] rounded-[1.5rem] items-start lg:p-8 w-full max-w-[40rem] lg:max-w-[30.5rem] lg:mx-[7rem] lg:my-[2.13rem]"
+          >
+            <div class="mx-auto max-w-[50rem] pb-0" id="preview-stacked-cards">
+              <div class="pb-0">
+                <div
+                  class="rounded-3xl bg-white lg:p-8 p-6 flex flex-col m-body w-full"
+                >
+                  <h3
+                    class="mb-4 text-[1.75rem] leading-[2rem] tracking-[-0.02625rem] text-black"
+                  >
+                    What you need to know
+                  </h3>
+                  <p
+                    class="mb-8 text-[1.125rem] leading-[1.75rem] tracking-[-0.01125rem]"
+                  >
+                    Everything you need to get started with FastHTML.
+                  </p>
+
+                  <div class="flex gap-4 flex-wrap items-center">
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/python.svg"
+                        alt="Python"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Python</p>
+                    </div>
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/htmx.svg"
+                        alt="HTMX"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">HTMX</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pb-0">
+                <div class="rounded-3xl bg-white p-6 flex flex-col m-body">
+                  <h3
+                    class="mb-4 text-[1.75rem] leading-[2rem] tracking-[-0.02625rem] text-black"
+                  >
+                    What it is built on top of
+                  </h3>
+                  <p
+                    class="mb-8 text-[1.125rem] leading-[1.75rem] tracking-[-0.01125rem]"
+                  >
+                    Now it’s time to use FastHTML
+                  </p>
+
+                  <div class="flex gap-4 flex-wrap items-center">
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/python.svg"
+                        alt="Python"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Python</p>
+                    </div>
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/uvicorn.svg"
+                        alt="Uvicorn"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Uvicorn</p>
+                    </div>
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/starlette.svg"
+                        alt="Starlette"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Starlette</p>
+                    </div>
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/htmx.svg"
+                        alt="HTMX"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">HTMLX</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="rounded-3xl bg-white p-12 p-6 flex flex-col m-body">
+                  <h3
+                    class="mb-4 text-[1.75rem] leading-[2rem] tracking-[-0.02625rem] text-black"
+                  >
+                    Where you can deploy
+                  </h3>
+                  <p
+                    class="mb-8 text-[1.125rem] leading-[1.75rem] tracking-[-0.01125rem]"
+                  >
+                    Companies that we provide deployment for
+                  </p>
+
+                  <div class="flex gap-4 flex-wrap items-center">
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/railway.svg"
+                        alt="Railway"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Railway</p>
+                    </div>
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/hugging-face.svg"
+                        alt="Hugging Face"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Hugging Face</p>
+                    </div>
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/vercel.svg"
+                        alt="Vercel"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Vercel</p>
+                    </div>
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/python-anywhere.svg"
+                        alt="Pythonaynwhere"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Pythonaynwhere</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!---------------------->
         <!-- EXAMPLE SELECTOR -->
@@ -375,13 +621,16 @@
             role="tab"
             class="last z-10 button-container flex-none relative w-[150px] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center"
           >
-            <button
-              id="stacked-cards-preview-button"
+            <a
+              aria-selected="false"
+              href="#stacked-cards-code-demo"
+              tabindex="-1"
+              id="tab-stacked-cards"
               class="toggle-button w-full"
-              data-target="card-code-demo"
+              data-target="stacked-cards-code-demo"
             >
               <div class="m-body w-max mx-auto">Stacked cards</div>
-            </button>
+            </a>
           </li>
           <div
             id="highlighter"
@@ -533,6 +782,7 @@
         </div>
       </section>
     </main>
+    <script src="js/previewStack.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
     <script src="js/pythonHighlighter.js"></script>
