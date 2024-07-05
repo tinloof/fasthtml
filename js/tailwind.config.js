@@ -9,8 +9,8 @@ tailwind.config = {
       colors: {
         brown: "#6B2E2E",
         "soft-brown": "#fcc",
-        green: "3CDD8C",
-        "soft-green": "D4F7E6",
+        green: "#3CDD8C",
+        "soft-green": "#D4F7E6",
         yellow: "#FFC435",
         "soft-yellow": "#fec",
         grey: "#F3F3F3",

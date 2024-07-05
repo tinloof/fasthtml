@@ -1,20 +1,36 @@
 @font-face {
   font-family: "Geist";
-  src: url("../assets/fonts/geist/GeistVF.woff2") format("truetype"),
-    url("../assets/fonts/geist/GeistVF.woff") format("truetype");
+  src: url("../assets/fonts/geist/GeistVF.woff2") format("woff2"),
+    url("../assets/fonts/geist/GeistVF.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("../assets/fonts/geist/Geist-Medium.woff") format("woff"),
+    url("../assets/fonts/geist/Geist-Medium.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Geist Mono";
-  src: url("../assets/fonts/geist-mono/GeistMonoVF.woff2") format("truetype"),
-    url("../assets/fonts/geist-mono/GeistMonoVF.woff") format("truetype");
-  font-weight: normal;
+  src: url("../assets/fonts/geist-mono/GeistMonoVF.woff2") format("woff2"),
+    url("../assets/fonts/geist-mono/GeistMonoVF.woff") format("woff");
+  font-weight: 500;
   font-style: normal;
 }
 
 .font-details-off {
   font-feature-settings: "clig" off, "liga" off;
+}
+
+.heading-1 {
+  font-family: Geist;
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 64px; /* 114.286% */
+  letter-spacing: -0.84px;
 }
 
 .heading-2 {
@@ -33,12 +49,29 @@
   line-height: 180%; /* 1.8rem */
 }
 
+.mono-s {
+  font-family: "Geist Mono", monospace;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 180%; /* 28.8px */
+}
+
 .s-body {
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5rem; /* 150% */
   letter-spacing: -0.005rem;
+}
+
+.m-body {
+  font-family: "Geist", sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.75rem; /* 140% */
+  letter-spacing: -0.0125rem;
 }
 
 .l-body {
@@ -58,6 +91,12 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .heading-1 {
+    font-size: 72px;
+    line-height: 88px; /* 122.222% */
+    letter-spacing: -1.08px;
+  }
+
   .heading-2 {
     font-size: 3.75rem;
     line-height: 4.125rem; /* 110% */
@@ -68,5 +107,125 @@
     font-size: 2rem;
     line-height: 2.5rem; /* 125% */
     letter-spacing: -0.03rem;
+  }
+}
+
+.rotating-shapes {
+  animation: orbit 16s ease-in-out infinite;
+  transform: translateZ(0);
+}
+
+.rotating-shapes > * {
+  animation: rotate 16s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: translateZ(0);
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  8% {
+    transform: rotate(-5deg);
+  }
+  18.66% {
+    transform: rotate(98deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  26.5% {
+    transform: rotate(90deg);
+  }
+  33% {
+    transform: rotate(85deg);
+  }
+  41.666% {
+    transform: rotate(188deg);
+  }
+  48% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  58% {
+    transform: rotate(175deg);
+  }
+  66.666% {
+    transform: rotate(278deg);
+  }
+  73% {
+    transform: rotate(270deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  83% {
+    transform: rotate(265deg);
+  }
+  91.666% {
+    transform: rotate(368deg);
+  }
+  98% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  8% {
+    transform: rotate(5deg);
+  }
+  18.66% {
+    transform: rotate(-98deg);
+  }
+  25% {
+    transform: rotate(-90deg);
+  }
+  26.5% {
+    transform: rotate(-90deg);
+  }
+  33% {
+    transform: rotate(-85deg);
+  }
+  41.666% {
+    transform: rotate(8deg);
+  }
+  48% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  58% {
+    transform: rotate(0deg);
+  }
+  66.666% {
+    transform: rotate(0deg);
+  }
+  73% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+  83% {
+    transform: rotate(0deg);
+  }
+  91.666% {
+    transform: rotate(0deg);
+  }
+  98% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
