@@ -21,17 +21,18 @@ const percentageSeen = (element, offset) => {
   const stackedCards = document.getElementById("stacked-cards");
   const cardsArray = Array.from(stackedCards.children);
   const cardsHeights = cardsArray.map(
-    (card) => card.getBoundingClientRect().height
+    (card) => card.children.item(0).getBoundingClientRect().height
   );
 
   cardsArray.forEach((card) => {
-    card.style.top = `${stickyHeader.getBoundingClientRect().height + 64}px`;
+    card.style.top = `calc(${
+      stickyHeader.getBoundingClientRect().height + "px"
+    } + var(--cardsSectionGap))`;
   });
 
-  stickyHeader.children.item(0).style.paddingBottom =
-    cardsHeights.reduce((acc, height) => acc + height, 0) -
-    cardsArray[0].getBoundingClientRect().height +
-    "px";
+  stickyHeader.children.item(
+    0
+  ).style.paddingBottom = `calc(${cardsHeights[2]}px + var(--cardsHeaderBottomPadding))`;
 
   document.addEventListener("scroll", function () {
     const percentageOfSecondCardSeen = percentageSeen(cardsArray[1], 64);

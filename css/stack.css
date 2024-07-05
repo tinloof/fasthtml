@@ -1,6 +1,9 @@
 :root {
   --cards: 3;
-  --cardTopPadding: 5rem;
+  --cardTopPadding: 6rem;
+  --cardsHeaderBottomPadding: 28rem;
+  --cardsSectionGap: 2rem;
+  --cardMargin: 40rem;
 }
 
 #stacked-cards {
@@ -8,7 +11,7 @@
   padding-left: 0;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(var(--cards), minmax(0, 50vh));
+  grid-template-rows: repeat(var(--cards), 1fr);
   gap: var(--cardMargin);
   padding-bottom: calc(calc(var(--cards) - 1) * var(--cardTopPadding));
 }
@@ -27,4 +30,12 @@
   position: sticky;
   top: 0;
   padding-top: calc(var(--index) * var(--cardTopPadding));
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --cardTopPadding: 3rem;
+    --cardsHeaderBottomPadding: 13rem;
+    --cardMargin: 25rem;
+  }
 }
