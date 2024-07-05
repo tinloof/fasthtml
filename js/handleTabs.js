@@ -1,4 +1,4 @@
-$(function () {
+(function () {
   var index = 0;
   var $tabs = $("a.tab");
 

@@ -31,7 +31,6 @@ const percentageSeen = (element) => {
   stackedCardsSection.addEventListener("scroll", function () {
     const percentageOfSecondCardSeen = percentageSeen(cardsArray[1]);
     const percentageOfThirdCardSeen = percentageSeen(cardsArray[2]);
-    console.log({ percentageOfSecondCardSeen, percentageOfThirdCardSeen });
     cardsArray[0].children.item(0).style.scale =
       1 -
       (0.1 * percentageOfSecondCardSeen) / 100 -
