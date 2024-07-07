@@ -33,20 +33,12 @@
   line-height: 180%; /* 1.8rem */
 }
 
-.s-body {
+.regular-body {
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5rem; /* 150% */
   letter-spacing: -0.005rem;
-}
-
-.l-body {
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 2rem; /* 133.333% */
-  letter-spacing: -0.015rem;
 }
 
 .heading-3 {
@@ -68,5 +60,11 @@
     font-size: 2rem;
     line-height: 2.5rem; /* 125% */
     letter-spacing: -0.03rem;
+  }
+
+  .regular-body {
+    font-size: 1.5rem;
+    line-height: 2rem; /* 133.333% */
+    letter-spacing: -0.015rem;
   }
 }
