@@ -73,6 +73,18 @@
   letter-spacing: -0.015rem;
 }
 
+.minus-icon {
+  display: none;
+}
+
+.collapsible-checkbox:checked + label .plus-icon {
+  display: none;
+}
+
+.collapsible-checkbox:checked + label .minus-icon {
+  display: inline;
+}
+
 .carousel-container::-webkit-scrollbar {
   display: none;
 }
