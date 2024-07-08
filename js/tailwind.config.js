@@ -31,6 +31,14 @@ tailwind.config = {
             transform: "rotate(4deg)",
           },
         },
+        "positive-unbounce": {
+          "0%": {
+            transform: "rotate(4deg)",
+          },
+          "100%": {
+            transform: "rotate(0deg)",
+          },
+        },
         "negative-bounce": {
           "0%": {
             transform: "rotate(-4deg)",
@@ -43,6 +51,14 @@ tailwind.config = {
           },
           "100%": {
             transform: "rotate(-4deg)",
+          },
+        },
+        "negative-unbounce": {
+          "0%": {
+            transform: "rotate(-4deg)",
+          },
+          "100%": {
+            transform: "rotate(0deg)",
           },
         },
         "line-bounce": {
@@ -74,7 +90,9 @@ tailwind.config = {
       },
       animation: {
         "positive-bounce": "positive-bounce  0.6s ease-in-out forwards",
+        "positive-unbounce": "positive-unbounce  0.2s ease-in-out forwards",
         "negative-bounce": "negative-bounce  0.6s ease-in-out forwards",
+        "negative-unbounce": "negative-unbounce  0.2s ease-in-out forwards",
         "line-bounce": "line-bounce  0.6s ease-in-out forwards",
         "font-bounce-down": "font-bounce-down  0.6s ease-in-out forwards",
         "shrink-and-grow": "shrink-and-grow 0.6s ease-in-out forwards",
