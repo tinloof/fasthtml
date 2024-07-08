@@ -11,7 +11,7 @@
     <link href="css/preview-stack.css" rel="stylesheet" />
     <link href="css/highlighter-theme.css" rel="stylesheet" />
   </head>
-  <body class="font-geist text-black/80 font-details-off">
+  <body class="bg-grey font-geist text-black/80 font-details-off">
     <main>
       <!-- COMPONENT PREVIEW SECTION -->
       <section
@@ -736,6 +736,7 @@
           Discover all
         </a>
       </section>
+      <!-- HOW IT WORKS SECTION -->
       <section
         class="pt-8 px-4 -mt-8 lg:-mt-16 pb-24 bg-yellow lg:pt-16 lg:pb-32 lg:px-16 rounded-t-3xl lg:rounded-t-[2.5rem]"
       >
@@ -782,6 +783,323 @@
           </div>
         </div>
       </section>
+      <!-- FAQ Section -->
+      <section class="bg-blue rounded-t-3xl lg:rounded-t-[2.5rem] -mt-8 lg:-mt-10">
+        <div
+          class="pt-8 px-4 pb-24 flex flex-col w-full mx-auto lg:flex-row items-start gap-8 lg:gap-16 lg:pt-16 lg:px-16 max-w-[90rem] lg:pb-32"
+        >
+          <div
+            class="max-w-[50rem] w-full flex flex-col items-start text-start gap-6"
+          >
+            <p class="mono-body text-opacity-60">FAQ</p>
+            <h2 class="text-black heading-2">Questions? <br />Answers.</h2>
+            <p class="l-body max-w-[18rem] lg:max-w-[21rem]">
+              Your top FastHTML questions clarified.
+            </p>
+          </div>
+          <!-- Collapsibles here -->
+          <!-- This solution uses only CSS, but it requires unique collapsible ids -->
+          <div class="flex flex-col gap-4 w-full max-w-[32rem] transition ease-out delay-[300ms]">
+            <div
+              class=" flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+            >
+
+              <input
+                id="collapsible-1"
+                type="checkbox"
+                class="collapsible-checkbox peer/collapsible-1 hidden"
+              />
+              <label for="collapsible-1" class="flex justify-between items-center cursor-pointer">
+                <p class="text-black s-body flex-grow">What is FastHTML?</p>
+                <img
+                  src="./assets/icons/plus-icon.svg"
+                  alt="Expand"
+                  class="plus-icon w-6 h-6"
+                />
+                <img
+                  src="./assets/icons/minus-icon.svg"
+                  alt="Collapse"
+                  class="minus-icon w-6 h-6"
+                />
+              </label>
+              <p class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-1:max-h-fit peer-checked/collapsible-1:mt-0 peer-checked/collapsible-1:transition-all peer-checked/collapsible-1:duration-300 peer-checked/collapsible-1:ease-out s-body text-black/80 col-span-full">
+                FastHTML is a library for writing fast and scalable
+                Starlette-powered web applications, without having to learn much
+                (if any!) Starlette.
+              </p>
+            </div>
+            <div
+              class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+            >
+
+              <input
+                id="collapsible-2"
+                type="checkbox"
+                class="collapsible-checkbox peer/collapsible-2 hidden"
+              />
+              <label for="collapsible-2" class="flex justify-between items-center cursor-pointer">
+                <p class="text-black s-body flex-grow">How can I get started?</p>
+                <img
+                  src="./assets/icons/plus-icon.svg"
+                  alt="Expand"
+                  class="plus-icon w-6 h-6"
+                />
+                <img
+                  src="./assets/icons/minus-icon.svg"
+                  alt="Collapse"
+                  class="minus-icon w-6 h-6"
+                />
+              </label>
+              <p class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-2:max-h-fit peer-checked/collapsible-2:mt-0 peer-checked/collapsible-2:transition-all peer-checked/collapsible-2:duration-300 peer-checked/collapsible-2:ease-out s-body text-black/80 col-span-full">
+                Answer here
+              </p>
+            </div>
+            <div
+              class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+            >
+
+              <input
+                id="collapsible-3"
+                type="checkbox"
+                class="collapsible-checkbox peer/collapsible-3 hidden"
+              />
+              <label for="collapsible-3" class="flex justify-between items-center cursor-pointer">
+                <p class="text-black s-body flex-grow">Are there existing applications using FastHTML?</p>
+                <img
+                  src="./assets/icons/plus-icon.svg"
+                  alt="Expand"
+                  class="plus-icon w-6 h-6"
+                />
+                <img
+                  src="./assets/icons/minus-icon.svg"
+                  alt="Collapse"
+                  class="minus-icon w-6 h-6"
+                />
+              </label>
+              <p class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-3:max-h-fit peer-checked/collapsible-3:mt-0 peer-checked/collapsible-3:transition-all peer-checked/collapsible-3:duration-300 peer-checked/collapsible-3:ease-out s-body text-black/80 col-span-full">
+                Answer here
+              </p>
+            </div>
+            <div
+              class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+            >
+
+              <input
+                id="collapsible-4"
+                type="checkbox"
+                class="collapsible-checkbox peer/collapsible-4 hidden"
+              />
+              <label for="collapsible-4" class="flex justify-between items-center cursor-pointer">
+                <p class="text-black s-body flex-grow">What kind of applications can I build with FastHTML?</p>
+                <img
+                  src="./assets/icons/plus-icon.svg"
+                  alt="Expand"
+                  class="plus-icon w-6 h-6"
+                />
+                <img
+                  src="./assets/icons/minus-icon.svg"
+                  alt="Collapse"
+                  class="minus-icon w-6 h-6"
+                />
+              </label>
+              <p class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-4:max-h-fit peer-checked/collapsible-4:mt-0 peer-checked/collapsible-4:transition-all peer-checked/collapsible-4:duration-300 peer-checked/collapsible-4:ease-out answer s-body text-black/80 col-span-full">
+                Answer here
+              </p>
+            </div>
+            <div
+              class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+            >
+
+              <input
+                id="collapsible-5"
+                type="checkbox"
+                class="collapsible-checkbox peer/collapsible-5 hidden"
+              />
+              <label for="collapsible-5" class="flex justify-between items-center cursor-pointer">
+                <p class="text-black s-body flex-grow">Is FastHTML open-source? How can I contribute to its development?</p>
+                <img
+                  src="./assets/icons/plus-icon.svg"
+                  alt="Expand"
+                  class="plus-icon w-6 h-6"
+                />
+                <img
+                  src="./assets/icons/minus-icon.svg"
+                  alt="Collapse"
+                  class="minus-icon w-6 h-6"
+                />
+              </label>
+              <p class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-5:max-h-fit peer-checked/collapsible-5:mt-0 peer-checked/collapsible-5:transition-all peer-checked/collapsible-5:duration-300 peer-checked/collapsible-5:ease-out s-body text-black/80 col-span-full">
+                Answer here
+              </p>
+            </div>
+        </div>
+      </section>
+      <!-- TESTIMONIALS SECTION -->
+      <section
+        class="bg-pink rounded-t-3xl lg:rounded-t-[2.5rem] -mt-8 lg:-mt-10"
+      >
+        <div
+          class="pt-8 px-4 pb-24 flex flex-col w-full mx-auto lg:flex-row items-start gap-8 lg:gap-16 lg:pt-16 lg:px-16 max-w-[90rem] lg:pb-32"
+        >
+          <div
+            class="max-w-[50rem] w-full flex flex-col items-start text-start gap-6"
+          >
+            <p class="mono-body text-opacity-60">LOVE IS IN THE AIR</p>
+            <h2 class="text-black heading-2">What our community says</h2>
+            <p class="l-body max-w-[21rem]">
+              Experiences from FastHTML users around the globe.
+            </p>
+          </div>
+          <!-- Carousel -->
+          <div
+            class="max-h-fit flex flex-col items-start lg:-mr-16 w-full max-w-[1440px] overflow-hidden"
+          >
+            <div
+              id="carousel-container"
+              class="hide-scrollbar flex flex-col lg:flex-row gap-4 lg:gap-6 rounded-l-[1.5rem] xl:rounded-[1.5rem] w-full lg:overflow-hidden xl:overflow-hidden whitespace-nowrap"
+            >
+              <!-- Card -->
+              <div
+                id="testimonial-card-1"
+                class="testimonial-card flex-col flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-pink p-4 lg:p-8 w-full max-w-[36rem] lg:w-[27rem]"
+              >
+                <!-- Comment -->
+                <p class="m-body text-black">
+                  FastHTML is as intuitive as FastAPI, lends itself to clean
+                  architecture, and its HTML+HTMX structure makes it a good
+                  competitor to Django for building webapps. Most importantly,
+                  it’s fun to use.
+                </p>
+                <!-- User -->
+                <div class="flex justify-start gap-2">
+                  <!-- Picture -->
+                  <div
+                    class="rounded-full w-[2.625rem] lg:w-[3.5rem] lg:h-[3.5rem] h-[2.625rem]"
+                  >
+                    <img
+                      src="assets/testimonials/daniel-roy.png"
+                      alt="Picture of Daniel Roy"
+                      width="112"
+                      height="112"
+                    />
+                  </div>
+                  <!-- Credentials -->
+                  <div class="w-full">
+                    <!-- Name -->
+                    <p class="m-body text-black">Daniel Roy Greenfield</p>
+                    <!-- Info -->
+                    <div class="flex gap-2 xs-mono-body w-full">
+                      <p>Co-author</p>
+                      <img
+                        src="assets/icons/dot.svg"
+                        alt="Dot separator"
+                        width="4"
+                        height="4"
+                      />
+                      <p>Two Scoops of Django</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Card -->
+              <div
+                id="testimonial-card-2"
+                class="testimonial-card flex-col flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-pink p-4 lg:p-8 w-full max-w-[36rem] lg:w-[27rem]"
+              >
+                <!-- Comment -->
+                <p class="m-body text-black">
+                  Python has always been a wonderful tool for creating web
+                  applications; with FastHTML, it's even better!
+                </p>
+                <!-- User -->
+                <div class="flex justify-start gap-2">
+                  <!-- Picture -->
+                  <div
+                    class="rounded-full w-[2.625rem] lg:w-[3.5rem] lg:h-[3.5rem] h-[2.625rem]"
+                  >
+                    <img
+                      src="assets/testimonials/giles-thomas.png"
+                      alt="Picture of Giles Thomas"
+                      width="112"
+                      height="112"
+                    />
+                  </div>
+                  <!-- Credentials -->
+                  <div class="w-full">
+                    <!-- Name -->
+                    <p class="m-body text-black">Giles Thomas</p>
+                    <!-- Info -->
+                    <div class="flex gap-2 xs-mono-body w-full">
+                      <p>Founder</p>
+                      <img
+                        src="assets/icons/dot.svg"
+                        alt="Dot separator"
+                        width="4"
+                        height="4"
+                      />
+                      <p>PhytonAnywhere</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Card -->
+              <div
+                id="testimonial-card-3"
+                class="testimonial-card flex-col flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-pink p-4 lg:p-8 w-full max-w-[36rem] lg:w-[27rem]"
+              >
+                <!-- Comment -->
+                <p class="m-body text-black">
+                  With FastHTML and Railway, Pythonistas can now have a real web
+                  application running in minutes, and can scale it all the way
+                  up to sophisticated production deployments.
+                </p>
+                <!-- User -->
+                <div class="flex justify-start gap-2">
+                  <!-- Picture -->
+                  <div
+                    class="rounded-full w-[2.625rem] lg:w-[3.5rem] lg:h-[3.5rem] h-[2.625rem]"
+                  >
+                    <img
+                      src="assets/testimonials/jake-cooper.png"
+                      alt="Picture of Jake Cooper"
+                      width="112"
+                      height="112"
+                    />
+                  </div>
+                  <!-- Credentials -->
+                  <div class="w-full">
+                    <!-- Name -->
+                    <p class="m-body text-black">Jake Cooper</p>
+                    <!-- Info -->
+                    <div class="flex gap-2 xs-mono-body w-full">
+                      <p>CEO</p>
+                      <img
+                        src="assets/icons/dot.svg"
+                        alt="Dot separator"
+                        width="4"
+                        height="4"
+                      />
+                      <p>Railway.app</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="hidden lg:flex xl:flex justify-start w-full max-w-[41rem] py-6 pl-6 pr-[5.5rem]"
+            >
+              <div class="w-[4.5rem] flex justify-between ml-auto">
+                <button id="slideLeft">
+                  <img src="assets/icons/arrow-left.svg" />
+                </button>
+                <button id="slideRight">
+                  <img src="assets/icons/arrow-right.svg" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <script src="js/previewStack.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -792,4 +1110,5 @@
     <script src="js/codeOverflow.js"></script>
     <script src="js/copyCode.js"></script>
   </body>
+  <script src="js/carouselScroll.js"></script>
 </html>
