@@ -1,4 +1,4 @@
-:root {
+#preview-stacked-cards {
   --cards: 3;
   --cardTopPadding: 3rem;
   --cardMargin: 1rem;
@@ -30,7 +30,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-  :root {
+  #preview-stacked-cards {
     --cardTopPadding: 3rem;
     --cardMargin: 1rem;
   }
