@@ -1,6 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 tailwind.config = {
   theme: {
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1440px",
+    },
     extend: {
       keyframes: {
         "shrink-and-grow": {
@@ -80,8 +86,8 @@ tailwind.config = {
       colors: {
         brown: "#6B2E2E",
         "soft-brown": "#fcc",
-        green: "3CDD8C",
-        "soft-green": "D4F7E6",
+        green: "#3CDD8C",
+        "soft-green": "#D4F7E6",
         yellow: "#FFC435",
         "soft-yellow": "#fec",
         grey: "#F3F3F3",
