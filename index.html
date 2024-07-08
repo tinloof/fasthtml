@@ -192,13 +192,14 @@
                 width="240"
                 height="120"
                 class="rounded-full w-[7.5rem] h-auto"
+                alt="Youtube video poster"
               />
               <span class="text-black flex flex-col">
                 Try now
                 <span class="s-body text-black/60"> 4min 50sec </span>
               </span>
               <p class="flex-1 flex justify-center">
-                <img src="/assets/icons/youtube.svg" width="41" height="30" />
+                <img src="/assets/icons/youtube.svg" width="41" height="30" alt="Youtube icon"/>
               </p>
             </a>
           </div>
@@ -774,10 +775,10 @@
         >
           <li
             role="tab"
+            aria-selected="true"
             class="current active z-10 transition-all flex-none duration-300 button-container relative w-[10.59375rem] h-[2.75rem] rounded-[62.5rem] flex items-center text-white"
           >
             <button
-              aria-selected="true"
               id="tab-card"
               class="toggle-button w-full cursor-pointer"
               data-target="card-code-demo"
@@ -787,10 +788,10 @@
           </li>
           <li
             role="tab"
+            aria-selected="false"
             class="z-10 button-container px-8 py-2 flex-none relative w-[10.59375rem] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center"
           >
             <button
-              aria-selected="false"
               id="tab-button"
               tabindex="-1"
               class="toggle-button w-full cursor-pointer"
@@ -801,10 +802,10 @@
           </li>
           <li
             role="tab"
+            aria-selected="false"
             class="z-10 button-container flex-none relative w-[10.59375rem] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center"
           >
             <button
-              aria-selected="false"
               tabindex="-1"
               id="tab-accordion"
               class="toggle-button w-full cursor-pointer"
@@ -815,10 +816,10 @@
           </li>
           <li
             role="tab"
+            aria-selected="false"
             class="last z-10 button-container flex-none relative w-[10.59375rem] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center justify-center"
           >
             <button
-              aria-selected="false"
               tabindex="-1"
               id="tab-stacked-cards"
               class="toggle-button w-full cursor-pointer"
@@ -995,7 +996,7 @@
                   >
                     <img
                       src="./assets/icons/stack/python-anywhere.svg"
-                      alt="Pythonaynwhere"
+                      alt="Pythonanywhere"
                       width="24"
                       height="24"
                     />
@@ -1589,11 +1590,11 @@
               class="hidden lg:flex xl:flex justify-start w-full max-w-[41rem] py-6 pl-6 pr-[5.5rem]"
             >
               <div class="w-[4.5rem] flex justify-between ml-auto">
-                <button id="slideLeft">
-                  <img src="assets/icons/arrow-left.svg" />
+                <button id="slideLeft" aria-label="Slide left">
+                  <img src="assets/icons/arrow-left.svg" alt="Left arrow"/>
                 </button>
-                <button id="slideRight">
-                  <img src="assets/icons/arrow-right.svg" />
+                <button id="slideRight" aria-label="Slide right">
+                  <img src="assets/icons/arrow-right.svg" alt="Right arrow"/>
                 </button>
               </div>
             </div>
@@ -1623,6 +1624,7 @@
                       width="16"
                       height="16"
                       class="w-4 h-4"
+                      alt="Arrow up right icon"
                     />
                   </a>
                 </li>
@@ -1637,6 +1639,7 @@
                       width="16"
                       height="16"
                       class="w-4 h-4"
+                      alt="Arrow up right icon"
                     />
                   </a>
                 </li>
@@ -1651,6 +1654,7 @@
                       width="16"
                       height="16"
                       class="w-4 h-4"
+                      alt="Arrow up right icon"
                     />
                   </a>
                 </li>
