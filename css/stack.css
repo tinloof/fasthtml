@@ -1,7 +1,7 @@
 :root {
   --cards: 3;
   --cardTopPadding: 6rem;
-  --cardsHeaderBottomPadding: 28rem;
+  --cardsHeaderBottomPadding: 24rem;
   --cardsSectionGap: 2rem;
   --cardMargin: 40rem;
 }
@@ -35,7 +35,7 @@
 @media screen and (max-width: 1024px) {
   :root {
     --cardTopPadding: 3rem;
-    --cardsHeaderBottomPadding: 13rem;
+    --cardsHeaderBottomPadding: 12rem;
     --cardMargin: 25rem;
   }
 }

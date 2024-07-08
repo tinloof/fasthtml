@@ -31,7 +31,7 @@
 
   stickyHeader.children.item(
     0
-  ).style.paddingBottom = `calc(${cardsHeights[2]}px + var(--cardsHeaderBottomPadding))`;
+  ).style.paddingBottom = `calc(${cardsHeights[2]}px + var(--cardsHeaderBottomPadding) + 2 * var(--cardsSectionGap))`;
 
   document.addEventListener("scroll", function () {
     const percentageOfSecondCardSeen = percentageSeen(cardsArray[1], 64);
