@@ -477,12 +477,12 @@
                 class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
               >
                 <input
-                  id="collapsible-1"
+                  id="collapsible-demo"
                   type="checkbox"
-                  class="collapsible-checkbox peer/collapsible-1 hidden"
+                  class="collapsible-checkbox peer/collapsible-demo hidden"
                 />
                 <label
-                  for="collapsible-1"
+                  for="collapsible-demo"
                   class="flex justify-between items-center cursor-pointer"
                 >
                   <p class="text-black s-body flex-grow">What is FastHTML?</p>
@@ -498,7 +498,7 @@
                   />
                 </label>
                 <p
-                  class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-1:max-h-fit peer-checked/collapsible-1:mt-0 peer-checked/collapsible-1:transition-all peer-checked/collapsible-1:duration-300 peer-checked/collapsible-1:ease-out s-body text-black/80 col-span-full"
+                  class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-demo:max-h-fit peer-checked/collapsible-demo:mt-0 peer-checked/collapsible-demo:transition-all peer-checked/collapsible-demo:duration-300 peer-checked/collapsible-demo:ease-out s-body text-black/80 col-span-full"
                 >
                   FastHTML is a library for writing fast and scalable
                   Starlette-powered web applications, without having to learn
@@ -1308,7 +1308,7 @@
                 class="collapsible-checkbox peer/collapsible-1 hidden"
               />
               <label for="collapsible-1" class="flex justify-between items-center cursor-pointer">
-                <p class="text-black s-body flex-grow">What is FastHTML?</p>
+                <p class="text-black s-body flex-grow">What kinds of applications can be written with this?</p>
                 <img
                   src="./assets/icons/plus-icon.svg"
                   alt="Expand"
@@ -1321,9 +1321,7 @@
                 />
               </label>
               <p class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-1:max-h-fit peer-checked/collapsible-1:mt-0 peer-checked/collapsible-1:transition-all peer-checked/collapsible-1:duration-300 peer-checked/collapsible-1:ease-out s-body text-black/80 col-span-full">
-                FastHTML is a library for writing fast and scalable
-                Starlette-powered web applications, without having to learn much
-                (if any!) Starlette.
+                It's good for: general purpose web applications (i.e anything you'd build with React, Django, NexJS, etc); quick dashboards, prototypes, and in-company apps  (e.g. like what you might use gradio/streamlit/etc for); Analytics/models/dashboards interactive reports; Custom blogs and content-heavy sites where you also want some interactive/dynamic content.
               </p>
             </div>
             <div
@@ -1336,7 +1334,7 @@
                 class="collapsible-checkbox peer/collapsible-2 hidden"
               />
               <label for="collapsible-2" class="flex justify-between items-center cursor-pointer">
-                <p class="text-black s-body flex-grow">How can I get started?</p>
+                <p class="text-black s-body flex-grow">Where can I deploy my FastHTML to? What's needed?</p>
                 <img
                   src="./assets/icons/plus-icon.svg"
                   alt="Expand"
@@ -1349,7 +1347,7 @@
                 />
               </label>
               <p class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-2:max-h-fit peer-checked/collapsible-2:mt-0 peer-checked/collapsible-2:transition-all peer-checked/collapsible-2:duration-300 peer-checked/collapsible-2:ease-out s-body text-black/80 col-span-full">
-                Answer here
+                You can deploy a FastHTML app to any service or server that supports Python. We have guides and helpers for Railway.app, Vercel, Hugging Face Spaces, Replit, and PythonAnywhere. You can also use any VPS or server, or any on-premise machine with Python installed. All major operating systems are supported.
               </p>
             </div>
             <div
@@ -1362,7 +1360,7 @@
                 class="collapsible-checkbox peer/collapsible-3 hidden"
               />
               <label for="collapsible-3" class="flex justify-between items-center cursor-pointer">
-                <p class="text-black s-body flex-grow">Are there existing applications using FastHTML?</p>
+                <p class="text-black s-body flex-grow">How does FastHTML relate to FastAPI?</p>
                 <img
                   src="./assets/icons/plus-icon.svg"
                   alt="Expand"
@@ -1375,7 +1373,7 @@
                 />
               </label>
               <p class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-3:max-h-fit peer-checked/collapsible-3:mt-0 peer-checked/collapsible-3:transition-all peer-checked/collapsible-3:duration-300 peer-checked/collapsible-3:ease-out s-body text-black/80 col-span-full">
-                Answer here
+                FastAPI is one of the inspirations for FastHTML. We are fans of its developer experience and tried to make FastHTML extremely familiar for FastAPI users. FastAPI is designed for creating APIs, whereas FastHTML is designed for creating HTML (i.e "Hypermedia applications"). Anything you could create with FastAPI (plus a JS frontend), you could also create with FastHTML, and vice versa -- if you prefer mainly writing JS, you might prefer FastAPI, since you can move a lot of client-side logic into the JS. If you prefer mainly writing Python, you'll probably want to use FastHTML, since you can often avoid using JS entirely.
               </p>
             </div>
             <div
@@ -1388,7 +1386,7 @@
                 class="collapsible-checkbox peer/collapsible-4 hidden"
               />
               <label for="collapsible-4" class="flex justify-between items-center cursor-pointer">
-                <p class="text-black s-body flex-grow">What kind of applications can I build with FastHTML?</p>
+                <p class="text-black s-body flex-grow">Is this only for multi-page "old style" web apps, or can FastHTML be used for modern SPA apps too?</p>
                 <img
                   src="./assets/icons/plus-icon.svg"
                   alt="Expand"
@@ -1401,7 +1399,7 @@
                 />
               </label>
               <p class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-4:max-h-fit peer-checked/collapsible-4:mt-0 peer-checked/collapsible-4:transition-all peer-checked/collapsible-4:duration-300 peer-checked/collapsible-4:ease-out answer s-body text-black/80 col-span-full">
-                Answer here
+                FastHTML is specifically designed to make writing modern SPA apps as fast and easy as possible, whilst also ensuring the apps you write are scalable and performant. By default, FastHTML routes return lightweight "partials" that update the DOM directly, rather than doing a full page refresh.
               </p>
             </div>
             <div
@@ -1414,7 +1412,7 @@
                 class="collapsible-checkbox peer/collapsible-5 hidden"
               />
               <label for="collapsible-5" class="flex justify-between items-center cursor-pointer">
-                <p class="text-black s-body flex-grow">Is FastHTML open-source? How can I contribute to its development?</p>
+                <p class="text-black s-body flex-grow">What is HTMX, and what's it go to do with FastHTML?</p>
                 <img
                   src="./assets/icons/plus-icon.svg"
                   alt="Expand"
@@ -1427,7 +1425,59 @@
                 />
               </label>
               <p class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-5:max-h-fit peer-checked/collapsible-5:mt-0 peer-checked/collapsible-5:transition-all peer-checked/collapsible-5:duration-300 peer-checked/collapsible-5:ease-out s-body text-black/80 col-span-full">
-                Answer here
+                HTMX is best thought of as filling in the missing bits of a web browser -- in fact, web browser manufacturers are considering incorporating similar features directly into future browsers. It is a small javascript library that with a single line of HTML lets you respond to any event from any part of a web page by modifying the DOM in any way you like, all directly from Python. Whilst you don't have to use it with FastHTML, it will dramatically increase the amount of stuff you can do!
+              </p>
+            </div>
+            <div
+              class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+            >
+
+              <input
+                id="collapsible-6"
+                type="checkbox"
+                class="collapsible-checkbox peer/collapsible-6 hidden"
+              />
+              <label for="collapsible-6" class="flex justify-between items-center cursor-pointer">
+                <p class="text-black s-body flex-grow">Do I need to know JS? Can I use it if I want, with FastHTML?</p>
+                <img
+                  src="./assets/icons/plus-icon.svg"
+                  alt="Expand"
+                  class="plus-icon w-6 h-6"
+                />
+                <img
+                  src="./assets/icons/minus-icon.svg"
+                  alt="Collapse"
+                  class="minus-icon w-6 h-6"
+                />
+              </label>
+              <p class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-6:max-h-fit peer-checked/collapsible-6:mt-0 peer-checked/collapsible-6:transition-all peer-checked/collapsible-6:duration-300 peer-checked/collapsible-6:ease-out s-body text-black/80 col-span-full">
+                No, and yes! You can write nearly any standard web app with just Python. However, using a bit of JS can be helpful -- for instance, nearly any existing JS lib can be incorporated into a FastHTML app, and you can sprinkle bits of JS into your pages anywhere you like.  
+              </p>
+            </div>
+            <div
+              class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+            >
+
+              <input
+                id="collapsible-7"
+                type="checkbox"
+                class="collapsible-checkbox peer/collapsible-7 hidden"
+              />
+              <label for="collapsible-7" class="flex justify-between items-center cursor-pointer">
+                <p class="text-black s-body flex-grow">Are FastHTML apps slower than React, Next.JS, etc?</p>
+                <img
+                  src="./assets/icons/plus-icon.svg"
+                  alt="Expand"
+                  class="plus-icon w-6 h-6"
+                />
+                <img
+                  src="./assets/icons/minus-icon.svg"
+                  alt="Collapse"
+                  class="minus-icon w-6 h-6"
+                />
+              </label>
+              <p class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-7:max-h-fit peer-checked/collapsible-7:mt-0 peer-checked/collapsible-7:transition-all peer-checked/collapsible-7:duration-300 peer-checked/collapsible-7:ease-out s-body text-black/80 col-span-full">
+                It depends. Apps using FastHTML and HTMX are often faster than JS-based approaches using big libraries, since they can be very lightweight.              
               </p>
             </div>
         </div>
