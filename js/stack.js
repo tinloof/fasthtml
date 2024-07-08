@@ -34,8 +34,14 @@
   ).style.paddingBottom = `calc(${cardsHeights[2]}px + var(--cardsHeaderBottomPadding) + 2 * var(--cardsSectionGap))`;
 
   document.addEventListener("scroll", function () {
-    const percentageOfSecondCardSeen = percentageSeen(cardsArray[1], 64);
-    const percentageOfThirdCardSeen = percentageSeen(cardsArray[2], 128);
+    const percentageOfSecondCardSeen = percentageSeen(
+      cardsArray[1],
+      64 + stackedCardsSection.offsetTop
+    );
+    const percentageOfThirdCardSeen = percentageSeen(
+      cardsArray[2],
+      128 + stackedCardsSection.offsetTop
+    );
 
     cardsArray[0].children.item(0).style.scale =
       1 -
