@@ -1,0 +1,43 @@
+.hljs {
+  display: block;
+
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #3a2234;
+  color: #939eeb;
+  font-family: "Geist Mono";
+}
+
+.hljs-keyword,
+.hljs-built_in,
+.hljs-title.function_,
+.hljs-title.class_,
+.hljs-params,
+.hljs-meta {
+  color: #939eeb;
+  font-weight: 500;
+}
+
+.hljs-symbol {
+  color: white;
+}
+
+.hljs-string,
+.hljs-subst,
+.hljs-attr-name {
+  color: #ff8087;
+}
+
+.hljs-ln-numbers {
+  color: #ffffff99;
+  font-weight: 500;
+  text-align: right;
+}
+
+.hljs-number {
+  color: #5af2ba;
+}
+.hljs-white-char,
+.hljs-params .hljs-white-char {
+  color: white;
+}
