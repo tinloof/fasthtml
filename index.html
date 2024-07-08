@@ -6,14 +6,643 @@
     <title>FastHTML</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/tailwind.config.js"></script>
+
     <link href="css/main.css" rel="stylesheet" />
+    <link href="css/preview-stack.css" rel="stylesheet" />
+    <link href="css/highlighter-theme.css" rel="stylesheet" />
   </head>
   <body class="bg-grey font-geist text-black/80 font-details-off">
     <main>
+      <!-- COMPONENT PREVIEW SECTION -->
+      <section
+        class="bg-purple px-4 lg:px-16 pb-24 flex flex-col xl:items-center items-start gap-6 lg:gap-16 lg:pb-32 rounded-t-3xl lg:rounded-t-[2.5rem] overflow-x-hidden"
+      >
+        <!-- CARD CODE DEMO -->
+        <div
+          aria-labelledby="tab-card"
+          role="tabpanel"
+          class="code-container pt-8 lg:pt-16 tab-panel relative hide-scrollbar toggle-element flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
+          id="card-code-demo"
+        >
+          <div
+            class="flex relative flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
+          >
+            <div
+              class="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"
+            >
+              <!-- File name -->
+              <div class="w-full flex justify-between">
+                <p class="xs-mono-body flex items-center">/card.fasthtml</p>
+                <!-- Copy icon -->
+                <button class="copy-button">
+                  <div
+                    class="relative bg-black/20 rounded-[0.5rem] flex items-center p-2 h-8 w-fit"
+                  >
+                    <img
+                      class="button-content w-4 h-4"
+                      src="assets/icons/copy-icon.svg"
+                      alt="Copy"
+                    />
+                    <span
+                      class="absolute flex bg-inherit rounded-l-[0.5rem] items-center py-2 h-full right-0 copied-text overflow-hidden w-0 peer-clicked:w-fit s-body text-white/80 transition-transform transition-all duration-600 ease-out"
+                    >
+                      Copied!
+                    </span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <pre
+              class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
+            ><code  class="python w-full mono-body" >  @rt("/")
+    async def get():
+        add = Form(Group(mk_input(), 
+            Button("Add")),
+            hx_post="/", 
+            target_id='todo-list', 
+            hx_swap="beforeend")
+        card = Card(Ul(*todos(), id='todo-list'),
+                    header=add, 
+                    footer=Div(id=id_curr)),
+        title = 'Todo list'
+        return Title(title), 
+            Main(H1(title), 
+            card, 
+            cls='container')
+              </code></pre>
+            <div
+              class="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"
+            ></div>
+          </div>
+          <!-- ------->
+          <!-- Card -->
+          <!-- ------->
+
+          <div
+            class="flex-col my-[2.66rem] p-4 flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-purple lg:p-8 w-full max-w-[40rem] lg:max-w-[27rem] lg:mx-[7rem] lg:my-[2.13rem]"
+          >
+            <!-- Comment -->
+            <p class="m-body text-black">
+              FastHTML is as intuitive as FastAPI, lends itself to clean
+              architecture, and its HTML+HTMX structure makes it a good
+              competitor to Django for building webapps. Most importantly, it’s
+              fun to use.
+            </p>
+            <!-- User -->
+            <div class="flex justify-start gap-2">
+              <!-- Picture -->
+              <div
+                class="rounded-full w-[2.625rem] lg:w-[3.5rem] lg:h-[3.5rem] h-[2.625rem]"
+              >
+                <img
+                  src="assets/testimonials/daniel-roy-greenfield.png"
+                  alt="Picture of Giles Thomas"
+                  width="112"
+                  height="112"
+                />
+              </div>
+              <!-- Credentials -->
+              <div class="w-full min-w-fit">
+                <!-- Name -->
+                <p class="m-body text-black">Daniel Roy Greenfield</p>
+                <!-- Info -->
+                <div class="flex gap-2 xs-mono-body w-full">
+                  <p>Co-author</p>
+                  <img
+                    src="assets/icons/dot.svg"
+                    alt="Dot separator"
+                    width="4"
+                    height="4"
+                  />
+                  <p>Two Scoops of Django</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- BUTTON CODE DEMO -->
+        <div
+          aria-labelledby="tab-button"
+          role="tabpanel"
+          class="code-container tab-panel hidden relative hide-scrollbar toggle-element pt-8 lg:pt-16 flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
+          id="button-code-demo"
+        >
+          <div
+            class="flex relative flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
+          >
+            <div
+              class="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"
+            >
+              <!-- File name -->
+              <div class="w-full flex justify-between">
+                <p class="xs-mono-body flex items-center">/button.fasthtml</p>
+                <!-- Copy icon -->
+                <button class="copy-button">
+                  <div
+                    class="relative bg-black/20 rounded-[0.5rem] flex items-center p-2 h-8 w-fit"
+                  >
+                    <img
+                      class="button-content w-4 h-4"
+                      src="assets/icons/copy-icon.svg"
+                      alt="Copy"
+                    />
+                    <span
+                      class="absolute flex bg-inherit rounded-l-[0.5rem] items-center py-2 h-full right-0 copied-text overflow-hidden w-0 peer-clicked:w-fit s-body text-white/80 transition-transform transition-all duration-600 ease-out"
+                    >
+                      Copied!
+                    </span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <pre
+              class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
+            ><code  class="python w-full mono-body" >  @rt("/")
+    async def get():
+        add = Form(Group(mk_input(), 
+            Button("Add")),
+            hx_post="/", 
+            target_id='todo-list', 
+            hx_swap="beforeend")
+        card = Card(Ul(*todos(), id='todo-list'),
+                    header=add, 
+                    footer=Div(id=id_curr)),
+        title = 'Todo list'
+        return Title(title), 
+            Main(H1(title), 
+            card, 
+            cls='container')
+              </code></pre>
+            <div
+              class="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"
+            ></div>
+          </div>
+
+          <!-- ------->
+          <!-- Button -->
+          <!-- ------->
+          <div
+            class="my-[2.66rem] flex items-center whitespace-normal justify-between lg:h-[22.8125rem] rounded-[1.5rem] items-start lg:p-8 w-full max-w-[40rem] lg:max-w-[27rem] lg:mx-[7rem] lg:my-[2.13rem]"
+          >
+            <a
+              class="cursor-pointer bg-white p-2 flex gap-4 rounded-[62.5rem] min-w-[21.875rem]"
+            >
+              <img
+                src="assets/images/button-youtube.png"
+                alt="Youtube video thumbnail"
+                class="w-[7.5rem] rounded-[3.4375rem]"
+                width="120"
+                height="60"
+              />
+              <div class="flex flex-col items-start">
+                <p class="m-body text-black">See in action</p>
+                <p class="s-body text-black/60">4min 50sec</p>
+              </div>
+              <div class="flex items-center">
+                <img
+                  src="assets/icons/youtube-icon.svg"
+                  alt="Youtube logo"
+                  width="40.86"
+                  height="28.6"
+                />
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- ACCORDION CODE DEMO -->
+        <div
+          class="code-container tab-panel hidden relative hide-scrollbar toggle-element pt-8 lg:pt-16 flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
+          id="accordion-code-demo"
+          aria-labelledby="tab-accordion"
+          role="tabpanel"
+        >
+          <div
+            class="flex relative flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
+          >
+            <div
+              class="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"
+            >
+              <!-- File name -->
+              <div class="w-full flex justify-between">
+                <p class="xs-mono-body flex items-center">
+                  /accordion.fasthtml
+                </p>
+                <!-- Copy icon -->
+                <button class="copy-button">
+                  <div
+                    class="relative bg-black/20 rounded-[0.5rem] flex items-center p-2 h-8 w-fit"
+                  >
+                    <img
+                      class="button-content w-4 h-4"
+                      src="assets/icons/copy-icon.svg"
+                      alt="Copy"
+                    />
+                    <span
+                      class="absolute flex bg-inherit rounded-l-[0.5rem] items-center py-2 h-full right-0 copied-text overflow-hidden w-0 peer-clicked:w-fit s-body text-white/80 transition-transform transition-all duration-600 ease-out"
+                    >
+                      Copied!
+                    </span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <pre
+              class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
+            ><code  class="python w-full mono-body" >  @rt("/")
+    async def post(todo:Todo): 
+        return todos.insert(todo), 
+            mk_input(hx_swap_oob='true')
+    
+    @rt("/edit/{id}")
+    async def get(id:int):
+        res = Form(Group(Input(id="title"), 
+            Button("Save")),
+            Hidden(id="id"), 
+            Checkbox(id="done", label='Done'),
+            hx_put="/", 
+            target_id=tid(id), 
+            id="edit")
+        return fill_form(res, todos.get(id))
+              </code></pre>
+            <div
+              class="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"
+            ></div>
+          </div>
+          <!--------------->
+          <!-- Accordion -->
+          <!--------------->
+          <div
+            class="my-[2.66rem] whitespace-normal justify-between lg:h-[22.8125rem] rounded-[1.5rem] items-start lg:p-8 w-full max-w-[40rem] lg:max-w-[30.5rem] lg:mx-[7rem] lg:my-[2.13rem]"
+          >
+            <div
+              class="flex flex-col lg:mt-[10.62rem] gap-4 w-full max-w-[32rem] transition ease-out delay-[300ms]"
+            >
+              <div
+                class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+              >
+                <input
+                  id="collapsible-1"
+                  type="checkbox"
+                  class="collapsible-checkbox peer/collapsible-1 hidden"
+                />
+                <label
+                  for="collapsible-1"
+                  class="flex justify-between items-center cursor-pointer"
+                >
+                  <p class="text-black s-body flex-grow">What is FastHTML?</p>
+                  <img
+                    src="./assets/icons/plus-icon.svg"
+                    alt="Expand"
+                    class="plus-icon w-6 h-6"
+                  />
+                  <img
+                    src="./assets/icons/minus-icon.svg"
+                    alt="Collapse"
+                    class="minus-icon w-6 h-6"
+                  />
+                </label>
+                <p
+                  class="overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-1:max-h-fit peer-checked/collapsible-1:mt-0 peer-checked/collapsible-1:transition-all peer-checked/collapsible-1:duration-300 peer-checked/collapsible-1:ease-out s-body text-black/80 col-span-full"
+                >
+                  FastHTML is a library for writing fast and scalable
+                  Starlette-powered web applications, without having to learn
+                  much (if any!) Starlette.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- STACKED CARDS CODE DEMO -->
+        <div
+          class="code-container hidden tab-panel relative hide-scrollbar toggle-element pt-8 lg:pt-16 flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
+          id="stacked-cards-code-demo"
+          aria-labelledby="tab-stacked-cards"
+          role="tabpanel"
+        >
+          <div
+            class="flex relative flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"
+          >
+            <div
+              class="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"
+            >
+              <!-- File name -->
+              <div class="w-full flex justify-between">
+                <p class="xs-mono-body flex items-center">
+                  /stacked_cards.fasthtml
+                </p>
+                <!-- Copy icon -->
+                <button class="copy-button">
+                  <div
+                    class="relative bg-black/20 rounded-[0.5rem] flex items-center p-2 h-8 w-fit"
+                  >
+                    <img
+                      class="button-content w-4 h-4"
+                      src="assets/icons/copy-icon.svg"
+                      alt="Copy"
+                    />
+                    <span
+                      class="absolute flex bg-inherit rounded-l-[0.5rem] items-center py-2 h-full right-0 copied-text overflow-hidden w-0 peer-clicked:w-fit s-body text-white/80 transition-transform transition-all duration-600 ease-out"
+                    >
+                      Copied!
+                    </span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <pre
+              class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
+            ><code  class="python w-full mono-body" >  @rt("/{fname:path}.{ext:static}")
+    async def get(fname:str, ext:str): 
+        return FileResponse(f'{fname}.{ext}')
+    
+    def mk_input(**kw): 
+        return Input(id="new-title", 
+            name="title", 
+            placeholder="New Todo", 
+            **kw)
+    def clr_details(): 
+        return Div(hx_swap_oob='innerHTML', 
+            id=id_curr)
+    
+    @rt("/")
+    async def get():
+        add = Form(Group(mk_input(), 
+            Button("Add")),
+            hx_post="/", 
+            target_id='todo-list', 
+            hx_swap="beforeend")
+        card = Card(Ul(*todos(), 
+            id='todo-list'),
+            header=add,
+            footer=Div(id=id_curr)),
+        title = 'Todo list'
+        return Title(title), 
+            Main(H1(title), 
+            card, 
+            cls='container')
+              </code></pre>
+            <div
+              class="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"
+            ></div>
+          </div>
+          <!--------------->
+          <!-- Stacked Cards -->
+          <!--------------->
+          <div
+            id="stacked-cards-component-demo"
+            class="relative flex-none hide-scrollbar lg:mt-0 pt-4 lg:pt-2 overflow-auto whitespace-normal justify-between h-[25rem] rounded-[1.5rem] items-start lg:p-8 w-full max-w-[40rem] lg:max-w-[30.5rem] lg:mx-[7rem] lg:my-[2.13rem]"
+          >
+            <div class="mx-auto max-w-[50rem] pb-0" id="preview-stacked-cards">
+              <div>
+                <div
+                  class="rounded-3xl bg-white lg:p-8 p-6 flex flex-col m-body w-full"
+                >
+                  <h3
+                    class="mb-4 text-[1.75rem] leading-[2rem] tracking-[-0.02625rem] text-black"
+                  >
+                    What you need to know
+                  </h3>
+                  <p
+                    class="mb-8 text-[1.125rem] leading-[1.75rem] tracking-[-0.01125rem]"
+                  >
+                    Everything you need to get started with FastHTML.
+                  </p>
+
+                  <div class="flex gap-4 flex-wrap items-center">
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/python.svg"
+                        alt="Python"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Python</p>
+                    </div>
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/htmx.svg"
+                        alt="HTMX"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">HTMX</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="rounded-3xl bg-white p-6 flex flex-col m-body">
+                  <h3
+                    class="mb-4 text-[1.75rem] leading-[2rem] tracking-[-0.02625rem] text-black"
+                  >
+                    What it is built on top of
+                  </h3>
+                  <p
+                    class="mb-8 text-[1.125rem] leading-[1.75rem] tracking-[-0.01125rem]"
+                  >
+                    Now it’s time to use FastHTML
+                  </p>
+
+                  <div class="flex gap-4 flex-wrap items-center">
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/python.svg"
+                        alt="Python"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Python</p>
+                    </div>
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/uvicorn.svg"
+                        alt="Uvicorn"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Uvicorn</p>
+                    </div>
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/starlette.svg"
+                        alt="Starlette"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Starlette</p>
+                    </div>
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/htmx.svg"
+                        alt="HTMX"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">HTMLX</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="rounded-3xl bg-white p-12 p-6 flex flex-col m-body">
+                  <h3
+                    class="mb-4 text-[1.75rem] leading-[2rem] tracking-[-0.02625rem] text-black"
+                  >
+                    Where you can deploy
+                  </h3>
+                  <p
+                    class="mb-8 text-[1.125rem] leading-[1.75rem] tracking-[-0.01125rem]"
+                  >
+                    Companies that we provide deployment for
+                  </p>
+
+                  <div class="flex gap-4 flex-wrap items-center">
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/railway.svg"
+                        alt="Railway"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Railway</p>
+                    </div>
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/hugging-face.svg"
+                        alt="Hugging Face"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Hugging Face</p>
+                    </div>
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/vercel.svg"
+                        alt="Vercel"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Vercel</p>
+                    </div>
+                    <div
+                      class="flex gap-4 items-center px-4 py-2 bg-black/20 rounded-full"
+                    >
+                      <img
+                        src="./assets/icons/stack/python-anywhere.svg"
+                        alt="Pythonaynwhere"
+                        width="24"
+                        height="24"
+                      />
+                      <p class="text-black/60">Pythonaynwhere</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!---------------------->
+        <!-- EXAMPLE SELECTOR -->
+        <!---------------------->
+        <ul
+          role="tablist"
+          id="tab-list"
+          class="relative flex text-white/80 flex-none rounded-[62.5rem] bg-black/20 p-2 max-w-full overflow-x-auto lg:mx-auto items-center hide-scrollbar lg:max-w-[43.375rem]"
+        >
+          <li
+            role="tab"
+            class="current active z-10 transition-all flex-none duration-300 button-container relative w-[10.59375rem] h-[2.75rem] rounded-[62.5rem] flex items-center text-white"
+          >
+            <a
+              aria-selected="true"
+              id="tab-card"
+              href="#card-code-demo"
+              class="toggle-button w-full"
+              data-target="card-code-demo"
+            >
+              <div class="m-body w-max mx-auto">Card</div>
+            </a>
+          </li>
+          <li
+            role="tab"
+            class="z-10 button-container px-8 py-2 flex-none relative w-[10.59375rem] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center"
+          >
+            <a
+              aria-selected="false"
+              href="#button-code-demo"
+              id="tab-button"
+              tabindex="-1"
+              class="toggle-button w-full"
+              data-target="button-code-demo"
+            >
+              <div class="m-body w-max mx-auto">Button</div>
+            </a>
+          </li>
+          <li
+            role="tab"
+            class="z-10 button-container flex-none relative w-[10.59375rem] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center"
+          >
+            <a
+              aria-selected="false"
+              href="#accordion-code-demo"
+              tabindex="-1"
+              id="tab-accordion"
+              class="toggle-button w-full"
+              data-target="accordion-code-demo"
+            >
+              <div class="m-body w-max mx-auto">Accordion</div>
+            </a>
+          </li>
+          <li
+            role="tab"
+            class="last z-10 button-container flex-none relative w-[10.59375rem] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center justify-center"
+          >
+            <a
+              aria-selected="false"
+              href="#stacked-cards-code-demo"
+              tabindex="-1"
+              id="tab-stacked-cards"
+              class="toggle-button w-full"
+              data-target="stacked-cards-code-demo"
+            >
+              <div class="m-body w-max mx-auto">Stacked cards</div>
+            </a>
+          </li>
+          <div
+            id="highlighter"
+            class="z-0 highlighter w-[10.59375rem] absolute bg-white/20 h-[2.75rem] rounded-[62.5rem] transition-transform duration-300"
+          ></div>
+        </ul>
+      </section>
       <!-- SAMPLES SECTION -->
       <!-- @TODO: add links to repos once available -->
       <section
-        class="pt-8 px-4 pb-24 flex flex-col items-center gap-8 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32 rounded-t-3xl lg:rounded-t-[2.5rem]"
+        class="bg-grey pt-8 px-4 pb-24 -mt-8 lg:-mt-16 flex flex-col items-center gap-8 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32 rounded-t-3xl lg:rounded-t-[2.5rem]"
       >
         <div
           class="max-w-[50rem] w-full mx-auto flex flex-col items-center text-center gap-6"
@@ -109,7 +738,7 @@
       </section>
       <!-- HOW IT WORKS SECTION -->
       <section
-        class="pt-8 px-4 pb-32 bg-yellow lg:pt-16 lg:pb-32 lg:px-16 rounded-t-3xl lg:rounded-t-[2.5rem]"
+        class="pt-8 px-4 -mt-8 lg:-mt-16 pb-24 bg-yellow lg:pt-16 lg:pb-32 lg:px-16 rounded-t-3xl lg:rounded-t-[2.5rem]"
       >
         <div
           class="max-w-[50rem] w-full mx-auto flex flex-col items-center text-center gap-6 mb-8 lg:mb-16"
@@ -327,7 +956,7 @@
           >
             <div
               id="carousel-container"
-              class="carousel-container flex flex-col lg:flex-row gap-4 lg:gap-6 rounded-l-[1.5rem] xl:rounded-[1.5rem] w-full lg:overflow-hidden xl:overflow-hidden whitespace-nowrap"
+              class="hide-scrollbar flex flex-col lg:flex-row gap-4 lg:gap-6 rounded-l-[1.5rem] xl:rounded-[1.5rem] w-full lg:overflow-hidden xl:overflow-hidden whitespace-nowrap"
             >
               <!-- Card -->
               <div
@@ -472,6 +1101,13 @@
         </div>
       </section>
     </main>
+    <script src="js/previewStack.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script src="js/pythonHighlighter.js"></script>
+    <script src="js/togglePreview.js"></script>
+    <script src="js/codeOverflow.js"></script>
+    <script src="js/copyCode.js"></script>
   </body>
   <script src="js/carouselScroll.js"></script>
 </html>
