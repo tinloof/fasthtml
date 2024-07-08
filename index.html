@@ -247,22 +247,24 @@
             </div>
 
             <pre
+              id="card-code-snippet"
               class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
             ><code  class="python w-full mono-body" >  @rt("/")
-    async def get():
-        add = Form(Group(mk_input(), 
-            Button("Add")),
-            hx_post="/", 
-            target_id='todo-list', 
-            hx_swap="beforeend")
-        card = Card(Ul(*todos(), id='todo-list'),
-                    header=add, 
-                    footer=Div(id=id_curr)),
-        title = 'Todo list'
-        return Title(title), 
-            Main(H1(title), 
-            card, 
-            cls='container')
+  async def put(todo: Todo): 
+    return todos.upsert(todo), clr_details()
+
+  @rt("/todos/{id}")
+  async def get(id:int):
+      todo = todos.get(id)
+      btn = Button('delete', 
+          hx_delete=f'/todos/{todo.id}',
+          target_id=tid(todo.id), 
+          hx_swap="outerHTML")
+      return Div(Div(todo.title), btn)
+
+  if __name__ == '__main__': 
+    uvicorn.run("main:app", host='0.0.0.0', 
+        port=int(os.getenv("PORT", default=5001)))
               </code></pre>
             <div
               class="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"
@@ -351,6 +353,7 @@
             </div>
 
             <pre
+              id="button-code-snippet"
               class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
             ><code  class="python w-full mono-body" >  @rt("/")
     async def get():
@@ -443,6 +446,7 @@
             </div>
 
             <pre
+              id="accordion-code-snippet"
               class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
             ><code  class="python w-full mono-body" >  @rt("/")
     async def post(todo:Todo): 
@@ -547,6 +551,7 @@
             </div>
 
             <pre
+              id="stacked-cards-code-snippet"
               class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
             ><code  class="python w-full mono-body" >  @rt("/{fname:path}.{ext:static}")
     async def get(fname:str, ext:str): 
