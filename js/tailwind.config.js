@@ -9,14 +9,6 @@ tailwind.config = {
     },
     extend: {
       keyframes: {
-        "shrink-and-grow": {
-          "0%": {
-            transform: "scale(0.7)",
-          },
-          "100%": {
-            transform: "scale(1)",
-          },
-        },
         "positive-bounce": {
           "0%": {
             transform: "rotate(4deg)",
@@ -75,18 +67,6 @@ tailwind.config = {
             transform: "scale(1)",
           },
         },
-        "font-bounce-down": {
-          "0%": {
-            "font-size": "1rem",
-          },
-          "50%": {
-            "font-size": "0.98rem",
-          },
-
-          "100%": {
-            "font-size": "1rem",
-          },
-        },
       },
       animation: {
         "positive-bounce": "positive-bounce  0.6s ease-in-out forwards",
@@ -94,8 +74,6 @@ tailwind.config = {
         "negative-bounce": "negative-bounce  0.6s ease-in-out forwards",
         "negative-unbounce": "negative-unbounce  0.2s ease-in-out forwards",
         "line-bounce": "line-bounce  0.6s ease-in-out forwards",
-        "font-bounce-down": "font-bounce-down  0.6s ease-in-out forwards",
-        "shrink-and-grow": "shrink-and-grow 0.6s ease-in-out forwards",
       },
       fontFamily: {
         geist: ["Geist", "sans-serif"],
