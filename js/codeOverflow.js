@@ -3,12 +3,12 @@ function checkOverflow(codeContainer) {
     codeContainer.parentElement.querySelector(".code-fade-out");
 
   if (
-    Math.floor(codeContainer.getBoundingClientRect().bottom) !==
+    Math.floor(codeContainer.getBoundingClientRect().bottom) <
     Math.floor(codeContainer.childNodes[0].getBoundingClientRect().bottom)
   ) {
-    fadeOutElement.classList.remove("hidden");
+    fadeOutElement.style.display = "block";
   } else {
-    fadeOutElement.classList.add("hidden");
+    fadeOutElement.style.display = "none";
   }
 }
 
