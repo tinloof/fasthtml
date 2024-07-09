@@ -29,10 +29,6 @@
     } + var(--cardsSectionGap))`;
   });
 
-  stickyHeader.children.item(
-    0
-  ).style.paddingBottom = `calc(${cardsHeights[2]}px + var(--cardsHeaderBottomPadding) + 2 * var(--cardsSectionGap))`;
-
   document.addEventListener("scroll", function () {
     const percentageOfSecondCardSeen = percentageSeen(
       cardsArray[1],
@@ -43,6 +39,13 @@
       128 + stackedCardsSection.offsetTop
     );
 
+    if (percentageOfSecondCardSeen > 0) {
+      stickyHeader.children.item(
+        0
+      ).style.paddingBottom = `calc(${cardsHeights[2]}px + var(--cardsHeaderBottomPadding) + 2 * var(--cardsSectionGap))`;
+    } else {
+      stickyHeader.children.item(0).style.paddingBottom = "";
+    }
     cardsArray[0].children.item(0).style.scale =
       1 -
       (0.1 * percentageOfSecondCardSeen) / 100 -
