@@ -1642,6 +1642,10 @@
               id="carousel-container"
               class="hide-scrollbar flex flex-col lg:flex-row gap-4 lg:gap-6 rounded-l-[1.5rem] xl:rounded-[1.5rem] w-full lg:overflow-hidden xl:overflow-hidden whitespace-nowrap"
             >
+              <div
+                class="w-px endicator -mr-4 lg:-mr-6"
+                data-bound="left"
+              ></div>
               <!-- Card -->
               <div
                 id="testimonial-card-1"
@@ -1768,15 +1772,28 @@
                   </div>
                 </div>
               </div>
+
+              <div
+                class="w-px endicator -ml-4 lg:-ml-6"
+                data-bound="right"
+              ></div>
             </div>
             <div
               class="hidden lg:flex xl:flex justify-start w-full max-w-[41rem] py-6 pl-6 pr-[5.5rem]"
             >
               <div class="w-[4.5rem] flex justify-between ml-auto">
-                <button id="slideLeft" aria-label="Slide left">
+                <button
+                  id="slideLeft"
+                  class="disabled:opacity-40 transition-opacity"
+                  aria-label="Slide left"
+                >
                   <img src="assets/icons/arrow-left.svg" alt="Left arrow" />
                 </button>
-                <button id="slideRight" aria-label="Slide right">
+                <button
+                  id="slideRight"
+                  class="disabled:opacity-40 transition-opacity"
+                  aria-label="Slide right"
+                >
                   <img src="assets/icons/arrow-right.svg" alt="Right arrow" />
                 </button>
               </div>

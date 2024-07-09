@@ -1,5 +1,6 @@
 const container = document.getElementById("carousel-container");
 const elements = container.querySelectorAll(".testimonial-card");
+const endicators = document.querySelectorAll(".endicator");
 
 const options = {
   root: container,
@@ -17,16 +18,58 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, options);
 
+const boundsObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    const bound = entry.target.dataset.bound;
+    if (entry.isIntersecting) {
+      if (bound === "left") {
+        document.getElementById("slideLeft").disabled = true;
+      }
+
+      if (bound === "right") {
+        document.getElementById("slideRight").disabled = true;
+      }
+    } else {
+      if (bound === "left") {
+        document.getElementById("slideLeft").disabled = false;
+      }
+
+      if (bound === "right") {
+        document.getElementById("slideRight").disabled = false;
+      }
+    }
+  });
+}, options);
+
+endicators.forEach((element) => boundsObserver.observe(element));
+
 elements.forEach((element) => {
   observer.observe(element);
 });
+
+function updateButtonState() {
+  if (container.scrollLeft <= 0) {
+    document.getElementById("slideLeft").disabled = true;
+  } else {
+    document.getElementById("slideLeft").disabled = false;
+  }
+
+  if (container.scrollLeft >= container.scrollWidth - container.clientWidth) {
+    document.getElementById("slideRight").disabled = true;
+  } else {
+    document.getElementById("slideRight").disabled = false;
+  }
+}
 
 document.getElementById("slideRight").addEventListener("click", function () {
   const scrollTo = document.getElementById(
     `testimonial-card-${visibleCardNum + 1}`
   );
+
   if (scrollTo) {
-    scrollTo.scrollIntoView({ behavior: "smooth" });
+    const x = container.scrollLeft + scrollTo.offsetLeft - container.offsetLeft;
+    container.scrollBy({ left: x, behavior: "smooth" });
+    // updateButtonState();
   }
 });
 
@@ -36,6 +79,8 @@ document.getElementById("slideLeft").addEventListener("click", function () {
   );
 
   if (scrollTo) {
-    scrollTo.scrollIntoView({ behavior: "smooth" });
+    const x = container.scrollLeft - scrollTo.offsetLeft + container.offsetLeft;
+    container.scrollBy({ left: -x, behavior: "smooth" });
+    // updateButtonState();
   }
 });
