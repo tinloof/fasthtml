@@ -77,7 +77,7 @@ tailwind.config = {
         "soft-pink": "#FFCCF7",
         purple: "#3A2234",
         "soft-purple": "#EDDEE9",
-        blue: "#7575F0",
+        blue: "#8C8CF2",
         "soft-blue": "#E8E8FC",
       },
     },
