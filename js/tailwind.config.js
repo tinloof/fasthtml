@@ -11,12 +11,15 @@ tailwind.config = {
       keyframes: {
         "positive-bounce": {
           "0%": {
+            transform: "rotate(0deg)",
+          },
+          "25%": {
             transform: "rotate(4deg)",
           },
-          "33%": {
+          "50%": {
             transform: "rotate(3deg)",
           },
-          "66%": {
+          "75%": {
             transform: "rotate(5deg)",
           },
           "100%": {
@@ -27,18 +30,24 @@ tailwind.config = {
           "0%": {
             transform: "rotate(4deg)",
           },
+          "66%": {
+            transform: "rotate(-1deg)",
+          },
           "100%": {
             transform: "rotate(0deg)",
           },
         },
         "negative-bounce": {
           "0%": {
+            transform: "rotate(0deg)",
+          },
+          "25%": {
             transform: "rotate(-4deg)",
           },
-          "33%": {
+          "50%": {
             transform: "rotate(-3deg)",
           },
-          "66%": {
+          "75%": {
             transform: "rotate(-5deg)",
           },
           "100%": {
@@ -48,6 +57,9 @@ tailwind.config = {
         "negative-unbounce": {
           "0%": {
             transform: "rotate(-4deg)",
+          },
+          "66%": {
+            transform: "rotate(1deg)",
           },
           "100%": {
             transform: "rotate(0deg)",
