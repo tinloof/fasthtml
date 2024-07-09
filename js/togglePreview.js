@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       tabButtons.forEach((btn) => {
+        btn.parentElement.ariaSelected = false;
         btn.parentElement.classList.remove("active");
         btn.parentElement.classList.add("text-white/80");
         btn.parentElement.classList.add("hover:text-white");
@@ -41,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
         button.dataset.target
       );
       activeCodeContainer.style.display = "flex";
+      currentButtonContainer.ariaSelected = true;
       currentButtonContainer.classList.add("active");
       currentButtonContainer.classList.add("text-white");
       currentButtonContainer.classList.remove("text-white/80");

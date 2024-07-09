@@ -194,13 +194,14 @@
                 width="240"
                 height="120"
                 class="rounded-full w-[7.5rem] h-auto"
+                alt="Youtube video poster"
               />
               <span class="text-black flex flex-col">
                 Try now
                 <span class="s-body text-black/60"> 4min 50sec </span>
               </span>
               <p class="flex-1 flex justify-center">
-                <img src="/assets/icons/youtube.svg" width="41" height="30" />
+                <img src="/assets/icons/youtube.svg" width="41" height="30" alt="Youtube icon"/>
               </p>
             </a>
           </div>
@@ -216,7 +217,7 @@
         <div
           aria-labelledby="tab-card"
           role="tabpanel"
-          class="code-container pt-8 lg:pt-16 tab-panel relative hide-scrollbar toggle-element flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
+          class="code-container pt-8 lg:pt-16 tab-panel relative hide-scrollbar toggle-element flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px] xl:mx-auto"
           id="card-code-demo"
         >
           <div
@@ -249,22 +250,24 @@
             </div>
 
             <pre
+              id="card-code-snippet"
               class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
             ><code  class="python w-full mono-body" >  @rt("/")
-    async def get():
-        add = Form(Group(mk_input(), 
-            Button("Add")),
-            hx_post="/", 
-            target_id='todo-list', 
-            hx_swap="beforeend")
-        card = Card(Ul(*todos(), id='todo-list'),
-                    header=add, 
-                    footer=Div(id=id_curr)),
-        title = 'Todo list'
-        return Title(title), 
-            Main(H1(title), 
-            card, 
-            cls='container')
+  async def put(todo: Todo): 
+    return todos.upsert(todo), clr_details()
+
+  @rt("/todos/{id}")
+  async def get(id:int):
+      todo = todos.get(id)
+      btn = Button('delete', 
+          hx_delete=f'/todos/{todo.id}',
+          target_id=tid(todo.id), 
+          hx_swap="outerHTML")
+      return Div(Div(todo.title), btn)
+
+  if __name__ == '__main__': 
+    uvicorn.run("main:app", host='0.0.0.0', 
+        port=int(os.getenv("PORT", default=5001)))
               </code></pre>
             <div
               class="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"
@@ -320,7 +323,7 @@
         <div
           aria-labelledby="tab-button"
           role="tabpanel"
-          class="code-container tab-panel hidden relative hide-scrollbar toggle-element pt-8 lg:pt-16 flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
+          class="code-container tab-panel hidden relative hide-scrollbar toggle-element pt-8 lg:pt-16 flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]  xl:mx-auto"
           id="button-code-demo"
         >
           <div
@@ -353,6 +356,7 @@
             </div>
 
             <pre
+              id="button-code-snippet"
               class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
             ><code  class="python w-full mono-body" >  @rt("/")
     async def get():
@@ -408,7 +412,7 @@
         </div>
         <!-- ACCORDION CODE DEMO -->
         <div
-          class="code-container tab-panel hidden relative hide-scrollbar toggle-element pt-8 lg:pt-16 flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
+          class="code-container tab-panel hidden relative hide-scrollbar toggle-element pt-8 lg:pt-16 flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]  xl:mx-auto"
           id="accordion-code-demo"
           aria-labelledby="tab-accordion"
           role="tabpanel"
@@ -445,6 +449,7 @@
             </div>
 
             <pre
+              id="accordion-code-snippet"
               class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
             ><code  class="python w-full mono-body" >  @rt("/")
     async def post(todo:Todo): 
@@ -473,7 +478,7 @@
             class="my-[2.66rem] whitespace-normal justify-between lg:h-[22.8125rem] rounded-[1.5rem] items-start lg:p-8 w-full max-w-[40rem] lg:max-w-[30.5rem] lg:mx-[7rem] lg:my-[2.13rem]"
           >
             <div
-              class="flex flex-col lg:mt-[10.62rem] gap-4 w-full max-w-[32rem] transition ease-out delay-[300ms]"
+              class="flex flex-col lg:mt-[6rem] gap-4 w-full max-w-[32rem] transition ease-out delay-[300ms]"
             >
               <div
                 class="flex-col flex gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
@@ -512,7 +517,7 @@
         </div>
         <!-- STACKED CARDS CODE DEMO -->
         <div
-          class="code-container hidden tab-panel relative hide-scrollbar toggle-element pt-8 lg:pt-16 flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]"
+          class="code-container hidden tab-panel relative hide-scrollbar toggle-element pt-8 lg:pt-16 flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px]  xl:mx-auto"
           id="stacked-cards-code-demo"
           aria-labelledby="tab-stacked-cards"
           role="tabpanel"
@@ -549,6 +554,7 @@
             </div>
 
             <pre
+              id="stacked-cards-code-snippet"
               class="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"
             ><code  class="python w-full mono-body" >  @rt("/{fname:path}.{ext:static}")
     async def get(fname:str, ext:str): 
@@ -589,7 +595,7 @@
           <!--------------->
           <div
             id="stacked-cards-component-demo"
-            class="relative flex-none hide-scrollbar lg:mt-0 pt-4 lg:pt-2 overflow-auto whitespace-normal justify-between h-[25rem] rounded-[1.5rem] items-start lg:p-8 w-full max-w-[40rem] lg:max-w-[30.5rem] lg:mx-[7rem] lg:my-[2.13rem]"
+            class="relative flex-none hide-scrollbar lg:mt-12 pt-4 lg:pt-2 overflow-auto whitespace-normal justify-between h-[25rem] rounded-[1.5rem] items-start lg:p-8 w-full max-w-[40rem] lg:max-w-[30.5rem] lg:mx-[7rem] lg:my-[2.13rem]"
           >
             <div class="mx-auto max-w-[50rem] pb-0" id="preview-stacked-cards">
               <div>
@@ -767,66 +773,62 @@
         <ul
           role="tablist"
           id="tab-list"
-          class="relative flex text-white/80 flex-none rounded-[62.5rem] bg-black/20 p-2 max-w-full overflow-x-auto lg:mx-auto items-center hide-scrollbar lg:max-w-[43.375rem]"
+          class="relative mt-12 flex text-white/80 flex-none rounded-[62.5rem] bg-black/20 p-2 max-w-full overflow-x-auto lg:mx-auto items-center hide-scrollbar lg:max-w-[43.375rem]"
         >
           <li
             role="tab"
+            aria-selected="true"
             class="current active z-10 transition-all flex-none duration-300 button-container relative w-[10.59375rem] h-[2.75rem] rounded-[62.5rem] flex items-center text-white"
           >
-            <a
-              aria-selected="true"
+            <button
               id="tab-card"
-              href="#card-code-demo"
-              class="toggle-button w-full"
+              class="toggle-button w-full cursor-pointer"
               data-target="card-code-demo"
             >
               <div class="m-body w-max mx-auto">Card</div>
-            </a>
+            </button>
           </li>
           <li
             role="tab"
+            aria-selected="false"
             class="z-10 button-container px-8 py-2 flex-none relative w-[10.59375rem] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center"
           >
-            <a
-              aria-selected="false"
-              href="#button-code-demo"
+            <button
               id="tab-button"
               tabindex="-1"
-              class="toggle-button w-full"
+              class="toggle-button w-full cursor-pointer"
               data-target="button-code-demo"
             >
               <div class="m-body w-max mx-auto">Button</div>
-            </a>
+            </button>
           </li>
           <li
             role="tab"
+            aria-selected="false"
             class="z-10 button-container flex-none relative w-[10.59375rem] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center"
           >
-            <a
-              aria-selected="false"
-              href="#accordion-code-demo"
+            <button
               tabindex="-1"
               id="tab-accordion"
-              class="toggle-button w-full"
+              class="toggle-button w-full cursor-pointer"
               data-target="accordion-code-demo"
             >
               <div class="m-body w-max mx-auto">Accordion</div>
-            </a>
+            </button>
           </li>
           <li
             role="tab"
+            aria-selected="false"
             class="last z-10 button-container flex-none relative w-[10.59375rem] text-white/80 hover:text-white h-[2.75rem] rounded-[62.5rem] flex items-center justify-center"
           >
-            <a
-              aria-selected="false"
-              href="#stacked-cards-code-demo"
+            <button
               tabindex="-1"
               id="tab-stacked-cards"
-              class="toggle-button w-full"
+              class="toggle-button w-full cursor-pointer"
               data-target="stacked-cards-code-demo"
             >
               <div class="m-body w-max mx-auto">Stacked cards</div>
-            </a>
+            </button>
           </li>
           <div
             id="highlighter"
@@ -1015,7 +1017,7 @@
                   >
                     <img
                       src="./assets/icons/stack/python-anywhere.svg"
-                      alt="Pythonaynwhere"
+                      alt="Pythonanywhere"
                       width="24"
                       height="24"
                     />
@@ -1659,11 +1661,11 @@
               class="hidden lg:flex xl:flex justify-start w-full max-w-[41rem] py-6 pl-6 pr-[5.5rem]"
             >
               <div class="w-[4.5rem] flex justify-between ml-auto">
-                <button id="slideLeft">
-                  <img src="assets/icons/arrow-left.svg" />
+                <button id="slideLeft" aria-label="Slide left">
+                  <img src="assets/icons/arrow-left.svg" alt="Left arrow"/>
                 </button>
-                <button id="slideRight">
-                  <img src="assets/icons/arrow-right.svg" />
+                <button id="slideRight" aria-label="Slide right">
+                  <img src="assets/icons/arrow-right.svg" alt="Right arrow"/>
                 </button>
               </div>
             </div>
@@ -1693,6 +1695,7 @@
                       width="16"
                       height="16"
                       class="w-4 h-4"
+                      alt="Arrow up right icon"
                     />
                   </a>
                 </li>
@@ -1707,6 +1710,7 @@
                       width="16"
                       height="16"
                       class="w-4 h-4"
+                      alt="Arrow up right icon"
                     />
                   </a>
                 </li>
@@ -1723,6 +1727,7 @@
                       width="16"
                       height="16"
                       class="w-4 h-4"
+                      alt="Arrow up right icon"
                     />
                   </a>
                 </li>
