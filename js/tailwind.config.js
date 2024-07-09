@@ -53,27 +53,12 @@ tailwind.config = {
             transform: "rotate(0deg)",
           },
         },
-        "line-bounce": {
-          "0%": {
-            transform: "scale(1)",
-          },
-          "33%": {
-            transform: "scale(1.5)",
-          },
-          "66%": {
-            transform: "scale(.8)",
-          },
-          "100%": {
-            transform: "scale(1)",
-          },
-        },
       },
       animation: {
         "positive-bounce": "positive-bounce  0.6s ease-in-out forwards",
         "positive-unbounce": "positive-unbounce  0.2s ease-in-out forwards",
         "negative-bounce": "negative-bounce  0.6s ease-in-out forwards",
         "negative-unbounce": "negative-unbounce  0.2s ease-in-out forwards",
-        "line-bounce": "line-bounce  0.6s ease-in-out forwards",
       },
       fontFamily: {
         geist: ["Geist", "sans-serif"],
