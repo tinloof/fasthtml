@@ -3,17 +3,20 @@
   --cardTopPadding: 6rem;
   --cardsHeaderBottomPadding: 24rem;
   --cardsSectionGap: 2rem;
-  --cardMargin: 40rem;
+  --cardMargin: 2rem;
+  --cardsSectionPaddingBottom: calc(
+    calc(var(--cards) - 1) * var(--cardTopPadding)
+  );
 }
 
 #stacked-cards {
   list-style: none;
   padding-left: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(var(--cards), 1fr);
   gap: var(--cardMargin);
   padding-bottom: calc(calc(var(--cards) - 1) * var(--cardTopPadding));
+
+  display: flex;
+  flex-direction: column;
 }
 
 #stacked-cards > div:nth-child(1) {
@@ -27,15 +30,15 @@
 }
 
 #stacked-cards > div {
+  transform-origin: bottom;
   position: sticky;
   top: 0;
-  padding-top: calc(var(--index) * var(--cardTopPadding));
 }
 
 @media screen and (max-width: 1024px) {
   :root {
     --cardTopPadding: 3rem;
-    --cardsHeaderBottomPadding: 12rem;
-    --cardMargin: 25rem;
+    --cardsHeaderBottomPadding: 10rem;
+    --cardsSectionGap: 4rem;
   }
 }
