@@ -7,6 +7,7 @@
   --cardsSectionPaddingBottom: calc(
     calc(var(--cards) - 1) * var(--cardTopPadding)
   );
+  --cardsHeaderBottomStop: 416px;
 }
 
 #stacked-cards {
@@ -40,5 +41,6 @@
     --cardTopPadding: 3rem;
     --cardsHeaderBottomPadding: 10rem;
     --cardsSectionGap: 4rem;
+    --cardsHeaderBottomStop: 256px;
   }
 }

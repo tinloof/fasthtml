@@ -23,8 +23,6 @@
     return check;
   };
 
-  console.log(window.innerWidth);
-
   if (mobileAndTabletCheck() || window.innerWidth < 1024) {
     stackedCards.style.gap = "var(--cardMargin)";
     cardsArray.forEach((card) => (card.style.position = "relative"));
@@ -55,6 +53,10 @@
     } + var(--cardsSectionGap) + calc(var(--index) * var(--cardTopPadding)))`;
   });
 
+  const headerBottomStop = +getComputedStyle(stackedCardsSection)
+    .getPropertyValue("--cardsHeaderBottomStop")
+    .slice(0, -2);
+
   document.addEventListener("scroll", function () {
     const percentageOfSecondCardSeen = percentageSeen(
       cardsArray[1],
@@ -65,10 +67,18 @@
       128 + stackedCardsSection.offsetTop
     );
 
-    if (percentageOfThirdCardSeen > 0) {
+    if (
+      Math.abs(
+        stickyHeader.getBoundingClientRect().bottom -
+          stackedCardsSection.getBoundingClientRect().bottom
+      ) <
+      headerBottomStop + cardsHeights[2]
+    ) {
       stickyHeader.children.item(
         0
-      ).style.paddingBottom = `calc(${cardsHeights[2]}px + var(--cardsSectionGap) + 2 * var(--cardTopPadding) + var(--cardsSectionPaddingBottom))`;
+      ).style.paddingBottom = `calc(var(--cardsHeaderBottomStop) + ${
+        cardsHeights[2] + "px"
+      })`;
     } else {
       stickyHeader.children.item(0).style.paddingBottom = "";
     }
