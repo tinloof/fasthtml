@@ -44,7 +44,7 @@ def faq_item(question, answer, id):
         P(answer, cls=f"overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-{id}:max-h-[30rem] peer-checked/collapsible-{id}:mt-0 transition-all duration-300 ease-in-out s-body text-black/80 col-span-full"),
         cls=f"{col} gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6")
 
-def testimonial_card(comment, name, role, company, image_src):
+def testimonial_card(idx, comment, name, role, company, image_src):
     return Div(
         P(comment, cls=f"m-body text-black"),
         Div(
@@ -59,35 +59,51 @@ def testimonial_card(comment, name, role, company, image_src):
                     cls=f"{gap2} xs-mono-body w-full"),
                 cls="w-full"),
             cls=f"{center} justify-start gap-2"),
+        id=f"testimonial-card-{idx+1}",
         cls=f"testimonial-card {col} flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-pink p-4 lg:p-8 {maxrem(36)} lg:w-[27rem]")
 
+# File('assets/hero-shapes.svg')
 # Section functions
 def hero_section():
-    return Section(
-        Header(
-            Nav(
-                A(Img(src="/assets/logo.svg", alt="FastHTML", width="105", height="24")),
-                button("Try now", xtra="px-4 py-1 h-10 flex items-center justify-center"),
-                cls=f"py-2 px-4 {between} items-center rounded-full {maxpx(400)} bg-white/80 backdrop-blur-2xl"),
-            cls="fixed top-0 w-full left-0 p-4 flex items-center justify-center z-50"),
+    return (
+    Header(
+        Nav(
+            A(
+                Img(src='/assets/logo.svg', alt='FastHTML', width='105', height='24'),
+                href='#'),
+            A('Try now', href='/', cls='bg-black text-white py-2 px-4 s-body rounded-[62.5rem] hover:bg-black/80 transition-colors duration-300 px-4 py-1 h-10 flex items-center justify-center'),
+            cls='py-2 px-4 flex justify-between items-center rounded-full w-full max-w-[400px] bg-white/80 backdrop-blur-2xl'),
+        cls='fixed top-0 w-full left-0 p-4 flex items-center justify-center z-50'),
+    Section(
         Div(
-            Img(src="/assets/hero-shapes.svg", cls=f"absolute z-0 lg:-top-[15%] top-0 left-1/2 -translate-x-1/2 grid grid-cols-1 grid-rows-1 w-[120%] aspect-square max-w-[2048px] min-w-[900px]"),
+            File('assets/hero-shapes.svg'),
+            cls='absolute z-0 lg:-top-[15%] top-0 left-1/2 -translate-x-1/2 grid grid-cols-1 grid-rows-1 w-[120%] aspect-square max-w-[2048px] min-w-[900px]'),
+        Div(
+            Div(cls='lg:flex-1 max-lg:basis-[152px]'),
             Div(
-                Div(cls="lg:flex-1 max-lg:basis-[152px]"),
-                Div(
-                    H1("Real web applications the right way", cls="heading-1 max-w-[800px]"),
-                    P("Built on solid web foundations, not the latest fads - with FastHTML you can get started on anything from simple dashboards to scalable web applications in minutes.", cls="m-body max-w-[40rem] text-center"),
-                    cls=f"flex-1 {col} items-center justify-center gap-6 text-center w-full text-black"),
-                Div(
-                    button("See examples", xtra="h-[76px] {maxpx(350)} flex items-center justify-center"),
-                    A(
-                        Img(src="/assets/intro-poster.png", width="240", height="120", cls="rounded-full w-[7.5rem] h-auto", alt="Youtube video poster"),
-                        Span("Try now", Span("4min 50sec", cls=f"s-body bg-white/80 text-black/60"), cls=f"text-black {col}"),
-                        P(Img(src="/assets/icons/youtube.svg", width="41", height="30", alt="Youtube icon"), cls="flex-1 flex justify-center"),
-                        cls=f"p-2 rounded-full bg-white hover:bg-white/80 transition-colors duration-300 h-[76px] {maxpx(350)} {center} gap-4"),
-                    cls="flex-1 flex items-center justify-center content-center flex-wrap lg:gap-6 gap-4 m-body"),
-                cls=f"{col} flex-1 relative px-4 lg:px-16"),
-            cls=f"{col} relative w-full h-screen max-h-[1024px] min-h-[720px] overflow-hidden bg-grey")
+                H1('Real web applications the right way', cls='heading-1 max-w-[800px]'),
+                P('Built on solid web foundations, not the latest fads - with\nFastHTML you can get started on anything from simple dashboards to\nscalable web applications in minutes.',
+                    cls='m-body max-w-[40rem] text-center'),
+                cls='flex-1 flex flex-col items-center justify-center gap-6 text-center w-full text-black'
+            ),
+            Div(
+                A('See examples', cls='m-body px-4 py-1 rounded-full bg-black hover:bg-black/80 transition-colors duration-300 text-white h-[76px] w-full max-w-[350px] flex items-center justify-center', href='/'),
+                A(
+                    Img(src='/assets/intro-poster.png', width='240', height='120', cls='rounded-full w-[7.5rem] h-auto', alt='Youtube video poster'),
+                    Span(
+                        'Try now',
+                        Span('4min 50sec', cls='s-body text-black/60'),
+                        cls='text-black flex flex-col'
+                    ),
+                    P(
+                        Img(src='/assets/icons/youtube.svg', width='41', height='30', alt='Youtube icon'),
+                        cls='flex-1 flex justify-center'
+                    ),
+                    cls='p-2 rounded-full bg-white hover:bg-white/80 transition-colors duration-300 h-[76px] w-full max-w-[350px] flex items-center gap-4',
+                    href='/'),
+                cls='flex-1 flex items-center justify-center content-center flex-wrap lg:gap-6 gap-4 m-body'),
+            cls='flex flex-col flex-1 relative px-4 lg:px-16'),
+        cls='flex flex-col relative w-full h-screen max-h-[1024px] min-h-[720px] overflow-hidden bg-grey')
     )
 
 def code_demo(title, file_name, code_snippet, demo_content, is_active=False):
@@ -180,8 +196,7 @@ def stacked_cards_section():
 
 def samples_section():
     return section_wrapper(
-        Div(
-            section_header(
+            (section_header(
                 "SAMPLES", "See FastHTML in action", "FastHTML can be used for everything from collaborative games to multi-modal UI. We've selected small self-contained examples for you to learn from.",
                 max_width=40),
             Div(
@@ -196,7 +211,7 @@ def samples_section():
                     cls="group px-[0.55rem]"
                 ) for name, svg in samples],
                 cls="grid max-w-[60rem] lg:grid-cols-4 lg:max-w-[84rem] lg:gap-x-12 grid-cols-2 gap-x-[1rem] gap-y-8 w-full mx-auto"),
-            button("Discover all", xtra="w-[7.375rem]"),),
+            button("Discover all", xtra="w-[7.375rem]")),
         "grey")
 
 def how_it_works_section():
@@ -229,17 +244,17 @@ def testimonials_section():
                 max_width=21),
             Div(
                 Div(
-                    *[testimonial_card(*args) for args in testimonials],
+                    *[testimonial_card(i, *args) for i,args in enumerate(testimonials)],
                     id="carousel-container",
                     cls=f"hide-scrollbar {col} lg:flex-row gap-4 lg:gap-6 rounded-l-[1.5rem] xl:rounded-[1.5rem] w-full lg:overflow-hidden xl:overflow-hidden whitespace-nowrap"
                 ),
                 Div(
                     Div(
-                        button("", xtra=opacity, id="slideLeft"),
-                        button("", xtra=opacity, id="slideRight"),
+                        Button(Img(src="assets/icons/arrow-left.svg", alt="Arrow left"), cls=opacity, id="slideLeft", aria_label="Slide left"),
+                        Button(Img(src="assets/icons/arrow-right.svg", alt="Arrow right"), cls=opacity, id="slideRight", aria_label="Slide right"),
                         cls="w-[4.5rem] flex justify-between ml-auto"
                     ),
-                    cls="hidden lg:flex xl:flex justify-start {maxrem(41)} py-6 pl-6 pr-[5.5rem]"),
+                    cls=f"hidden lg:flex xl:flex justify-start {maxrem(41)} py-6 pl-6 pr-[5.5rem]"),
                 cls=f"max-h-fit {col} items-start lg:-mr-16 {maxpx(1440)} overflow-hidden"),
             cls=f"{section_base} {maxrem(90)} mx-auto lg:flex-row items-start"),
         "pink")
@@ -261,11 +276,11 @@ def footer():
                 cls="relative z-[1] mono-s flex max-lg:flex-col gap-6 text-white/80 px-4 lg:px-16 pb-16"),
             Div(
                 Div(
-                    Img(src="/assets/footer.svg", alt="Decorative shapes", cls="w-full h-full"),
+                    File("assets/footer-shapes.svg"),
                     cls=f"absolute z-0 lg:-top-[15%] top-0 left-1/2 -translate-x-1/2 grid grid-cols-1 grid-rows-1 lg:w-[150%] w-[200%] aspect-square max-w-[2048px] min-w-[800px]"),
                 Img(src="/assets/footer-path.svg", alt="FastHTML logo", cls="relative w-full h-auto"),
-                cls="relative z-0 w-full px-4 lg:px-16 pb-1 {col} flex-1 justify-end"),
-            cls="relative w-full h-[420px] lg:h-[600px] {col} pt-8 lg:pt-12 rounded-t-3xl lg:rounded-t-[2.5rem] bg-black overflow-hidden -mt-8 lg:-mt-10"))
+                cls=f"relative z-0 w-full px-4 lg:px-16 pb-1 {col} flex-1 justify-end"),
+            cls=f"relative w-full h-[420px] lg:h-[600px] {col} pt-8 lg:pt-12 rounded-t-3xl lg:rounded-t-[2.5rem] bg-black overflow-hidden -mt-8 lg:-mt-10"))
 
 hdrs = [
     Meta(name='description', content='Real web applications the right way'),
@@ -282,7 +297,7 @@ hdrs = [
     Link(href='css/preview-stack.css', rel='stylesheet'),
     Link(href='css/highlighter-theme.css', rel='stylesheet')]
 
-app,rt = fast_app(hdrs=hdrs)
+app,rt = fast_app(hdrs=hdrs, default_hdrs=False)
 
 @rt("/")
 def get():
