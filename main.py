@@ -7,19 +7,15 @@ col = "flex flex-col"
 center = "flex items-center"
 between = "flex justify-between"
 gap2 = "flex gap-2"
-section_base=f"pt-8 px-4 pb-24 {col} gap-8 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32"
-section_base_no_flex="pt-8 px-4 pb-24 gap-8 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32"
+section_base1= "pt-8 px-4 pb-24 gap-8 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32"
+section_base =f"{col} {section_base1}"
 def maxpx (px ): return f"w-full max-w-[{px}px]"
 def maxrem(rem): return f"w-full max-w-[{rem}rem]"
 
 icons = 'assets/icons'
 
-def section_wrapper(content, bg_color, xtra=""):
-    return Section(content, cls=f"bg-{bg_color} {section_base} -mt-8 lg:-mt-16 items-center rounded-t-3xl lg:rounded-t-[2.5rem] relative {xtra}")
-
-def section_wrapper_no_flex(content, bg_color, xtra=""):
-    return Section(content, cls=f"bg-{bg_color} {section_base_no_flex} -mt-8 lg:-mt-16 items-center rounded-t-3xl lg:rounded-t-[2.5rem] relative {xtra}")
-
+def section_wrapper(content, bg_color, xtra="", flex=True):
+    return Section(content, cls=f"bg-{bg_color} {section_base1} {col if flex else ''} -mt-8 lg:-mt-16 items-center rounded-t-3xl lg:rounded-t-[2.5rem] relative {xtra}")
 
 def button(text, href="/", xtra="", **kw):
     return A(text, href=href, cls=f"bg-black text-white py-2 px-4 s-body rounded-full hover:bg-black/80 transition-colors duration-300 {xtra}", **kw)
@@ -67,7 +63,6 @@ def testimonial_card(idx, comment, name, role, company, image_src):
         id=f"testimonial-card-{idx+1}",
         cls=f"testimonial-card {col} flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-pink p-4 lg:p-8 {maxrem(36)} lg:w-[27rem]")
 
-# File('assets/hero-shapes.svg')
 # Section functions
 def hero_section():
     return (
@@ -221,13 +216,13 @@ def samples_section():
 
 def how_it_works_section():
     msg = "FastHTML comes in battery-included - create good-looking interactive modern web applications and deploy them in minutes"
-    return section_wrapper_no_flex(
+    return section_wrapper(
         (Div(
             section_header( "GET STARTED IN MINUTES", "The fastest way to create a real web application", msg),
             cls="max-w-[50rem] w-full mx-auto flex-col items-center text-center gap-6 mb-8 lg:mb-8"),
             Div(*[benefit(title, content) for title, content in benefits],
                 cls=f"{col} w-full lg:flex-row gap-4 items-center lg:gap-8 max-w-7xl mx-auto")),
-        "yellow")
+        "yellow", flex=False)
 
 def faq_section():
     return section_wrapper(
