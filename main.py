@@ -17,7 +17,7 @@ def section_wrapper(content, bg_color, xtra=""):
     return Section(content, cls=f"bg-{bg_color} {section_base} -mt-8 lg:-mt-16 items-center rounded-t-3xl lg:rounded-t-[2.5rem] relative {xtra}")
 
 def button(text, href="/", xtra="", **kw):
-    return A(text, href=href, cls=f"bg-black text-white py-2 px-4 s-body rounded-[62.5rem] hover:bg-black/80 transition-colors duration-300 {xtra}", **kw)
+    return A(text, href=href, cls=f"bg-black text-white py-2 px-4 s-body rounded-full hover:bg-black/80 transition-colors duration-300 {xtra}", **kw)
 
 def section_header(mono_text, heading, subheading, max_width=32):
     return Div(
@@ -84,7 +84,7 @@ def hero_section():
                 H1('Real web applications the right way', cls='heading-1 max-w-[800px]'),
                 P('Built on solid web foundations, not the latest fads - with\nFastHTML you can get started on anything from simple dashboards to\nscalable web applications in minutes.',
                     cls='m-body max-w-[40rem] text-center'),
-                cls='flex-1 flex flex-col items-center justify-center gap-6 text-center w-full text-black'
+                cls=f'flex-1 {col} items-center justify-center gap-6 text-center w-full text-black'
             ),
             Div(
                 A('See examples', cls='m-body px-4 py-1 rounded-full bg-black hover:bg-black/80 transition-colors duration-300 text-white h-[76px] w-full max-w-[350px] flex items-center justify-center', href='/'),
@@ -93,7 +93,7 @@ def hero_section():
                     Span(
                         'Try now',
                         Span('4min 50sec', cls='s-body text-black/60'),
-                        cls='text-black flex flex-col'
+                        cls=f'text-black {col}'
                     ),
                     P(
                         Img(src='/assets/icons/youtube.svg', width='41', height='30', alt='Youtube icon'),
@@ -102,12 +102,12 @@ def hero_section():
                     cls='p-2 rounded-full bg-white hover:bg-white/80 transition-colors duration-300 h-[76px] w-full max-w-[350px] flex items-center gap-4',
                     href='/'),
                 cls='flex-1 flex items-center justify-center content-center flex-wrap lg:gap-6 gap-4 m-body'),
-            cls='flex flex-col flex-1 relative px-4 lg:px-16'),
-        cls='flex flex-col relative w-full h-screen max-h-[1024px] min-h-[720px] overflow-hidden bg-grey')
+            cls=f'{col} flex-1 relative px-4 lg:px-16'),
+        cls=f'{col} relative w-full h-screen max-h-[1024px] min-h-[720px] overflow-hidden bg-grey')
     )
 
 def code_demo(title, file_name, code_snippet, demo_content, is_active=False):
-    demo_cls = "flex-col my-[2.66rem] p-4 flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-purple lg:p-8 w-full max-w-[40rem] lg:max-w-[27rem] lg:mx-[7rem] lg:my-[2.13rem]"
+    demo_cls = f"{col} my-[2.66rem] p-4 flex-none whitespace-normal justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-purple lg:p-8 w-full max-w-[40rem] lg:max-w-[27rem] lg:mx-[7rem] lg:my-[2.13rem]"
     return Div(
         Div(
             Div(
@@ -126,10 +126,10 @@ def code_demo(title, file_name, code_snippet, demo_content, is_active=False):
                 id=f"{title.lower().replace(' ', '-')}-code-snippet",
                 cls="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"),
             Div(cls="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"),
-            cls="flex relative flex-col gap-6 lg:max-w-[45rem] w-full overflow-hidden"),
+            cls=f"relative {col} gap-6 lg:max-w-[45rem] w-full overflow-hidden"),
         Div(demo_content, cls=demo_cls),
         aria_labelledby=f"tab-{title.lower().replace(' ', '-')}", role="tabpanel",
-        cls=f"code-container pt-8 lg:pt-16 tab-panel relative hide-scrollbar toggle-element flex flex-col lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px] xl:mx-auto {'hidden' if not is_active else ''}",
+        cls=f"code-container pt-8 lg:pt-16 tab-panel relative hide-scrollbar toggle-element {col} lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px] xl:mx-auto {'hidden' if not is_active else ''}",
         id=f"{title.lower().replace(' ', '-')}-code-demo")
 
 def tab_button(title, is_active=False):
@@ -208,20 +208,20 @@ def samples_section():
                             Img(src=f"{icons}/arrow-up-right.svg", alt="Arrow right icon", cls="group-hover:translate-y-[-0.1rem] transition-all ease-in-out duration-300"),
                             cls=f"{gap2} transition-transform transform relative items-center mt-4 lg:mt-6"),
                         href="/", cls=f"{col} items-center"),
-                    cls="group px-[0.55rem]"
+                    cls="group px-2"
                 ) for name, svg in samples],
-                cls="grid max-w-[60rem] lg:grid-cols-4 lg:max-w-[84rem] lg:gap-x-12 grid-cols-2 gap-x-[1rem] gap-y-8 w-full mx-auto"),
-            button("Discover all", xtra="w-[7.375rem]")),
+                cls="grid max-w-5xl lg:grid-cols-4 lg:max-w-7xl lg:gap-x-12 grid-cols-2 gap-x-4 gap-y-8 w-full mx-auto"),
+            button("Discover all")),
         "grey")
 
 def how_it_works_section():
+    msg = "FastHTML comes in battery-included - create good-looking interactive modern web applications and deploy them in minutes"
     return section_wrapper(
-        Div(
-            section_header(
-                "GET STARTED IN MINUTES", "The fastest way to create a real web application", "FastHTML comes in battery-included - create good-looking interactive modern web applications and deploy them in minutes"),
-            Div(
-                *[benefit(title, content) for title, content in benefits],
-                cls=f"{col} w-full lg:flex-row gap-4 items-center lg:gap-8 max-w-[82rem] mx-auto")),
+        (Div(
+            section_header( "GET STARTED IN MINUTES", "The fastest way to create a real web application", msg),
+            cls="max-w-[50rem] w-full mx-auto flex flex-col items-center text-center gap-6 mb-8 lg:mb-16"),
+            Div(*[benefit(title, content) for title, content in benefits],
+                cls=f"{col} w-full lg:flex-row gap-4 items-center lg:gap-8 max-w-7xl mx-auto")),
         "yellow")
 
 def faq_section():
@@ -232,11 +232,14 @@ def faq_section():
             Div(
                 *[faq_item(question, answer, i) for i, (question, answer) in enumerate(faqs)],
                 cls=f"{col} gap-4 {maxrem(32)} transition ease-out delay-[300ms]"),
-            cls=f"{section_base} w-full mx-auto lg:flex-row items-start max-w-[90rem]"),
+            cls=f"{section_base} w-full mx-auto lg:flex-row items-start max-w-7xl"),
         "blue")
 
+def arrow(d):
+    return Button(Img(src=f"assets/icons/arrow-{d}.svg", alt="Arrow left"),
+           cls="disabled:opacity-40 transition-opacity", id=f"slide{d.capitalize()}", aria_label=f"Slide {d}")
+
 def testimonials_section():
-    opacity = "disabled:opacity-40 transition-opacity"
     return section_wrapper(
         Div(
             section_header(
@@ -246,15 +249,12 @@ def testimonials_section():
                 Div(
                     *[testimonial_card(i, *args) for i,args in enumerate(testimonials)],
                     id="carousel-container",
-                    cls=f"hide-scrollbar {col} lg:flex-row gap-4 lg:gap-6 rounded-l-[1.5rem] xl:rounded-[1.5rem] w-full lg:overflow-hidden xl:overflow-hidden whitespace-nowrap"
+                    cls=f"hide-scrollbar {col} lg:flex-row gap-4 lg:gap-6 rounded-l-3xl xl:rounded-3xl w-full lg:overflow-hidden xl:overflow-hidden whitespace-nowrap"
                 ),
                 Div(
-                    Div(
-                        Button(Img(src="assets/icons/arrow-left.svg", alt="Arrow left"), cls=opacity, id="slideLeft", aria_label="Slide left"),
-                        Button(Img(src="assets/icons/arrow-right.svg", alt="Arrow right"), cls=opacity, id="slideRight", aria_label="Slide right"),
-                        cls="w-[4.5rem] flex justify-between ml-auto"
-                    ),
-                    cls=f"hidden lg:flex xl:flex justify-start {maxrem(41)} py-6 pl-6 pr-[5.5rem]"),
+                    Div(arrow("left"), arrow("right"),
+                        cls="w-[4.5rem] flex justify-between ml-auto"),
+                    cls=f"hidden lg:flex xl:flex justify-start {maxrem(41)} py-6 pl-6 pr-20"),
                 cls=f"max-h-fit {col} items-start lg:-mr-16 {maxpx(1440)} overflow-hidden"),
             cls=f"{section_base} {maxrem(90)} mx-auto lg:flex-row items-start"),
         "pink")
@@ -277,7 +277,7 @@ def footer():
             Div(
                 Div(
                     File("assets/footer-shapes.svg"),
-                    cls=f"absolute z-0 lg:-top-[15%] top-0 left-1/2 -translate-x-1/2 grid grid-cols-1 grid-rows-1 lg:w-[150%] w-[200%] aspect-square max-w-[2048px] min-w-[800px]"),
+                    cls=f"absolute z-0 lg:-top-[15%] top-0 left-1/2 -translate-x-1/2 grid grid-cols-1 grid-rows-1 lg:w-[150%] w-[200%] aspect-square max-w-none min-w-max"),
                 Img(src="/assets/footer-path.svg", alt="FastHTML logo", cls="relative w-full h-auto"),
                 cls=f"relative z-0 w-full px-4 lg:px-16 pb-1 {col} flex-1 justify-end"),
             cls=f"relative w-full h-[420px] lg:h-[600px] {col} pt-8 lg:pt-12 rounded-t-3xl lg:rounded-t-[2.5rem] bg-black overflow-hidden -mt-8 lg:-mt-10"))
@@ -297,7 +297,8 @@ hdrs = [
     Link(href='css/preview-stack.css', rel='stylesheet'),
     Link(href='css/highlighter-theme.css', rel='stylesheet')]
 
-app,rt = fast_app(hdrs=hdrs, default_hdrs=False)
+bodykw = {"class": "relative bg-grey font-geist text-black/80 font-details-off"}
+app,rt = fast_app(hdrs=hdrs, default_hdrs=False, bodykw=bodykw)
 
 @rt("/")
 def get():
