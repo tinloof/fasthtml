@@ -1,10 +1,10 @@
 function checkOverflow(codeContainer) {
   const fadeOutElement =
     codeContainer.parentElement.querySelector(".code-fade-out");
-
-  if (
+    let preElement = codeContainer.querySelector("code");
+    if (
     Math.floor(codeContainer.getBoundingClientRect().bottom) <
-    Math.floor(codeContainer.childNodes[0].getBoundingClientRect().bottom)
+    Math.floor(preElement.getBoundingClientRect().bottom)
   ) {
     fadeOutElement.style.display = "block";
   } else {
