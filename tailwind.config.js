@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-tailwind.config = {
+module.exports = {
+  content: ["./index.html", "./js/*.js"],
   theme: {
     screens: {
       sm: "640px",
@@ -11,15 +12,12 @@ tailwind.config = {
       keyframes: {
         "positive-bounce": {
           "0%": {
-            transform: "rotate(0deg)",
-          },
-          "25%": {
             transform: "rotate(4deg)",
           },
-          "50%": {
+          "33%": {
             transform: "rotate(3deg)",
           },
-          "75%": {
+          "66%": {
             transform: "rotate(5deg)",
           },
           "100%": {
@@ -30,24 +28,18 @@ tailwind.config = {
           "0%": {
             transform: "rotate(4deg)",
           },
-          "66%": {
-            transform: "rotate(-1deg)",
-          },
           "100%": {
             transform: "rotate(0deg)",
           },
         },
         "negative-bounce": {
           "0%": {
-            transform: "rotate(0deg)",
-          },
-          "25%": {
             transform: "rotate(-4deg)",
           },
-          "50%": {
+          "33%": {
             transform: "rotate(-3deg)",
           },
-          "75%": {
+          "66%": {
             transform: "rotate(-5deg)",
           },
           "100%": {
@@ -57,9 +49,6 @@ tailwind.config = {
         "negative-unbounce": {
           "0%": {
             transform: "rotate(-4deg)",
-          },
-          "66%": {
-            transform: "rotate(1deg)",
           },
           "100%": {
             transform: "rotate(0deg)",
@@ -89,7 +78,7 @@ tailwind.config = {
         "soft-pink": "#FFCCF7",
         purple: "#3A2234",
         "soft-purple": "#EDDEE9",
-        blue: "#8C8CF2",
+        blue: "#7575F0",
         "soft-blue": "#E8E8FC",
       },
     },
