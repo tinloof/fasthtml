@@ -72,7 +72,7 @@ def hero_section():
             ),
             Div(
                 A('See examples', cls=f'{bnset} m-body px-4 py-1 rounded-full bg-black hover:bg-black/80 transition-colors duration-300 text-white h-[76px] w-full max-w-[350px] flex items-center justify-center', href='/'),
-                video_button('Try now', '/assets/intro-poster.png', '4min 50sec', '/'),
+                video_button('Try now', '/assets/intro-poster.png', '4min 50sec', youtube_id='QqZUzkPcU7A'),
                 cls=f'flex-1 {center} justify-center content-center flex-wrap lg:gap-6 gap-4 m-body'),
             cls=f'{col} flex-1 relative px-4 lg:px-16'),
         cls=f'{col} relative w-full h-screen max-h-[1024px] min-h-[720px] overflow-hidden bg-grey')
