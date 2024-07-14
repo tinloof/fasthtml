@@ -27,7 +27,7 @@ def faq_item(question, answer, id):
         id=id, question=question, answer=answer,
         question_cls="text-black s-body",
         answer_cls="s-body text-black/80 col-span-full",
-        container_cls=f"{col} gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+        container_cls=f"{col} gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6 {bnset}"
     )
 
 def testimonial_card(idx, comment, name, role, company, image_src):
@@ -55,8 +55,8 @@ def hero_section():
             A(
                 Img(src='/assets/logo.svg', alt='FastHTML', width='105', height='24'),
                 href='#'),
-            A('Try now', href='/', cls=f'bg-black text-white py-2 px-4 s-body rounded-[62.5rem] hover:bg-black/80 transition-colors duration-300 px-4 py-1 h-10 {center} justify-center'),
-            cls=f'py-2 px-4 {between} items-center rounded-full w-full max-w-[400px] bg-white/80 backdrop-blur-2xl'),
+            A('Try now', href='/', cls=f'{bnset} bg-black text-white py-2 px-4 s-body rounded-[62.5rem] hover:bg-black/80 transition-colors duration-300 px-4 py-1 h-10 {center} justify-center'),
+            cls=f'py-2 px-4 {between} items-center rounded-full w-full max-w-[400px] bg-white/50 backdrop-blur-lg border border-white/20'),
         cls=f'fixed top-0 w-full left-0 p-4 {center} justify-center z-50'),
     Section(
         Div(
@@ -71,7 +71,7 @@ def hero_section():
                 cls=f'flex-1 {col} items-center justify-center gap-6 text-center w-full text-black'
             ),
             Div(
-                A('See examples', cls='m-body px-4 py-1 rounded-full bg-black hover:bg-black/80 transition-colors duration-300 text-white h-[76px] w-full max-w-[350px] flex items-center justify-center', href='/'),
+                A('See examples', cls=f'{bnset} m-body px-4 py-1 rounded-full bg-black hover:bg-black/80 transition-colors duration-300 text-white h-[76px] w-full max-w-[350px] flex items-center justify-center', href='/'),
                 video_button('Try now', '/assets/intro-poster.png', '4min 50sec', '/'),
                 cls=f'flex-1 {center} justify-center content-center flex-wrap lg:gap-6 gap-4 m-body'),
             cls=f'{col} flex-1 relative px-4 lg:px-16'),
@@ -129,7 +129,7 @@ def component_preview_section():
         *[code_demo(title, file_name, code_snippet, demo_content, i == 0) for i, (title, file_name, code_snippet, demo_content) in enumerate(components)],
         Ul(
             *[tab_button(title, i == 0) for i, (title, _, _, _) in enumerate(components)],
-            Div(id="highlighter", cls="z-0 highlighter w-[10.59375rem] absolute bg-white/20 h-[2.75rem] rounded-[62.5rem] transition-transform duration-300"),
+            Div(id="highlighter", cls=f"{inset} z-0 highlighter w-[10.59375rem] absolute bg-white/20 h-[2.75rem] rounded-[62.5rem] transition-transform duration-300"),
             role="tablist", id="tab-list",
             cls=f"relative mt-12 text-white/80 flex-none rounded-[62.5rem] bg-black/20 p-2 max-w-full overflow-x-auto lg:mx-auto {center} hide-scrollbar lg:max-w-[43.375rem]"),
         cls="relative bg-purple px-4 lg:px-16 pb-24 -mt-8 lg:-mt-10 flex-col xl:items-center items-start gap-6 lg:gap-16 lg:pb-32 rounded-t-3xl lg:rounded-t-[2.5rem] overflow-x-hidden")
@@ -153,23 +153,22 @@ def stacked_cards_section():
         id="stacked-cards-section", cls="relative")
 
 def samples_section():
+    text = "FastHTML can be used for everything from collaborative games to multi-modal UI. We've selected small self-contained examples for you to learn from."
     return section_wrapper(
-            (section_header(
-                "SAMPLES", "See FastHTML in action", "FastHTML can be used for everything from collaborative games to multi-modal UI. We've selected small self-contained examples for you to learn from.",
-                max_width=40),
+            (section_header("SAMPLES", "See FastHTML in action", text, max_width=40),
             Div(
                 *[Div(
                     A(
                         File(f"assets/{svg}"),
                         Div(
-                            P(name, cls="regular-body"),
+                            P(name, cls="border-b-2 border-b-black/30 hover:border-b-black/80 regular-body"),
                             Img(src=f"{icons}/arrow-up-right.svg", alt="Arrow right icon", cls="group-hover:translate-y-[-0.1rem] transition-all ease-in-out duration-300"),
                             cls=f"{gap2} transition-transform transform relative items-center mt-4 lg:mt-6"),
                         href="/", cls=f"{col} items-center"),
                     cls="group px-2"
                 ) for name, svg in samples],
                 cls="grid max-w-5xl lg:grid-cols-4 lg:max-w-7xl lg:gap-x-12 grid-cols-2 gap-x-4 gap-y-8 w-full mx-auto"),
-            A("Discover all", href="/", cls="bg-black text-white py-2 px-4 s-body rounded-full hover:bg-black/80 transition-colors duration-300")),
+            A("Discover all", href="/", cls=f"{bnset} bg-black text-white py-2 px-4 s-body rounded-full hover:bg-black/70 transition-colors duration-300")),
         "grey")
 
 def how_it_works_section():
@@ -205,7 +204,7 @@ def testimonials_section():
         "pink")
 
 def footer_link(text, href, **kw):
-    return Li(A(text, href=href, cls=f"{gap2} items-center hover:text-white border-b border-b-transparent hover:border-b-white", **kw))
+    return Li(A(text, href=href, cls=f"{gap2} items-center hover:text-white border-b border-b-transparent border-b-white/50 hover:border-b-white", **kw))
 
 def footer():
     return Section(

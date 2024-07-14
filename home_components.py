@@ -1,10 +1,16 @@
 from fasthtml.common import *
+from itertools import starmap
 
 icons = 'assets/icons'
 col = "flex flex-col"
 center = "flex items-center"
 between = "flex justify-between"
 gap2 = "flex gap-2"
+# inset = "shadow-[0_3px_2px_rgba(255,255,255,0.9),0_5px_5px_rgba(0,0,0,0.3)]"
+# bnset = "shadow-[0_3px_2px_rgba(255,255,255,0.1),0_4px_4px_rgba(0,0,0,0.7)]"
+inset = "shadow-[0_1px_1px_rgba(255,255,255,0.3),0_2px_2px_rgba(0,0,0,0.1)]"
+bnset = "shadow-[0_1px_1px_rgba(255,255,255,0.03),0_2px_2px_rgba(0,0,0,0.2)]"
+# inset = "shadow-[inset_0_-4px_8px_rgba(0,0,0,0.2)]"
 
 def maxpx (px ): return f"w-full max-w-[{px}px]"
 def maxrem(rem): return f"w-full max-w-[{rem}rem]"
@@ -28,15 +34,14 @@ def stack_item(name, icon_src, href):
         Img(src=f"./assets/icons/stack/{icon_src}", alt=name, width="24", height="24"),
         P(name, cls="text-black/60"),
         href=href, target="_blank", rel="noopener noreferrer",
-        cls=f"{gap2} items-center px-4 py-2 bg-white/60 rounded-full")
+        cls=f"{gap2} items-center px-4 py-2 bg-white/60 rounded-full {inset}")
 
-def stacked_card(title, description, tech_stack, color):
+def stacked_card(title, description, stacks, color):
     return Div(
         Div(
             H3(title, cls="heading-3 mb-4"),
             P(description, cls="mb-12"),
-            Div(
-                *[stack_item(name, icon, href) for name, icon, href in tech_stack],
+            Div(*starmap(stack_item, stacks),
                 cls=f"{gap2} flex-wrap items-center"),
             cls=f"rounded-3xl {color} lg:p-12 p-6 {col} m-body")
     )
@@ -63,5 +68,5 @@ def video_button(txt, poster_src, video_duration, video_url, poster_alt="Video p
         P(
             Img(src=youtube_icon_src, width='41', height='30', alt='Youtube icon'),
             cls=f'flex-1 {center}'),
-        cls=f'p-2 rounded-full bg-white hover:bg-white/80 transition-colors duration-300 h-[76px] w-full max-w-[{max_width}] {center} gap-4',
+        cls=f'{inset} p-2 rounded-full bg-white hover:bg-white/80 transition-colors duration-300 h-[76px] w-full max-w-[{max_width}] {center} gap-4',
         href=video_url)
