@@ -61,7 +61,7 @@ def accordion(id, question, answer, question_cls="", answer_cls="", container_cl
 
 def video_button(txt, poster_src, video_duration, youtube_id, poster_alt="Video poster", youtube_icon_src="/assets/icons/youtube.svg", max_width="350px"):
     return (
-        # 'Popup container'
+        # Video Popup container - TODO cleanup
         Div(
             Div(
                 # 'Pastel green top bar',
@@ -78,8 +78,8 @@ def video_button(txt, poster_src, video_duration, youtube_id, poster_alt="Video 
                 ),
                 cls='bg-white rounded-lg shadow-lg overflow-hidden'
             ),
-        id='videoPopup',
-        cls='hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center'
+            id='videoPopup',
+            cls='hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center'
         ),
         # Button link
         A(
@@ -91,29 +91,6 @@ def video_button(txt, poster_src, video_duration, youtube_id, poster_alt="Video 
                 Img(src=youtube_icon_src, width='41', height='30', alt='Youtube icon'),
                 cls=f'flex-1 {center}'),
             cls=f'{inset} p-2 rounded-full bg-white hover:bg-white/80 transition-colors duration-300 h-[76px] w-full max-w-[{max_width}] {center} gap-4',
-            href="#", id='videoLink'),        
-        Script("""
-            const videoLink = document.getElementById('videoLink');
-            const videoPopup = document.getElementById('videoPopup');
-            const closePopup = document.getElementById('closePopup');
-            const youtubeVideo = document.getElementById('youtubeVideo');
+            href="#", id='videoLink', video_id=youtube_id),        
 
-            videoLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                youtubeVideo.src = 'https://www.youtube.com/embed/{youtube_id}';
-                videoPopup.classList.remove('hidden');
-            });
-
-            closePopup.addEventListener('click', () => {
-                youtubeVideo.src = '';
-                videoPopup.classList.add('hidden');
-            });
-
-            videoPopup.addEventListener('click', (e) => {
-                if (e.target === videoPopup) {
-                youtubeVideo.src = '';
-                videoPopup.classList.add('hidden');
-                }
-            });""".replace('{youtube_id}', youtube_id)
-        )
     )

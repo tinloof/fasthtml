@@ -252,7 +252,8 @@ scripts = (
     Script(src='js/togglePreview.js'),
     Script(src='js/codeOverflow.js'),
     Script(src='js/copyCode.js'),
-    Script(src='js/carouselScroll.js'))
+    Script(src='js/carouselScroll.js'),
+    Script(src='js/videoPopup.js'))
 
 @rt("/")
 def get():
