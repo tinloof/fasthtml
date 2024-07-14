@@ -59,16 +59,17 @@ def accordion(id, question, answer, question_cls="", answer_cls="", container_cl
         P(answer, cls=f"overflow-hidden max-h-0 -mt-4 {pc}:max-h-[30rem] {pc}:mt-0 transition-all duration-300 ease-in-out {answer_cls}"),
         cls=container_cls)
 
-def video_button(txt, poster_src, video_duration, youtube_id, poster_alt="Video poster", youtube_icon_src="/assets/icons/youtube.svg", max_width="350px"):
+
+def video_player(txt):
     return (
-        # Video Popup container - TODO cleanup
+        # Video Popup container - TODO make pretty
         Div(
             Div(
                 # 'Pastel green top bar',
                 Div(
                     H3(txt, cls='text-green-800 font-semibold'),
                         # 'Close button',
-                        Button('×', id='closePopup', cls='text-green-800 hover:text-green-950'),
+                        Button('X', id='closePopup', cls='text-green-800 hover:text-green-950'),
                     cls='bg-green-200 p-2 flex justify-between items-center'
                 ),
                 # 'YouTube video iframe',
@@ -80,9 +81,11 @@ def video_button(txt, poster_src, video_duration, youtube_id, poster_alt="Video 
             ),
             id='videoPopup',
             cls='hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center'
-        ),
-        # Button link
-        A(
+        )
+    )
+
+def video_button(txt, poster_src, video_duration, youtube_id, poster_alt="Video poster", youtube_icon_src="/assets/icons/youtube.svg", max_width="350px"):
+    return A(
             Img(src=poster_src, width='240', height='120', cls='rounded-full w-[7.5rem] h-auto', alt=poster_alt),
             Span(
                 txt, Span(video_duration, cls='s-body text-black/60'),
@@ -91,6 +94,4 @@ def video_button(txt, poster_src, video_duration, youtube_id, poster_alt="Video 
                 Img(src=youtube_icon_src, width='41', height='30', alt='Youtube icon'),
                 cls=f'flex-1 {center}'),
             cls=f'{inset} p-2 rounded-full bg-white hover:bg-white/80 transition-colors duration-300 h-[76px] w-full max-w-[{max_width}] {center} gap-4',
-            href="#", id='videoLink', video_id=youtube_id),        
-
-    )
+            href="#", id='videoLink', video_id=youtube_id)
