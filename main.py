@@ -35,7 +35,7 @@ def testimonial_card(idx, comment, name, role, company, image_src):
         P(comment, cls=f"m-body text-black"),
         Div(
             Div(Img(src=image_src, alt=f"Picture of {name}", width="112", height="112"),
-                cls="rounded-full w-[2.625rem] lg:w-[3.5rem] lg:h-[3.5rem] h-[2.625rem]"),
+                cls="rounded-full w-11 h-11 lg:w-14 lg:h-14"),
             Div(
                 P(name, cls=f"m-body text-black"),
                 Div(
@@ -46,7 +46,7 @@ def testimonial_card(idx, comment, name, role, company, image_src):
                 cls="w-full"),
             cls=f"{center} justify-start gap-2"),
         id=f"testimonial-card-{idx+1}",
-        cls=f"testimonial-card {col} flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-pink p-4 lg:p-8 {maxrem(36)} lg:w-[27rem]")
+        cls=f"testimonial-card {col} flex-none whitespace-normal flex justify-between h-96 rounded-3xl items-start bg-soft-pink p-4 lg:p-8 {maxrem(36)} lg:w-96")
 
 def hero_section():
     return (
@@ -61,11 +61,11 @@ def hero_section():
     Section(
         Div(
             File('assets/hero-shapes.svg'),
-            cls='absolute z-0 lg:-top-[15%] top-0 left-1/2 -translate-x-1/2 grid grid-cols-1 grid-rows-1 w-[120%] aspect-square max-w-[2048px] min-w-[900px]'),
+            cls='absolute z-0 lg:-top-[15%] top-0 left-1/2 -translate-x-1/2 grid grid-cols-1 grid-rows-1 w-[120%] aspect-square max-w-screen-xl min-w-[900px]'),
         Div(
             Div(cls='lg:flex-1 max-lg:basis-[152px]'),
             Div(
-                H1('Real web applications the right way', cls='heading-1 max-w-[800px]'),
+                H1('Real web applications the right way', cls='heading-1 max-w-3xl'),
                 P('Built on solid web foundations, not the latest fads - with\nFastHTML you can get started on anything from simple dashboards to\nscalable web applications in minutes.',
                     cls='m-body max-w-[40rem] text-center'),
                 cls=f'flex-1 {col} items-center justify-center gap-6 text-center w-full text-black'
@@ -76,7 +76,7 @@ def hero_section():
                 cls=f'flex-1 {center} justify-center content-center flex-wrap lg:gap-6 gap-4 m-body'),
                 video_player('Try now'),
             cls=f'{col} flex-1 relative px-4 lg:px-16'),
-        cls=f'{col} relative w-full h-screen max-h-[1024px] min-h-[720px] overflow-hidden bg-grey')
+        cls=f'{col} relative w-full h-screen max-h-screen min-h-[720px] overflow-hidden bg-grey')
     )
 
 def code_display(file_name, code_snippet, snippet_id):
@@ -91,7 +91,7 @@ def code_display(file_name, code_snippet, snippet_id):
                         cls=f"relative bg-black/20 rounded-[0.5rem] {center} p-2 h-8 w-fit"),
                     cls="copy-button"),
                 cls=f"w-full {between}"),
-            cls="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"),
+            cls="bg-black/20 text-white/80 w-full max-w-2xl lg:max-w-xl p-4 rounded-2xl"),
         Pre(
             Code(code_snippet, cls="python w-full mono-body"),
             id=snippet_id,
@@ -101,7 +101,7 @@ def code_display(file_name, code_snippet, snippet_id):
     )
 
 def code_demo(title, file_name, code_snippet, demo_content, is_active=False):
-    demo_cls = f"{col} my-[2.66rem] p-4 flex-none whitespace-normal justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-purple lg:p-8 w-full max-w-[40rem] lg:max-w-[27rem] lg:mx-[7rem] lg:my-[2.13rem]"
+    demo_cls = f"{col} my-11 p-4 flex-none whitespace-normal justify-between h-96 rounded-3xl items-start bg-soft-purple lg:p-8 w-full max-w-2xl lg:max-w-md lg:mx-28 lg:my-8"
     snippet_id = f"{title.lower().replace(' ', '-')}-code-snippet"
     return Div(
         code_display(file_name, code_snippet, snippet_id),
@@ -111,7 +111,7 @@ def code_demo(title, file_name, code_snippet, demo_content, is_active=False):
         id=f"{title.lower().replace(' ', '-')}-code-demo")
 
 def tab_button(title, is_active=False):
-    classes = f"z-10 button-container flex-none relative w-[10.59375rem] h-[2.75rem] rounded-[62.5rem] {center}"
+    classes = f"z-10 button-container flex-none relative px-8 py-2 w-[10.59375rem] h-11 rounded-full {center}"
     active = f"{classes} current active transition-all duration-300 text-white"
     inactive = f"{classes} text-white/80 hover:text-white"
     return Li(
@@ -177,7 +177,7 @@ def how_it_works_section():
     return section_wrapper(
         (Div(
             section_header( "GET STARTED IN MINUTES", "The fastest way to create a real web application", msg),
-            cls="max-w-[50rem] w-full mx-auto flex-col items-center text-center gap-6 mb-8 lg:mb-8"),
+            cls="max-w-3xl w-full mx-auto flex-col items-center text-center gap-6 mb-8 lg:mb-8"),
             Div(*[benefit(title, content) for title, content in benefits],
                 cls=f"{col} w-full lg:flex-row gap-4 items-center lg:gap-8 max-w-7xl mx-auto")),
         "yellow", flex=False)
@@ -256,8 +256,10 @@ scripts = (
     Script(src='js/carouselScroll.js'),
     Script(src='js/videoPopup.js'))
 
-@rt("/")
-def get():
+from fastcore.xtras import timed_cache
+
+@timed_cache(seconds=60)
+def home():
     return (Title("FastHTML - Real web applications the right way"), 
         Main(
             hero_section(),
@@ -268,7 +270,9 @@ def get():
             faq_section(),
             testimonials_section(),
             footer()),
-            *scripts
-    )
+        *scripts)
+
+@rt("/")
+def get(): return home()
 
 run_uv()
