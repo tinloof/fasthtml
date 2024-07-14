@@ -1,31 +1,20 @@
 from fasthtml.common import *
-from content import benefits,components,stacked,faqs,testimonials,samples
+from home_components import *
+from content import *
 
-icons = 'assets/icons'
-
-col = "flex flex-col"
-center = "flex items-center"
-between = "flex justify-between"
-gap2 = "flex gap-2"
 section_base1= "pt-8 px-4 pb-24 gap-8 lg:gap-16 lg:pt-16 lg:px-16 lg:pb-32"
 section_base =f"{col} {section_base1}"
-def maxpx (px ): return f"w-full max-w-[{px}px]"
-def maxrem(rem): return f"w-full max-w-[{rem}rem]"
-
-icons = 'assets/icons'
 
 def section_wrapper(content, bg_color, xtra="", flex=True):
     return Section(content, cls=f"bg-{bg_color} {section_base1} {col if flex else ''} -mt-8 lg:-mt-16 items-center rounded-t-3xl lg:rounded-t-[2.5rem] relative {xtra}")
 
-def button(text, href="/", xtra="", **kw):
-    return A(text, href=href, cls=f"bg-black text-white py-2 px-4 s-body rounded-full hover:bg-black/80 transition-colors duration-300 {xtra}", **kw)
-
-def section_header(mono_text, heading, subheading, max_width=32):
+def section_header(mono_text, heading, subheading, max_width=32, center=True):
+    pos = 'items-center text-center' if center else 'items-start text-start'
     return Div(
         P(mono_text, cls="mono-body text-opacity-60"),
         H2(heading, cls=f"text-black heading-2"),
         P(subheading, cls=f"l-body {maxrem(max_width)}"),
-        cls=f"{maxrem(50)} mx-auto {col} items-center text-center gap-6")
+        cls=f"{maxrem(50)} mx-auto {col} {pos} gap-6")
 
 def benefit(title, content):
     return Div(
@@ -34,16 +23,12 @@ def benefit(title, content):
         cls="w-full p-6 bg-soft-yellow rounded-2xl lg:p-12 lg:h-[22rem] lg:w-[26rem]")
 
 def faq_item(question, answer, id):
-    return Div(
-        Input(id=f"collapsible-{id}", type="checkbox", cls=f"collapsible-checkbox peer/collapsible-{id} hidden"),
-        Label(
-            P(question, cls=f"text-black s-body flex-grow"),
-            Img(src=f"{icons}/plus-icon.svg", alt="Expand", cls="plus-icon w-6 h-6"),
-            Img(src=f"{icons}/minus-icon.svg", alt="Collapse", cls="minus-icon w-6 h-6"),
-            for_=f"collapsible-{id}",
-            cls=f"{between} items-center cursor-pointer"),
-        P(answer, cls=f"overflow-hidden max-h-0 -mt-4 peer-checked/collapsible-{id}:max-h-[30rem] peer-checked/collapsible-{id}:mt-0 transition-all duration-300 ease-in-out s-body text-black/80 col-span-full"),
-        cls=f"{col} gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6")
+    return accordion(
+        id=id, question=question, answer=answer,
+        question_cls="text-black s-body",
+        answer_cls="s-body text-black/80 col-span-full",
+        container_cls=f"{col} gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"
+    )
 
 def testimonial_card(idx, comment, name, role, company, image_src):
     return Div(
@@ -63,7 +48,6 @@ def testimonial_card(idx, comment, name, role, company, image_src):
         id=f"testimonial-card-{idx+1}",
         cls=f"testimonial-card {col} flex-none whitespace-normal flex justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-pink p-4 lg:p-8 {maxrem(36)} lg:w-[27rem]")
 
-# Section functions
 def hero_section():
     return (
     Header(
@@ -71,9 +55,9 @@ def hero_section():
             A(
                 Img(src='/assets/logo.svg', alt='FastHTML', width='105', height='24'),
                 href='#'),
-            A('Try now', href='/', cls='bg-black text-white py-2 px-4 s-body rounded-[62.5rem] hover:bg-black/80 transition-colors duration-300 px-4 py-1 h-10 flex items-center justify-center'),
-            cls='py-2 px-4 flex justify-between items-center rounded-full w-full max-w-[400px] bg-white/80 backdrop-blur-2xl'),
-        cls='fixed top-0 w-full left-0 p-4 flex items-center justify-center z-50'),
+            A('Try now', href='/', cls=f'bg-black text-white py-2 px-4 s-body rounded-[62.5rem] hover:bg-black/80 transition-colors duration-300 px-4 py-1 h-10 {center} justify-center'),
+            cls=f'py-2 px-4 {between} items-center rounded-full w-full max-w-[400px] bg-white/80 backdrop-blur-2xl'),
+        cls=f'fixed top-0 w-full left-0 p-4 {center} justify-center z-50'),
     Section(
         Div(
             File('assets/hero-shapes.svg'),
@@ -88,55 +72,47 @@ def hero_section():
             ),
             Div(
                 A('See examples', cls='m-body px-4 py-1 rounded-full bg-black hover:bg-black/80 transition-colors duration-300 text-white h-[76px] w-full max-w-[350px] flex items-center justify-center', href='/'),
-                A(
-                    Img(src='/assets/intro-poster.png', width='240', height='120', cls='rounded-full w-[7.5rem] h-auto', alt='Youtube video poster'),
-                    Span(
-                        'Try now',
-                        Span('4min 50sec', cls='s-body text-black/60'),
-                        cls=f'text-black {col}'
-                    ),
-                    P(
-                        Img(src='/assets/icons/youtube.svg', width='41', height='30', alt='Youtube icon'),
-                        cls='flex-1 flex justify-center'
-                    ),
-                    cls='p-2 rounded-full bg-white hover:bg-white/80 transition-colors duration-300 h-[76px] w-full max-w-[350px] flex items-center gap-4',
-                    href='/'),
-                cls='flex-1 flex items-center justify-center content-center flex-wrap lg:gap-6 gap-4 m-body'),
+                video_button('Try now', '/assets/intro-poster.png', '4min 50sec', '/'),
+                cls=f'flex-1 {center} justify-center content-center flex-wrap lg:gap-6 gap-4 m-body'),
             cls=f'{col} flex-1 relative px-4 lg:px-16'),
         cls=f'{col} relative w-full h-screen max-h-[1024px] min-h-[720px] overflow-hidden bg-grey')
     )
 
-def code_demo(title, file_name, code_snippet, demo_content, is_active=False):
-    demo_cls = f"{col} my-[2.66rem] p-4 flex-none whitespace-normal justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-purple lg:p-8 w-full max-w-[40rem] lg:max-w-[27rem] lg:mx-[7rem] lg:my-[2.13rem]"
+def code_display(file_name, code_snippet, snippet_id):
     return Div(
         Div(
             Div(
-                Div(
-                    P(file_name, cls="xs-mono-body flex items-center"),
-                    Button(
-                        Div(
-                            Img(cls="button-content w-4 h-4", src="assets/icons/copy-icon.svg", alt="Copy"),
-                            Span("Copied!", cls="absolute flex bg-inherit rounded-l-[0.5rem] items-center py-2 h-full right-0 copied-text overflow-hidden w-0 peer-clicked:w-fit s-body text-white/80 transition-transform transition-all duration-600 ease-out"),
-                            cls="relative bg-black/20 rounded-[0.5rem] flex items-center p-2 h-8 w-fit"),
-                        cls="copy-button"),
-                    cls="w-full flex justify-between"),
-                cls="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"),
-            Pre(
-                Code(code_snippet, cls="python w-full mono-body"),
-                id=f"{title.lower().replace(' ', '-')}-code-snippet",
-                cls="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"),
-            Div(cls="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"),
-            cls=f"relative {col} gap-6 lg:max-w-[45rem] w-full overflow-hidden"),
+                P(file_name, cls=f"xs-mono-body {center}"),
+                Button(
+                    Div(
+                        Img(cls="button-content w-4 h-4", src="assets/icons/copy-icon.svg", alt="Copy"),
+                        Span("Copied!", cls=f"absolute bg-inherit rounded-l-[0.5rem] {center} py-2 h-full right-0 copied-text overflow-hidden w-0 peer-clicked:w-fit s-body text-white/80 transition-transform transition-all duration-600 ease-out"),
+                        cls=f"relative bg-black/20 rounded-[0.5rem] {center} p-2 h-8 w-fit"),
+                    cls="copy-button"),
+                cls=f"w-full {between}"),
+            cls="bg-black/20 text-white/80 lg:max-w-[32.75rem] w-full max-w-[40rem] p-4 rounded-2xl"),
+        Pre(
+            Code(code_snippet, cls="python w-full mono-body"),
+            id=snippet_id,
+            cls="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"),
+        Div(cls="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"),
+        cls=f"relative {col} gap-6 lg:max-w-[45rem] w-full overflow-hidden"
+    )
+
+def code_demo(title, file_name, code_snippet, demo_content, is_active=False):
+    demo_cls = f"{col} my-[2.66rem] p-4 flex-none whitespace-normal justify-between h-[22.8125rem] rounded-[1.5rem] items-start bg-soft-purple lg:p-8 w-full max-w-[40rem] lg:max-w-[27rem] lg:mx-[7rem] lg:my-[2.13rem]"
+    snippet_id = f"{title.lower().replace(' ', '-')}-code-snippet"
+    return Div(
+        code_display(file_name, code_snippet, snippet_id),
         Div(demo_content, cls=demo_cls),
         aria_labelledby=f"tab-{title.lower().replace(' ', '-')}", role="tabpanel",
         cls=f"code-container pt-8 lg:pt-16 tab-panel relative hide-scrollbar toggle-element {col} lg:flex-row lg:justify-between overflow-hidden w-full lg:max-w-[1440px] xl:mx-auto {'hidden' if not is_active else ''}",
         id=f"{title.lower().replace(' ', '-')}-code-demo")
 
 def tab_button(title, is_active=False):
-    common_classes = "z-10 button-container flex-none relative w-[10.59375rem] h-[2.75rem] rounded-[62.5rem] flex items-center"
-    active_classes = f"{common_classes} current active transition-all duration-300 text-white"
-    inactive_classes = f"{common_classes} text-white/80 hover:text-white"
-
+    classes = f"z-10 button-container flex-none relative w-[10.59375rem] h-[2.75rem] rounded-[62.5rem] {center}"
+    active = f"{classes} current active transition-all duration-300 text-white"
+    inactive = f"{classes} text-white/80 hover:text-white"
     return Li(
         Button(
             Div(title, cls="m-body w-max mx-auto"),
@@ -146,7 +122,7 @@ def tab_button(title, is_active=False):
             tabindex="-1" if not is_active else None,
             name=f"tab-{title.lower().replace(' ', '-')}"),
         role="tab", aria_selected="true" if is_active else "false",
-        cls=active_classes if is_active else inactive_classes)
+        cls=active if is_active else inactive)
 
 def component_preview_section():
     return Section(
@@ -155,26 +131,8 @@ def component_preview_section():
             *[tab_button(title, i == 0) for i, (title, _, _, _) in enumerate(components)],
             Div(id="highlighter", cls="z-0 highlighter w-[10.59375rem] absolute bg-white/20 h-[2.75rem] rounded-[62.5rem] transition-transform duration-300"),
             role="tablist", id="tab-list",
-            cls="relative mt-12 flex text-white/80 flex-none rounded-[62.5rem] bg-black/20 p-2 max-w-full overflow-x-auto lg:mx-auto items-center hide-scrollbar lg:max-w-[43.375rem]"),
+            cls=f"relative mt-12 text-white/80 flex-none rounded-[62.5rem] bg-black/20 p-2 max-w-full overflow-x-auto lg:mx-auto {center} hide-scrollbar lg:max-w-[43.375rem]"),
         cls="relative bg-purple px-4 lg:px-16 pb-24 -mt-8 lg:-mt-10 flex-col xl:items-center items-start gap-6 lg:gap-16 lg:pb-32 rounded-t-3xl lg:rounded-t-[2.5rem] overflow-x-hidden")
-
-def tech_stack_item(name, icon_src, href):
-    return A(
-        Img(src=f"./assets/icons/stack/{icon_src}", alt=name, width="24", height="24"),
-        P(name, cls="text-black/60"),
-        href=href, target="_blank", rel="noopener noreferrer",
-        cls=f"{gap2} items-center px-4 py-2 bg-white/60 rounded-full")
-
-def stacked_card(title, description, tech_stack):
-    return Div(
-        Div(
-            H3(title, cls="heading-3 mb-4"),
-            P(description, cls="mb-12"),
-            Div(
-                *[tech_stack_item(name, icon, href) for name, icon, href in tech_stack],
-                cls=f"{gap2} flex-wrap items-center"),
-            cls=f"rounded-3xl bg-soft-green lg:p-12 p-6 {col} m-body")
-    )
 
 def stacked_cards_section():
     return Section(
@@ -189,7 +147,7 @@ def stacked_cards_section():
             cls="bg-purple sticky top-0 bottom-[calc(100%-300px)] w-full"),
         Div(
             Div(
-                *[stacked_card(title, description, tech_stack) for title, description, tech_stack in stacked],
+                *[stacked_card(title, description, tech_stack, "bg-soft-green") for title, description, tech_stack in stacked],
                 id="stacked-cards", cls=f"{maxrem(50)} mx-auto"),
             cls="px-4 lg:px-16 w-full bg-green pt-8"),
         id="stacked-cards-section", cls="relative")
@@ -202,7 +160,7 @@ def samples_section():
             Div(
                 *[Div(
                     A(
-                        Img(src=f"/assets/{svg}", alt=name),
+                        File(f"assets/{svg}"),
                         Div(
                             P(name, cls="regular-body"),
                             Img(src=f"{icons}/arrow-up-right.svg", alt="Arrow right icon", cls="group-hover:translate-y-[-0.1rem] transition-all ease-in-out duration-300"),
@@ -211,7 +169,7 @@ def samples_section():
                     cls="group px-2"
                 ) for name, svg in samples],
                 cls="grid max-w-5xl lg:grid-cols-4 lg:max-w-7xl lg:gap-x-12 grid-cols-2 gap-x-4 gap-y-8 w-full mx-auto"),
-            button("Discover all")),
+            A("Discover all", href="/", cls="bg-black text-white py-2 px-4 s-body rounded-full hover:bg-black/80 transition-colors duration-300")),
         "grey")
 
 def how_it_works_section():
@@ -228,34 +186,21 @@ def faq_section():
     return section_wrapper(
         Div(
             section_header( "FAQ", "Questions? Answers.", "Your top FastHTML questions clarified.",
-                max_width=21),
+                max_width=21, center=False),
             Div(
                 *[faq_item(question, answer, i) for i, (question, answer) in enumerate(faqs)],
                 cls=f"{col} gap-4 {maxrem(32)} transition ease-out delay-[300ms]"),
             cls=f"{section_base} w-full mx-auto lg:flex-row items-start max-w-7xl"),
         "blue")
 
-def arrow(d):
-    return Button(Img(src=f"assets/icons/arrow-{d}.svg", alt="Arrow left"),
-           cls="disabled:opacity-40 transition-opacity", id=f"slide{d.capitalize()}", aria_label=f"Slide {d}")
-
 def testimonials_section():
+    testimonial_cards = [testimonial_card(i, *args) for i, args in enumerate(testimonials)]
     return section_wrapper(
         Div(
             section_header(
                 "LOVE IS IN THE AIR", "What our community says", "Experiences from FastHTML users around the globe.",
-                max_width=21),
-            Div(
-                Div(
-                    *[testimonial_card(i, *args) for i,args in enumerate(testimonials)],
-                    id="carousel-container",
-                    cls=f"hide-scrollbar {col} lg:flex-row gap-4 lg:gap-6 rounded-l-3xl xl:rounded-3xl w-full lg:overflow-hidden xl:overflow-hidden whitespace-nowrap"
-                ),
-                Div(
-                    Div(arrow("left"), arrow("right"),
-                        cls="w-[4.5rem] flex justify-between ml-auto"),
-                    cls=f"hidden lg:flex xl:flex justify-start {maxrem(41)} py-6 pl-6 pr-20"),
-                cls=f"max-h-fit {col} items-start lg:-mr-16 {maxpx(1440)} overflow-hidden"),
+                max_width=21, center=False),
+            carousel(testimonial_cards),
             cls=f"{section_base} {maxrem(90)} mx-auto lg:flex-row items-start"),
         "pink")
 
@@ -300,17 +245,18 @@ hdrs = [
 bodykw = {"class": "relative bg-grey font-geist text-black/80 font-details-off"}
 app,rt = fast_app(hdrs=hdrs, default_hdrs=False, bodykw=bodykw)
 
+scripts = (
+    Script(src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js'),
+    Script(src='https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js'),
+    Script(src='js/stack.js'),
+    Script(src='js/pythonHighlighter.js'),
+    Script(src='js/togglePreview.js'),
+    Script(src='js/codeOverflow.js'),
+    Script(src='js/copyCode.js'),
+    Script(src='js/carouselScroll.js'))
+
 @rt("/")
 def get():
-    scripts = (Script(src='/js/stack.js'),
-        Script(src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js'),
-        Script(src='https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js'),
-        Script(src='js/pythonHighlighter.js'),
-        Script(src='js/togglePreview.js'),
-        Script(src='js/codeOverflow.js'),
-        Script(src='js/copyCode.js'),
-        Script(src='js/carouselScroll.js'))
-
     return (Title("FastHTML - Real web applications the right way"), 
         Main(
             hero_section(),
