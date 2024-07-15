@@ -29,7 +29,7 @@ def hero_section():
     Section(
         Div(
             File('assets/hero-shapes.svg'),
-            cls='absolute z-0 lg:-top-[15%] top-0 left-1/2 -translate-x-1/2 grid grid-cols-1 grid-rows-1 w-[120%] aspect-square max-w-screen-xl min-w-[900px]'),
+            cls='absolute z-0 lg:-top-[15%] top-0 left-1/2 -translate-x-1/2 grid grid-cols-1 grid-rows-1 w-[120%] aspect-square max-w-[2048px] min-w-[900px]'),
         Div(
             Div(cls='lg:flex-1 max-lg:basis-[152px]'),
             Div(
@@ -40,7 +40,7 @@ def hero_section():
             ),
             Div(
                 A('See examples', cls=f'{bnset} m-body px-4 py-1 rounded-full bg-black hover:bg-black/80 transition-colors duration-300 text-white h-[76px] w-full max-w-[350px] flex items-center justify-center', href='/'),
-                video_button('Watch intro', '/assets/minipics.png', '7min 30sec', "QqZUzkPcU7A?si=lTtHuMT5HPC66-49"),
+                video_button('Watch intro', '/assets/thumb.png', '7min 30sec', "QqZUzkPcU7A?si=lTtHuMT5HPC66-49"),
                 cls=f'flex-1 {center} justify-center content-center flex-wrap lg:gap-6 gap-4 m-body'),
                 video_player('Try now'),
             cls=f'{col} flex-1 relative px-4 lg:px-16'),
