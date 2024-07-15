@@ -1,8 +1,43 @@
-
-<svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg
+  viewBox="0 0 300 300"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
   <rect width="300" height="300" rx="90" fill="#E699D9" />
-  <rect x="41.5" y="42" width="96" height="96" rx="36" fill="#F3F3F3" />
-  <rect x="41.5" y="162" width="96" height="96" rx="36" fill="#F3F3F3" />
-  <rect x="161.5" y="42" width="96" height="96" rx="36" fill="#F3F3F3" />
-  <rect x="161.5" y="162" width="96" height="96" rx="36" fill="#F3F3F3" />
+  <rect
+    x="41.5"
+    y="42"
+    width="96"
+    height="96"
+    rx="36"
+    fill="#F3F3F3"
+    class="group-hover:translate-x-[-0.34rem] group-hover:translate-y-[-0.13rem] transition-all ease-in-out duration-300"
+  />
+  <rect
+    x="41.5"
+    y="162"
+    width="96"
+    height="96"
+    rx="36"
+    fill="#F3F3F3"
+    class="group-hover:translate-x-[0.29rem] group-hover:translate-y-[0.57rem] transition-all ease-in-out duration-300"
+  />
+  <rect
+    x="161.5"
+    y="42"
+    width="96"
+    height="96"
+    rx="36"
+    fill="#F3F3F3"
+    class="group-hover:translate-x-[-0.34rem] group-hover:translate-y-[-0.13rem] transition-all ease-in-out duration-300"
+  />
+  <rect
+    x="161.5"
+    y="162"
+    width="96"
+    height="96"
+    rx="36"
+    fill="#F3F3F3"
+    class="group-hover:translate-x-[0.29rem] group-hover:translate-y-[0.57rem] transition-all ease-in-out duration-300"
+  />
 </svg>
