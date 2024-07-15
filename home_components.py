@@ -12,8 +12,22 @@ inset = "shadow-[0_1px_1px_rgba(255,255,255,0.3),0_2px_2px_rgba(0,0,0,0.1)]"
 bnset = "shadow-[0_1px_1px_rgba(255,255,255,0.03),0_2px_2px_rgba(0,0,0,0.2)]"
 # inset = "shadow-[inset_0_-4px_8px_rgba(0,0,0,0.2)]"
 
+section_base1= "pt-8 px-4 pb-24 gap-8 lg:gap-16 lg:pt-16 lg:px-16"
+section_base =f"{col} {section_base1}"
+
 def maxpx (px ): return f"w-full max-w-[{px}px]"
 def maxrem(rem): return f"w-full max-w-[{rem}rem]"
+
+def section_wrapper(content, bg_color, xtra="", flex=True):
+    return Section(content, cls=f"bg-{bg_color} {section_base1} {col if flex else ''} -mt-8 lg:-mt-16 items-center rounded-t-3xl lg:rounded-t-[2.5rem] relative {xtra}")
+
+def section_header(mono_text, heading, subheading, max_width=32, center=True):
+    pos = 'items-center text-center' if center else 'items-start text-start'
+    return Div(
+        P(mono_text, cls="mono-body text-opacity-60"),
+        H2(heading, cls=f"text-black heading-2 {maxrem(max_width)}"),
+        P(subheading, cls=f"l-body {maxrem(max_width)}"),
+        cls=f"{maxrem(50)} mx-auto {col} {pos} gap-6")
 
 def arrow(d):
     return Button(Img(src=f"assets/icons/arrow-{d}.svg", alt="Arrow left"),
@@ -28,6 +42,24 @@ def carousel(items, id="carousel-container", extra_classes=""):
             cls=f"w-[4.5rem] {between} ml-auto"),
         cls=f"hidden lg:flex xl:flex justify-start {maxrem(41)} py-6 pl-6 pr-20")
     return Div(carousel_content, arrows, cls=f"max-h-fit {col} items-start lg:-mr-16 {maxpx(1440)} overflow-hidden")
+
+def testimonial_card(idx, comment, name, role, company, image_src):
+    return Div(
+        P(comment, cls=f"m-body text-black"),
+        Div(
+            Div(Img(src=image_src, alt=f"Picture of {name}", width="112", height="112"),
+                cls="rounded-full w-11 h-11 lg:w-14 lg:h-14"),
+            Div(
+                P(name, cls=f"m-body text-black"),
+                Div(
+                    P(role),
+                    Img(src=f"{icons}/dot.svg", alt="Dot separator", width="4", height="4"),
+                    P(company),
+                    cls=f"{gap2} xs-mono-body w-full"),
+                cls="w-full"),
+            cls=f"{center} justify-start gap-2"),
+        id=f"testimonial-card-{idx+1}",
+        cls=f"testimonial-card {col} flex-none whitespace-normal flex justify-between h-96 rounded-3xl items-start bg-soft-pink p-4 lg:p-8 {maxrem(36)} lg:w-96")
 
 def stack_item(name, icon_src, href):
     return A(
@@ -59,7 +91,6 @@ def accordion(id, question, answer, question_cls="", answer_cls="", container_cl
         P(answer, cls=f"overflow-hidden max-h-0 -mt-4 {pc}:max-h-[30rem] {pc}:mt-0 transition-all duration-300 ease-in-out {answer_cls}"),
         cls=container_cls)
 
-
 def video_player(txt):
     return (
         # Video Popup container - TODO make pretty
@@ -84,14 +115,34 @@ def video_player(txt):
         )
     )
 
-def video_button(txt, poster_src, video_duration, youtube_id, poster_alt="Video poster", youtube_icon_src="/assets/icons/youtube.svg", max_width="350px"):
-    return A(
+yt_frame = """<iframe id="youtubeFrame" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>"""
+def video_button(txt, poster_src, video_duration, video_id, poster_alt="Video poster", youtube_icon_src="/assets/icons/youtube.svg", max_width="350px"):
+    return (
+        A(
             Img(src=poster_src, width='240', height='120', cls='rounded-full w-[7.5rem] h-auto', alt=poster_alt),
-            Span(
-                txt, Span(video_duration, cls='s-body text-black/60'),
-                cls=f'text-black {col}'),
-            P(
-                Img(src=youtube_icon_src, width='41', height='30', alt='Youtube icon'),
-                cls=f'flex-1 {center}'),
-            cls=f'{inset} p-2 rounded-full bg-white hover:bg-white/80 transition-colors duration-300 h-[76px] w-full max-w-[{max_width}] {center} gap-4',
-            href="#", id='videoLink', video_id=youtube_id)
+            Span(txt, Span(video_duration, cls='s-body text-black/60'), cls=f'text-black {col}'),
+            P(Img(src=youtube_icon_src, width='41', height='30', alt='Youtube icon'), cls=f'flex-1 {center}'),
+            Script(f"""
+                me().on('click', (e) => {{
+                    e.preventDefault();
+                    me('#videoOverlay').classRemove('hidden').classAdd('flex');
+                    me('#youtube-player').setAttribute('src', 'https://www.youtube.com/embed/{video_id}');
+                }});"""),
+            id="openVideo", href='#',
+            cls=f'{inset} p-2 rounded-full bg-white hover:bg-white/80 transition-colors duration-300 h-[76px] w-full max-w-[{max_width}] {center} gap-4'
+        ),
+        Div(
+            Iframe(id="youtube-player", src="", cls="w-full aspect-video", allowfullscreen=True, allow="autoplay; encrypted-media"),
+            Button("Close",
+                Script("""
+                    me().on('click', () => {
+                        me('#videoOverlay').classRemove('flex').classAdd('hidden');
+                        me('#youtube-player').setAttribute('src', '');
+                    });"""),
+                id="closeVideo", cls="mt-4 bg-soft-pink text-black font-bold py-2 px-4 rounded"
+            ),
+            Script("document.addEventListener('keydown', (e) => { if (e.key === 'Escape') me('#closeVideo').send('click'); });"),
+            id="videoOverlay", cls="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
+        )
+    )
+
