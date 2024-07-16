@@ -207,11 +207,8 @@ hdrs = [
         site_name='fasthtml.answer.ai',
         image='https://fasthtml.vercel.app/assets/og-image.png',
         url='https://fasthtml.vercel.app/'),
+    surrsrc, scopesrc,
     Link(href='css/main.css', rel='stylesheet'),
-    surrsrc,
-    scopesrc,
-    # Script(src='https://cdn.tailwindcss.com'),
-    # Script(src='js/tailwind.config.js'),
     Link(href='css/tailwind.css', rel='stylesheet'),
     Link(href='css/stack.css', rel='stylesheet'),
     Link(href='css/preview-stack.css', rel='stylesheet'),
@@ -223,13 +220,13 @@ app,rt = fast_app(hdrs=hdrs, default_hdrs=False, bodykw=bodykw, on_startup=[star
 scripts = (
     Script(src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js'),
     Script(src='https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js'),
-    Script(src='js/stack.js'),
+    # Script(src='js/videoPopup.js'),
     Script(src='js/pythonHighlighter.js'),
+    Script(src='js/stack.js'),
     Script(src='js/togglePreview.js'),
     Script(src='js/codeOverflow.js'),
     Script(src='js/copyCode.js'),
-    Script(src='js/carouselScroll.js'),
-    Script(src='js/videoPopup.js'))
+    )
 
 from fastcore.xtras import timed_cache
 
