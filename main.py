@@ -200,6 +200,8 @@ def footer():
             cls=f"relative w-full h-[420px] lg:h-[600px] {col} pt-8 lg:pt-12 rounded-t-3xl lg:rounded-t-[2.5rem] bg-black overflow-hidden -mt-8 lg:-mt-10"))
 
 hdrs = [
+    Meta(charset='UTF-8'),
+    Meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0'),
     Meta(name='description', content='Real web applications the right way'),
     *Favicon('assets/favicon.ico', 'assets/favicon-dark.ico'),
     *Socials(title='FastHTML',
