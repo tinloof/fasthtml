@@ -210,8 +210,9 @@ hdrs = [
     Link(href='css/main.css', rel='stylesheet'),
     surrsrc,
     scopesrc,
-    Script(src='https://cdn.tailwindcss.com'),
-    Script(src='js/tailwind.config.js'),
+    # Script(src='https://cdn.tailwindcss.com'),
+    # Script(src='js/tailwind.config.js'),
+    Link(href='css/tailwind.css', rel='stylesheet'),
     Link(href='css/stack.css', rel='stylesheet'),
     Link(href='css/preview-stack.css', rel='stylesheet'),
     Link(href='css/highlighter-theme.css', rel='stylesheet')]
