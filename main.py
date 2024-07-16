@@ -224,6 +224,7 @@ scripts = (
     Script(src='https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js'),
     # Script(src='js/videoPopup.js'),
     Script(src='js/pythonHighlighter.js'),
+    Script(src='js/carouselScroll.js'),
     Script(src='js/stack.js'),
     Script(src='js/togglePreview.js'),
     Script(src='js/codeOverflow.js'),
