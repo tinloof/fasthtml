@@ -137,9 +137,9 @@ def samples_section():
                             P(name, cls="border-b-2 border-b-black/30 hover:border-b-black/80 regular-body"),
                             Img(src=f"{icons}/arrow-up-right.svg", alt="Arrow right icon", cls="group-hover:translate-y-[-0.1rem] transition-all ease-in-out duration-300"),
                             cls=f"{gap2} transition-transform transform relative items-center mt-4 lg:mt-6"),
-                        href="/", cls=f"{col} items-center"),
+                        href=url, cls=f"{col} items-center"),
                     cls="group px-2"
-                ) for name, svg in samples],
+                ) for name, svg, url in samples],
                 cls="grid max-w-5xl lg:grid-cols-4 lg:max-w-7xl lg:gap-x-12 grid-cols-2 gap-x-4 gap-y-8 w-full mx-auto"),
             A("Discover all", href="/", cls=f"{bnset} bg-black text-white py-2 px-4 s-body rounded-full hover:bg-black/70 transition-colors duration-300")),
         "grey")

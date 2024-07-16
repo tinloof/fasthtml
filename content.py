@@ -3,10 +3,10 @@ from inspect import getsource
 from home_components import accordion,col,inset,bnset
 
 samples = [
-    ("Game of life", "game-of-life.svg"),
-    ("To-do", "todo.svg"),
-    ("Chat bot", "chat-bot.svg"),
-    ("Pictionary AI", "pictionary-ai.svg")
+    ("Game of life", "game-of-life.svg", "https://game-of-life-production-ed7f.up.railway.app/"),
+    ("To-do", "todo.svg", "https://todos-vercel-ivory.vercel.app/"),
+    ("Chat bot", "chat-bot.svg", "https://github.com/AnswerDotAI/fasthtml-example/tree/main/chatbot_example"),
+    ("Pictionary AI", "pictionary-ai.svg", "https://ai-pictionary.up.railway.app/")
 ]
 
 from weather import all_weather
