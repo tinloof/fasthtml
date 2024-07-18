@@ -88,7 +88,7 @@ stacked = [
     ]),
     ("What it is built on top of", "Now it's time to use FastHTML", [
         ("Python", "python.svg", "https://www.python.org/"),
-        ("Uvicorn", "uvicorn.svg", "https://www.uvicorn.org/"),
+        ("Uvicorn", "uvicorn.png", "https://www.uvicorn.org/"),
         ("Starlette", "starlette.svg", "https://www.starlette.io/"),
         ("HTMX", "htmx.svg", "https://htmx.org/"),
     ]),
