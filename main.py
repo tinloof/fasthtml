@@ -44,7 +44,7 @@ def hero_section():
                 cls=f'flex-1 {center} justify-center content-center flex-wrap lg:gap-6 gap-4 m-body'),
                 video_player('Try now'),
             cls=f'{col} flex-1 relative px-4 lg:px-16'),
-        cls=f'{col} relative w-full h-screen max-h-screen min-h-[720px] overflow-hidden bg-grey')
+        cls=f'{col} relative w-full h-screen max-h-[1024px] min-h-[720px] overflow-hidden bg-grey')
     )
 
 def code_display(file_name, code_snippet, snippet_id):
@@ -177,7 +177,10 @@ def testimonials_section():
         "pink")
 
 def footer_link(text, href, **kw):
-    return Li(A(text, href=href, cls=f"{gap2} items-center hover:text-white border-b border-b-transparent border-b-white/50 hover:border-b-white", **kw))
+    return Li(A(
+        Span(text, cls="border-b border-b-transparent border-b-white/50"),
+        Img(src=f"{icons}/arrow-up-right-white.svg", alt="Arrow right icon", width="16", height="16", cls="w-4 h-4"),
+        href=href, cls=f"{gap2} items-center hover:text-white border-b border-b-transparent hover:border-b-white", **kw))
 
 def footer():
     return Section(
@@ -195,7 +198,7 @@ def footer():
                 Div(
                     File("assets/footer-shapes.svg"),
                     cls=f"absolute z-0 lg:-top-[15%] top-0 left-1/2 -translate-x-1/2 grid grid-cols-1 grid-rows-1 lg:w-[150%] w-[200%] aspect-square max-w-none min-w-max"),
-                Img(src="/assets/footer-path.svg", alt="FastHTML logo", cls="relative w-full h-auto"),
+                File("assets/footer-path.svg"),
                 cls=f"relative z-0 w-full px-4 lg:px-16 pb-1 {col} flex-1 justify-end"),
             cls=f"relative w-full h-[420px] lg:h-[600px] {col} pt-8 lg:pt-12 rounded-t-3xl lg:rounded-t-[2.5rem] bg-black overflow-hidden -mt-8 lg:-mt-10"))
 

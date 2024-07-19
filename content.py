@@ -61,11 +61,11 @@ class Todo:
         "`__xt__` defines how FastHTML renders an object"
         return Li("✅ " if self.done else "", self.title)
 
+todos = db.create(Todo)
 def todos_table():
     "This example uses the `fastlite` DB lib"
     return Ul(*todos(), cls=list_class)
 
-todos = db.create(Todo)
 def startup():
     if not todos():
         todos.insert(title="Create sample todos", done=True)
@@ -77,7 +77,7 @@ async def components():
         ("Components", "card3d.py", getsource(card_3d_demo), card_3d_demo()),
         ("Dynamic", "weather.py", getsource(weather_table), await weather_table()),
         ("Reusable", "accordion.py", getsource(accordion_demo), accordion_demo()),
-        ("Databases", "todos.py", f"{getsource(Todo)}\n{getsource(todos_table)}",
+        ("Databases", "todos.py", f"{getsource(Todo)}\ntodos = db.create(Todo)\n{getsource(todos_table)}",
          Div(H2("DB-generated todo list", cls="text-2xl font-bold mb-4"), todos_table()))
     ]
 
