@@ -209,7 +209,7 @@ hdrs = [
     *Favicon('assets/favicon.ico', 'assets/favicon-dark.ico'),
     *Socials(title='FastHTML',
         description='Real web applications the right way',
-        site_name='fasthtml.answer.ai',
+        site_name='fastht.ml',
         image='https://fasthtml.vercel.app/assets/og-image.png',
         url='https://fasthtml.vercel.app/'),
     surrsrc, scopesrc,
