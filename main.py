@@ -202,16 +202,18 @@ def footer():
                 cls=f"relative z-0 w-full px-4 lg:px-16 pb-1 {col} flex-1 justify-end"),
             cls=f"relative w-full h-[420px] lg:h-[600px] {col} pt-8 lg:pt-12 rounded-t-3xl lg:rounded-t-[2.5rem] bg-black overflow-hidden -mt-8 lg:-mt-10"))
 
+siteaddr='fastht.ml'
+siteurl=f'https://{siteaddr}'
 hdrs = [
     Meta(charset='UTF-8'),
     Meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0'),
     Meta(name='description', content='Real web applications the right way'),
-    *Favicon('assets/favicon.ico', 'assets/favicon-dark.ico'),
+    *Favicon('favicon.ico', 'favicon-dark.ico'),
     *Socials(title='FastHTML',
         description='Real web applications the right way',
-        site_name='fastht.ml',
-        image='https://fasthtml.vercel.app/assets/og-image.png',
-        url='https://fasthtml.vercel.app/'),
+        site_name=siteaddr,
+        image=f'{siteurl}/assets/og-image.png',
+        url=siteurl),
     surrsrc, scopesrc,
     Link(href='css/main.css', rel='stylesheet'),
     Link(href='css/tailwind.css', rel='stylesheet'),
