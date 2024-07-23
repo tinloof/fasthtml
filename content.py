@@ -3,10 +3,10 @@ from inspect import getsource
 from home_components import accordion,col,inset,bnset
 
 samples = [
-    ("Game of life", "game-of-life.svg"),
-    ("To-do", "todo.svg"),
-    ("Chat bot", "chat-bot.svg"),
-    ("Pictionary AI", "pictionary-ai.svg")
+    ("Game of life", "game-of-life.svg", "https://game-of-life-production-ed7f.up.railway.app/"),
+    ("To-do", "todo.svg", "https://todos-vercel-ivory.vercel.app/"),
+    ("Chat bot", "chat-bot.svg", "https://github.com/AnswerDotAI/fasthtml-example/tree/main/chatbot_example"),
+    ("Pictionary AI", "pictionary-ai.svg", "https://ai-pictionary.up.railway.app/")
 ]
 
 from weather import all_weather
@@ -61,11 +61,11 @@ class Todo:
         "`__xt__` defines how FastHTML renders an object"
         return Li("✅ " if self.done else "", self.title)
 
+todos = db.create(Todo)
 def todos_table():
     "This example uses the `fastlite` DB lib"
     return Ul(*todos(), cls=list_class)
 
-todos = db.create(Todo)
 def startup():
     if not todos():
         todos.insert(title="Create sample todos", done=True)
@@ -77,7 +77,7 @@ async def components():
         ("Components", "card3d.py", getsource(card_3d_demo), card_3d_demo()),
         ("Dynamic", "weather.py", getsource(weather_table), await weather_table()),
         ("Reusable", "accordion.py", getsource(accordion_demo), accordion_demo()),
-        ("Databases", "todos.py", f"{getsource(Todo)}\n{getsource(todos_table)}",
+        ("Databases", "todos.py", f"{getsource(Todo)}\ntodos = db.create(Todo)\n{getsource(todos_table)}",
          Div(H2("DB-generated todo list", cls="text-2xl font-bold mb-4"), todos_table()))
     ]
 
@@ -88,7 +88,7 @@ stacked = [
     ]),
     ("What it is built on top of", "Now it's time to use FastHTML", [
         ("Python", "python.svg", "https://www.python.org/"),
-        ("Uvicorn", "uvicorn.svg", "https://www.uvicorn.org/"),
+        ("Uvicorn", "uvicorn.png", "https://www.uvicorn.org/"),
         ("Starlette", "starlette.svg", "https://www.starlette.io/"),
         ("HTMX", "htmx.svg", "https://htmx.org/"),
     ]),

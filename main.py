@@ -29,7 +29,7 @@ def hero_section():
     Section(
         Div(
             File('assets/hero-shapes.svg'),
-            cls='absolute z-0 lg:-top-[15%] top-0 left-1/2 -translate-x-1/2 grid grid-cols-1 grid-rows-1 w-[120%] aspect-square max-w-screen-xl min-w-[900px]'),
+            cls='absolute z-0 lg:-top-[15%] top-0 left-1/2 -translate-x-1/2 grid grid-cols-1 grid-rows-1 w-[120%] aspect-square max-w-[2048px] min-w-[900px]'),
         Div(
             Div(cls='lg:flex-1 max-lg:basis-[152px]'),
             Div(
@@ -40,11 +40,11 @@ def hero_section():
             ),
             Div(
                 A('See examples', cls=f'{bnset} m-body px-4 py-1 rounded-full bg-black hover:bg-black/80 transition-colors duration-300 text-white h-[76px] w-full max-w-[350px] flex items-center justify-center', href='/'),
-                video_button('Watch intro', '/assets/minipics.png', '7min 30sec', "QqZUzkPcU7A?si=lTtHuMT5HPC66-49"),
+                video_button('Watch intro', '/assets/thumb.png', '7min 30sec', "QqZUzkPcU7A?si=lTtHuMT5HPC66-49"),
                 cls=f'flex-1 {center} justify-center content-center flex-wrap lg:gap-6 gap-4 m-body'),
                 video_player('Try now'),
             cls=f'{col} flex-1 relative px-4 lg:px-16'),
-        cls=f'{col} relative w-full h-screen max-h-screen min-h-[720px] overflow-hidden bg-grey')
+        cls=f'{col} relative w-full h-screen max-h-[1024px] min-h-[720px] overflow-hidden bg-grey')
     )
 
 def code_display(file_name, code_snippet, snippet_id):
@@ -137,9 +137,9 @@ def samples_section():
                             P(name, cls="border-b-2 border-b-black/30 hover:border-b-black/80 regular-body"),
                             Img(src=f"{icons}/arrow-up-right.svg", alt="Arrow right icon", cls="group-hover:translate-y-[-0.1rem] transition-all ease-in-out duration-300"),
                             cls=f"{gap2} transition-transform transform relative items-center mt-4 lg:mt-6"),
-                        href="/", cls=f"{col} items-center"),
+                        href=url, cls=f"{col} items-center"),
                     cls="group px-2"
-                ) for name, svg in samples],
+                ) for name, svg, url in samples],
                 cls="grid max-w-5xl lg:grid-cols-4 lg:max-w-7xl lg:gap-x-12 grid-cols-2 gap-x-4 gap-y-8 w-full mx-auto"),
             A("Discover all", href="/", cls=f"{bnset} bg-black text-white py-2 px-4 s-body rounded-full hover:bg-black/70 transition-colors duration-300")),
         "grey")
@@ -177,7 +177,10 @@ def testimonials_section():
         "pink")
 
 def footer_link(text, href, **kw):
-    return Li(A(text, href=href, cls=f"{gap2} items-center hover:text-white border-b border-b-transparent border-b-white/50 hover:border-b-white", **kw))
+    return Li(A(
+        Span(text, cls="border-b border-b-transparent border-b-white/50"),
+        Img(src=f"{icons}/arrow-up-right-white.svg", alt="Arrow right icon", width="16", height="16", cls="w-4 h-4"),
+        href=href, cls=f"{gap2} items-center hover:text-white border-b border-b-transparent hover:border-b-white", **kw))
 
 def footer():
     return Section(
@@ -195,23 +198,23 @@ def footer():
                 Div(
                     File("assets/footer-shapes.svg"),
                     cls=f"absolute z-0 lg:-top-[15%] top-0 left-1/2 -translate-x-1/2 grid grid-cols-1 grid-rows-1 lg:w-[150%] w-[200%] aspect-square max-w-none min-w-max"),
-                Img(src="/assets/footer-path.svg", alt="FastHTML logo", cls="relative w-full h-auto"),
+                File("assets/footer-path.svg"),
                 cls=f"relative z-0 w-full px-4 lg:px-16 pb-1 {col} flex-1 justify-end"),
             cls=f"relative w-full h-[420px] lg:h-[600px] {col} pt-8 lg:pt-12 rounded-t-3xl lg:rounded-t-[2.5rem] bg-black overflow-hidden -mt-8 lg:-mt-10"))
 
 hdrs = [
+    Meta(charset='UTF-8'),
+    Meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0'),
     Meta(name='description', content='Real web applications the right way'),
-    *Favicon('assets/favicon.ico', 'assets/favicon-dark.ico'),
+    *Favicon('favicon.ico', 'favicon-dark.ico'),
     *Socials(title='FastHTML',
         description='Real web applications the right way',
-        site_name='fasthtml.answer.ai',
-        image='https://fasthtml.vercel.app/assets/og-image.png',
-        url='https://fasthtml.vercel.app/'),
+        site_name='fastht.ml',
+        twitter_site='@answerdotai',
+        image=f'/assets/og-image.png'),
+    surrsrc, scopesrc,
     Link(href='css/main.css', rel='stylesheet'),
-    surrsrc,
-    scopesrc,
-    Script(src='https://cdn.tailwindcss.com'),
-    Script(src='js/tailwind.config.js'),
+    Link(href='css/tailwind.css', rel='stylesheet'),
     Link(href='css/stack.css', rel='stylesheet'),
     Link(href='css/preview-stack.css', rel='stylesheet'),
     Link(href='css/highlighter-theme.css', rel='stylesheet')]
@@ -222,13 +225,14 @@ app,rt = fast_app(hdrs=hdrs, default_hdrs=False, bodykw=bodykw, on_startup=[star
 scripts = (
     Script(src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js'),
     Script(src='https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js'),
-    Script(src='js/stack.js'),
+    # Script(src='js/videoPopup.js'),
     Script(src='js/pythonHighlighter.js'),
+    Script(src='js/carouselScroll.js'),
+    Script(src='js/stack.js'),
     Script(src='js/togglePreview.js'),
     Script(src='js/codeOverflow.js'),
     Script(src='js/copyCode.js'),
-    Script(src='js/carouselScroll.js'),
-    Script(src='js/videoPopup.js'))
+    )
 
 from fastcore.xtras import timed_cache
 
