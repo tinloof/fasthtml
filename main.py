@@ -5,8 +5,8 @@ from content import *
 def benefit(title, content):
     return Div(
         H3(title, cls=f"text-black heading-3"),
-        P(content, cls=f"l-body mt-6 lg:mt-8"),
-        cls="w-full p-6 bg-soft-yellow rounded-2xl lg:p-12 lg:h-[22rem] lg:w-[26rem]")
+        P(content, cls=f"l-body mt-6 lg:mt-6"),
+        cls="w-full p-6 bg-soft-yellow rounded-2xl xl:p-12 lg:h-[22rem] lg:w-[26rem]")
 
 def faq_item(question, answer, id):
     return accordion(
