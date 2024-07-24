@@ -82,17 +82,19 @@ async def components():
     ]
 
 stacked = [
-    ("What you need to know", "Everything you need to get started with FastHTML.", [
-        ("Python", "python.svg", "https://www.python.org/"),
-        ("HTMX", "htmx.svg", "https://htmx.org/"),
-    ]),
-    ("What it is built on top of", "Now it's time to use FastHTML", [
+    ("Build on solid foundations", "FastHTML stands on the shoulders of giants:", [
         ("Python", "python.svg", "https://www.python.org/"),
         ("Uvicorn", "uvicorn.png", "https://www.uvicorn.org/"),
+        ("ASGI", "network-svgrepo-com.svg", "https://asgi.readthedocs.io/en/latest/"), # NB: ASGI has no logo, using a generic one
         ("Starlette", "starlette.svg", "https://www.starlette.io/"),
         ("HTMX", "htmx.svg", "https://htmx.org/"),
     ]),
-    ("Where you can deploy", "Companies that we provide deployment for", [
+    ("Use tools you already know", "FastHTML embraces the familiar:", [
+        ("Python", "python.svg", "https://www.python.org/"),
+        ("HTMX", "htmx.svg", "https://htmx.org/"),
+        ("SQLite", "sqlite370_banner.gif", "https://www.sqlite.org/"),
+    ]),
+    ("Deploy anywhere", "FastHTML runs anywhere Python does:", [
         ("Railway", "railway.svg", "https://railway.app/"),
         ("Hugging Face", "hugging-face.svg", "https://huggingface.co/"),
         ("Vercel", "vercel.svg", "https://vercel.com/"),
