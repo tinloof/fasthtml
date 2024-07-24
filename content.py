@@ -85,7 +85,7 @@ stacked = [
     ("Build on solid foundations", "FastHTML stands on the shoulders of giants:", [
         ("Python", "python.svg", "https://www.python.org/"),
         ("Uvicorn", "uvicorn.png", "https://www.uvicorn.org/"),
-        ("ASGI", "network-svgrepo-com.svg", "https://asgi.readthedocs.io/en/latest/"), # NB: ASGI has no logo, using a generic one
+        ("ASGI", "asgi.png", "https://asgi.readthedocs.io/en/latest/"),
         ("Starlette", "starlette.svg", "https://www.starlette.io/"),
         ("HTMX", "htmx.svg", "https://htmx.org/"),
     ]),
