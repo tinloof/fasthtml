@@ -92,8 +92,8 @@
       (0.1 * percentageOfSecondCardSeen) / 100 -
       (0.1 * percentageOfThirdCardSeen) / 100;
     cardsArray[0].children.item(0).style.filter = `blur(${
-      (10 * percentageOfSecondCardSeen) / 100 +
-      (10 * percentageOfThirdCardSeen) / 100
+      (10 * Math.max(percentageOfSecondCardSeen - 0.2, 0)) / 100 +
+      (10 * Math.max(percentageOfThirdCardSeen - 0.2, 0)) / 100
     }px)`;
     cardsArray[0].style.paddingBottom = `calc(
       var(--cardTopPadding) * 2 - ${cardsHeights[0] - cardsHeights[2]}px
@@ -104,7 +104,7 @@
     cardsArray[1].children.item(0).style.opacity =
       1 - (0.1 * percentageOfThirdCardSeen) / 100;
     cardsArray[1].children.item(0).style.filter = `blur(${
-      (10 * percentageOfThirdCardSeen) / 100
+      (10 * Math.max(percentageOfThirdCardSeen - 0.2, 0)) / 100
     }px)`;
     cardsArray[1].style.paddingBottom = `calc(
       var(--cardTopPadding) - ${cardsHeights[1] - cardsHeights[2]}px

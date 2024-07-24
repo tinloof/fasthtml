@@ -79,16 +79,15 @@ def stacked_card(title, description, stacks, color):
     )
 
 def accordion(id, question, answer, question_cls="", answer_cls="", container_cls=""):
-    pc = f"peer-checked/collapsible-{id}"
     return Div(
-        Input(id=f"collapsible-{id}", type="checkbox", cls=f"collapsible-checkbox peer/collapsible-{id} hidden"),
+        Input(id=f"collapsible-{id}", type="checkbox", cls=f"collapsible-checkbox peer/collapsible hidden"),
         Label(
             P(question, cls=f"flex-grow {question_cls}"),
             Img(src=f"{icons}/plus-icon.svg", alt="Expand", cls=f"plus-icon w-6 h-6"),
             Img(src=f"{icons}/minus-icon.svg", alt="Collapse", cls=f"minus-icon w-6 h-6"),
             _for=f"collapsible-{id}",
-            cls="flex items-center cursor-pointer"),
-        P(answer, cls=f"overflow-hidden max-h-0 -mt-4 {pc}:max-h-[30rem] {pc}:mt-0 transition-all duration-300 ease-in-out {answer_cls}"),
+            cls="flex items-center cursor-pointer py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6"),
+        P(answer, cls=f"overflow-hidden max-h-0 pl-6 lg:pl-8 pr-4 lg:pr-6 peer-checked/collapsible:max-h-[30rem] peer-checked/collapsible:pb-4 peer-checked/collapsible:lg:pb-6 transition-all duration-300 ease-in-out {answer_cls}"),
         cls=container_cls)
 
 def video_player(txt):
