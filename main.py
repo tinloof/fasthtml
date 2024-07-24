@@ -13,7 +13,7 @@ def faq_item(question, answer, id):
         id=id, question=question, answer=answer,
         question_cls="text-black s-body",
         answer_cls="s-body text-black/80 col-span-full",
-        container_cls=f"{col} gap-4 justify-between bg-soft-blue rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6 {bnset}"
+        container_cls=f"{col} justify-between bg-soft-blue rounded-[1.25rem] {bnset}"
     )
 
 def hero_section():
@@ -63,7 +63,7 @@ def code_display(file_name, code_snippet, snippet_id):
         Pre(
             Code(code_snippet, cls="python w-full mono-body"),
             id=snippet_id,
-            cls="code-snippet relative max-h-[25rem] overflow-y-auto hide-scrollbar"),
+            cls="code-snippet relative max-h-[25rem] overflow-hidden hide-scrollbar"),
         Div(cls="absolute code-fade-out bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[#3a2234] pointer-events-none"),
         cls=f"relative {col} gap-6 lg:max-w-[45rem] w-full overflow-hidden"
     )
@@ -151,7 +151,7 @@ def how_it_works_section():
             section_header( "GET STARTED IN MINUTES", "The fastest way to create a real web application", msg),
             cls="max-w-3xl w-full mx-auto flex-col items-center text-center gap-6 mb-8 lg:mb-8"),
             Div(*[benefit(title, content) for title, content in benefits],
-                cls=f"{col} w-full lg:flex-row gap-4 items-center lg:gap-8 max-w-7xl mx-auto")),
+                cls=f"{col} w-full lg:flex-row gap-4 items-center lg:gap-8 max-w-7xl mx-auto justify-center"),),
         "yellow", flex=False)
 
 def faq_section():
@@ -211,7 +211,8 @@ hdrs = [
         description='Real web applications the right way',
         site_name='fastht.ml',
         twitter_site='@answerdotai',
-        image=f'/assets/og-image.png'),
+        image=f'/assets/og-image.png',
+        url=f'/assets/og-image.png'),
     surrsrc, scopesrc,
     Link(href='css/main.css', rel='stylesheet'),
     Link(href='css/tailwind.css', rel='stylesheet'),
@@ -219,7 +220,7 @@ hdrs = [
     Link(href='css/preview-stack.css', rel='stylesheet'),
     Link(href='css/highlighter-theme.css', rel='stylesheet')]
 
-bodykw = {"class": "relative bg-grey font-geist text-black/80 font-details-off"}
+bodykw = {"class": "relative bg-black font-geist text-black/80 font-details-off"}
 app,rt = fast_app(hdrs=hdrs, default_hdrs=False, bodykw=bodykw, on_startup=[startup])
 
 scripts = (

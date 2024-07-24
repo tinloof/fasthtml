@@ -38,7 +38,7 @@ def card_3d_demo():
     return Div(card, style=cardcss)
 
 a_cls="s-body text-black/80 col-span-full",
-c_cls=f"{col} gap-4 justify-between bg-purple/10 rounded-[1.25rem] py-4 lg:py-6 pl-6 lg:pl-8 pr-4 lg:pr-6 {inset}",
+c_cls=f"{col} justify-between bg-purple/10 rounded-[1.25rem] {inset}",
 acc_cls=f"{col} gap-4 transition ease-out delay-[300ms]"
 qas = [
     ("What is this?", "This is a little demo of a reusable accordion component."),
