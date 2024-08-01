@@ -108,7 +108,7 @@ benefits = [
 
 faqs = [
     ("What kinds of applications can be written with this?",
-     "It's good for: general purpose web applications (i.e anything you'd build with React, Django, NexJS, etc); quick dashboards, prototypes, and in-company apps (e.g. like what you might use gradio/streamlit/etc for); Analytics/models/dashboards interactive reports; Custom blogs and content-heavy sites where you also want some interactive/dynamic content."),
+     "It's good for: general purpose web applications (i.e anything you'd build with React, Django, Next.js, etc); quick dashboards, prototypes, and in-company apps (e.g. like what you might use gradio/streamlit/etc for); Analytics/models/dashboards interactive reports; Custom blogs and content-heavy sites where you also want some interactive/dynamic content."),
     ("Where can I deploy my FastHTML to? What's needed?",
      "You can deploy a FastHTML app to any service or server that supports Python. We have guides and helpers for Railway.app, Vercel, Hugging Face Spaces, Replit, and PythonAnywhere. You can also use any VPS or server, or any on-premise machine with Python installed. All major operating systems are supported."),
     ("How does FastHTML relate to FastAPI?",
@@ -119,7 +119,7 @@ faqs = [
      "HTMX is best thought of as filling in the missing bits of a web browser -- in fact, web browser manufacturers are considering incorporating similar features directly into future browsers. It is a small javascript library that with a single line of HTML lets you respond to any event from any part of a web page by modifying the DOM in any way you like, all directly from Python. Whilst you don't have to use it with FastHTML, it will dramatically increase the amount of stuff you can do!"),
     ("Do I need to know JS? Can I use it if I want, with FastHTML?",
      "No, and yes! You can write nearly any standard web app with just Python. However, using a bit of JS can be helpful -- for instance, nearly any existing JS lib can be incorporated into a FastHTML app, and you can sprinkle bits of JS into your pages anywhere you like."),
-    ("Are FastHTML apps slower than React, Next.JS, etc?",
+    ("Are FastHTML apps slower than React, Next.js, etc?",
      "It depends. Apps using FastHTML and HTMX are often faster than JS-based approaches using big libraries, since they can be very lightweight.")
 ]
 
